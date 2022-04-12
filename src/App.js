@@ -3,22 +3,31 @@ import Test from "./components/Test";
 // Redux Imports
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { db } from "./backend/firebase-config";
-import { collection, getDocs } from "firebase/firestore";
-import { useState, useEffect } from "react";
 
 import Dashboard from "./pages/dashboard/Dashboard";
-
+import { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./components/Theme";
+const themes = {
+  light: lightTheme,
+  dark: darkTheme,
+};
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const themeToggle = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
   return (
     <div className="App">
       <Provider store={store}>
         <Test></Test>
+        <ThemeProvider theme={themes[theme]}>
+          <div className="App">
+            <Dashboard theme={theme} setTheme={setTheme} />
+          </div>
+        </ThemeProvider>
       </Provider>
-      <h1>dashboard</h1>
-      <Dashboard />
-      <h1>dashboard</h1>
-      <Dashboard />
     </div>
   );
 }

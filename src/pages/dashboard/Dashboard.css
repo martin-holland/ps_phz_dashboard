@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 600px) {
+  .header {
+    width: 90vw;
+    font-size: 1rem;
+  }
+  .toggle-button {
+    top: 0;
+    right: 5px;
+  }
+}
+@media (max-width: 420px) {
+  .header {
+    font-size: 1rem !important;
+    width: 80vw;
+  }
+}
+@media (max-width: 375px) {
+  .header {
+    width: 75vw;
+  }
+  .toggle-button {
+    width: 30px !important;
+  }
+}
