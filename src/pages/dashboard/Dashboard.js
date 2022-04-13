@@ -3,26 +3,8 @@ import { BsMoonStarsFill } from "react-icons/bs";
 import { BsLightbulb } from "react-icons/bs";
 import styled from "styled-components";
 import "./Dashboard.css";
-
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+import BarChart from "../../components/chart/BarChart";
+import Message from "../../components/message/Message";
 
 const Main = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
@@ -55,89 +37,25 @@ const Toggle = styled.button`
   }
 `;
 
-export const options = {
-  plugins: {
-    title: {
-      display: true,
-      text: "Total respondents 450",
-    },
-  },
-  responsive: true,
-  scales: {
-    x: {
-      stacked: true,
-    },
-    y: {
-      stacked: true,
-    },
-  },
-};
-const labels = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Promoters",
-      data: [100, 289, 156, 134, 178, 123, 145, 178, 198, 123, 178, 234],
-      backgroundColor: "#19aade",
-    },
-    {
-      label: "passive",
-      data: [23, 56, 69, 67, 89, 61, 23, 45, 24, 34, 89, 46],
-      backgroundColor: "#1de4bd",
-    },
-    {
-      label: "Detractors",
-      data: [78, 34, 35, 27, 89, 78, 96, 85, 56, 34, 67, 45],
-      backgroundColor: "#ef7e32",
-    },
-  ],
-  options: {
-    events: ["click"],
-    elements: {
-      bar: {
-        borderWidth: 1,
-      },
-    },
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: "Food Chart",
-        font: {
-          size: 24,
-        },
-        color: "black",
-        padding: {
-          top: 10,
-          bottom: 30,
-        },
-      },
-    },
-  },
-};
-
+const SubTitie = styled.div`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+const ChartContainer = styled.div`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.chartbackground};
+`;
+const MessageContainer = styled.div`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
 const Dashboard = (props) => {
   //theme
+
   const changeTheme = () => {
     props.theme === "light" ? props.setTheme("dark") : props.setTheme("light");
   };
   const icon = props.theme === "light" ? <BsMoonStarsFill /> : <BsLightbulb />;
-
-  //Chart
 
   return (
     <Main className="main">
@@ -150,12 +68,15 @@ const Dashboard = (props) => {
             {icon}
           </Toggle>
         </div>
-        <div className="sub-title">
+        <SubTitie>
           <p>Net Promoter Score calculations with breakouts and deltas.</p>
-        </div>
-        <div className="chart-container">
-          <Bar options={options} data={data} className="chart" />
-        </div>
+        </SubTitie>
+        <ChartContainer className="chart-container">
+          <BarChart />
+        </ChartContainer>
+        <MessageContainer className="message-container">
+          <Message />
+        </MessageContainer>
       </div>
     </Main>
   );

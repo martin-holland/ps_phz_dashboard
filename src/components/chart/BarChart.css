@@ -1,0 +1,33 @@
+.bar-container {
+  flex-basis: 60%;
+  margin: 1rem;
+  padding-left: 0.5rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.circle-container {
+  flex-basis: 35%;
+  margin: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  font-size: 1.2rem;
+}
+.circle-text-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.score-container * {
+  padding: 0.5rem;
+  border: 1px solid black;
+  margin: 10px 0;
+
+  color: black !important;
+}
+.promoters {
+  background-color: #19aade;
+}
+.passive {
+  background-color: #1de4bd;
+}
+.detractors {
+  background-color: #ef7e32;
+}
