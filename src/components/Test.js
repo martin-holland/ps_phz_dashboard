@@ -12,17 +12,20 @@ export class home extends Component {
   render() {
     const { results, loading } = this.props.data;
 
-    if (!loading) {
-      return results.map((item) => (
+    let recentSurveyData = !loading ? (
+      results.map((item) => (
         <>
           <p>Survey Id: {item.surveyId}</p>
-          <p>Survey Score: {item.choice}</p>
-          <p>Survey Result: {item.result}</p>
-          <p>Created At: {item.createdAt}</p>
+          <p>Survey Choice: {item.choice}</p>
+          <p>Survey Result: {item.surveyResult}</p>
+          <p>Message: {item.message}</p>
         </>
-      ));
-    }
-    return <>Loading Data</>;
+      ))
+    ) : (
+      <p>Loading Data</p>
+    );
+
+    return <div>{recentSurveyData}</div>;
   }
 }
 
