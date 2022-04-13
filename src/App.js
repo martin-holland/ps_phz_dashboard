@@ -8,16 +8,16 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./components/Theme";
+
+//dark light theme
 const themes = {
   light: lightTheme,
   dark: darkTheme,
 };
+
 function App() {
   const [theme, setTheme] = useState("light");
 
-  const themeToggle = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
-  };
   return (
     <div className="App">
       <Provider store={store}>
