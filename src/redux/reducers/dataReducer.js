@@ -1,6 +1,10 @@
 import { LOADING_DATA, SET_DATA } from "../types";
 
-const initialState = {};
+const initialState = {
+  results: [],
+  singleResult: {},
+  loading: false,
+};
 
 //eslint-disable-next-line
 export default function (state = initialState, action) {
