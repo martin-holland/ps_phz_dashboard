@@ -1,0 +1,39 @@
+.messages-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  padding: 0.5rem;
+}
+.list {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+.message-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.message-box * {
+  margin-left: 10px;
+}
+
+.indicator {
+  width: 0.5rem;
+  height: 3rem;
+  background-color: aqua;
+}
+
+.ratings {
+  font-size: 2rem;
+}
+.message {
+  margin-top: 0.5rem;
+}
+.date-box {
+  margin: 0.5rem;
+}
