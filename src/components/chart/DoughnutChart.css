@@ -1,0 +1,11 @@
+.doughnut {
+  position: absolute;
+}
+.doughnut-number {
+  position: relative;
+  top: 45%;
+  left: 40%;
+  margin: auto;
+  z-index: 1;
+  font-size: 2rem;
+}

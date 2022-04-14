@@ -39,7 +39,7 @@ export const options = {
     },
   },
   responsive: true,
-
+  maintainAspectRatio: false,
   scales: {
     xAxes: {
       stacked: true,
@@ -117,9 +117,9 @@ const BarChart = (props) => {
             <p className="passive">Passive: 24</p>
             <p className="detractors">Detractors: 45</p>
           </div>
-          <div>
-            <DoughnutChart />
-          </div>
+        </div>
+        <div className="doughnut-container">
+          <DoughnutChart />
         </div>
       </CircleContainer>
     </>

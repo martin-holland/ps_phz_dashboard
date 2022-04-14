@@ -5,7 +5,7 @@ import axios from "axios";
 export const getAllData = () => (dispatch) => {
   dispatch({ type: LOADING_DATA });
   axios
-    .get("https://us-central1-promoterscore-14480.cloudfunctions.net/api/data")
+    .get("/user")
     .then((res) => {
       dispatch({
         type: SET_DATA,
