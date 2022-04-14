@@ -1,27 +1,28 @@
 import React from "react";
 import "./Message.css";
-const Message = () => {
+const Message = ({ result }) => {
+  const colorChange = (rating) => {
+    if (rating > 0 && rating <= 6) {
+      return "coral";
+    } else if (rating > 6 && rating <= 8) {
+      return "greenish-blue";
+    } else {
+      return "blue";
+    }
+  };
+
   return (
     <div className="messages-list-container">
       <li className="list">
         <div className="message-box">
-          <div className="indicator"></div>
-          <p className="ratings">10</p>
-          <p className="message">Very fast and easy to use.</p>
+          <div className={`indicator ${colorChange(result.choice)}`}></div>
+          <p className="ratings">{result.choice}</p>
+          <p className="message">
+            {result.message ? result.message : "No message"}
+          </p>
         </div>
         <div className="date-box">
-          <p>Created:02/23/2022</p>
-        </div>
-      </li>
-
-      <li className="list">
-        <div className="message-box">
-          <div className="indicator"></div>
-          <p className="ratings">10</p>
-          <p className="message">Very fast and easy to use.</p>
-        </div>
-        <div className="date-box">
-          <p>Created:02/23/2022</p>
+          <p>Created:{result.createdAt}</p>
         </div>
       </li>
     </div>

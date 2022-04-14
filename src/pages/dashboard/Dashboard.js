@@ -81,7 +81,9 @@ const Dashboard = (props) => {
             <BarChart theme={props.theme} />
           </ChartContainer>
           <MessageContainer className="message-container">
-            <Message />
+            {results?.slice(0, 5).map((result) => (
+              <Message result={result} key={result.id} />
+            ))}
           </MessageContainer>
         </div>
       </Main>

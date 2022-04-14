@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 .list {
   display: flex;
@@ -25,9 +25,16 @@
 .indicator {
   width: 0.5rem;
   height: 3rem;
-  background-color: aqua;
 }
-
+.coral {
+  background-color: #ef7e32;
+}
+.greenish-blue {
+  background-color: #1de4bd;
+}
+.blue {
+  background-color: #19aade;
+}
 .ratings {
   font-size: 2rem;
 }
