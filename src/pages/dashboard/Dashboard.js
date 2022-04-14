@@ -43,7 +43,6 @@ const SubTitie = styled.div`
 `;
 const ChartContainer = styled.div`
   color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.chartbackground};
 `;
 const MessageContainer = styled.div`
   color: ${(props) => props.theme.color};
@@ -72,7 +71,7 @@ const Dashboard = (props) => {
           <p>Net Promoter Score calculations with breakouts and deltas.</p>
         </SubTitie>
         <ChartContainer className="chart-container">
-          <BarChart />
+          <BarChart theme={props.theme} />
         </ChartContainer>
         <MessageContainer className="message-container">
           <Message />
