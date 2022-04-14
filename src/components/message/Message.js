@@ -2,7 +2,7 @@ import React from "react";
 import "./Message.css";
 const Message = () => {
   return (
-    <>
+    <div className="messages-list-container">
       <li className="list">
         <div className="message-box">
           <div className="indicator"></div>
@@ -24,7 +24,7 @@ const Message = () => {
           <p>Created:02/23/2022</p>
         </div>
       </li>
-    </>
+    </div>
   );
 };
 
