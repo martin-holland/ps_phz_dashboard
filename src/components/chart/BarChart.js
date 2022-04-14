@@ -1,5 +1,6 @@
 import React from "react";
 import "./BarChart.css";
+import styled from "styled-components";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -40,7 +41,6 @@ export const options = {
   responsive: true,
 
   scales: {
-    beginAtZero: true,
     xAxes: {
       stacked: true,
       ticks: {
@@ -95,14 +95,21 @@ export const data = {
     },
   ],
 };
-
-const BarChart = () => {
+const BarContainer = styled.div`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.chartbackground};
+`;
+const CircleContainer = styled.div`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.chartbackground};
+`;
+const BarChart = (props) => {
   return (
     <>
-      <div className="bar-container">
+      <BarContainer className="bar-container">
         <Bar options={options} data={data} className="chart" />
-      </div>
-      <div className="circle-container">
+      </BarContainer>
+      <CircleContainer className="circle-container">
         <div className="circle-text-container">
           <p className="responses">Responses: 205</p>
           <div className="score-container">
@@ -110,11 +117,11 @@ const BarChart = () => {
             <p className="passive">Passive: 24</p>
             <p className="detractors">Detractors: 45</p>
           </div>
+          <div>
+            <DoughnutChart />
+          </div>
         </div>
-        <div>
-          <DoughnutChart />
-        </div>
-      </div>
+      </CircleContainer>
     </>
   );
 };

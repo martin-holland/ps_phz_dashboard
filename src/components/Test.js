@@ -14,12 +14,12 @@ export class home extends Component {
 
     let recentSurveyData = !loading ? (
       results.map((item) => (
-        <>
+        <div key={item.surveyId}>
           <p>Survey Id: {item.surveyId}</p>
           <p>Survey Choice: {item.choice}</p>
           <p>Survey Result: {item.surveyResult}</p>
           <p>Message: {item.message}</p>
-        </>
+        </div>
       ))
     ) : (
       <p>Loading Data</p>
