@@ -1,3 +1,11 @@
+.messages-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  padding: 0.5rem;
+}
 .list {
   display: flex;
   justify-content: space-between;
