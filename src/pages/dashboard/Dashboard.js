@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { BsMoonStarsFill } from "react-icons/bs";
 import { BsLightbulb } from "react-icons/bs";
 import styled from "styled-components";
@@ -35,6 +34,10 @@ const Toggle = styled.button`
   &:focus {
     outline: none;
   }
+`;
+const Container = styled.div`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const SubTitie = styled.div`

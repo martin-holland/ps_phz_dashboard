@@ -1,6 +1,7 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
+import "./DoughnutChart.css";
 Chart.register(ArcElement);
 
 const data = {
@@ -18,19 +19,29 @@ const options = {
   legend: {
     display: false,
   },
+  elements: {
+    center: {
+      text: "80%",
+      color: "#FF6384", // Default is #000000
+      fontStyle: "Arial", // Default is Arial
+      sidePadding: 20, // Default is 20 (as a percentage)
+      minFontSize: 25, // Default is 20 (in px), set to false and text will not wrap.
+      lineHeight: 25,
+    },
+  },
 };
 
 const DoughnutChart = () => {
   return (
-    <div className="doughnut-container">
-      <div className="doughnut-number">75%</div>
+    <>
       <Doughnut
         type="doughnut"
         data={data}
         options={options}
         className="doughnut"
       />
-    </div>
+      <div className="doughnut-number">75%</div>
+    </>
   );
 };
 
