@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getAllData } from "../redux/actions/dataActions";
 import PropTypes from "prop-types";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 export class home extends Component {
   componentDidMount() {
@@ -12,6 +13,7 @@ export class home extends Component {
   render() {
     const { results, loading } = this.props.data;
 
+    //eslint-disable-next-line
     let recentSurveyData = !loading ? (
       results.map((item) => (
         <div key={item.surveyId}>
@@ -25,7 +27,8 @@ export class home extends Component {
       <p>Loading Data</p>
     );
 
-    return <div>{recentSurveyData}</div>;
+    // return <div>{recentSurveyData}</div>;
+    return <Dashboard results={results} loading={loading} />;
   }
 }
 

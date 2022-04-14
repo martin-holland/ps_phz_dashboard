@@ -49,36 +49,43 @@ const MessageContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 const Dashboard = (props) => {
-  //theme
+  // Data destructuring
+  const { results, loading } = props;
 
+  //theme
   const changeTheme = () => {
     props.theme === "light" ? props.setTheme("dark") : props.setTheme("light");
   };
   const icon = props.theme === "light" ? <BsMoonStarsFill /> : <BsLightbulb />;
 
-  return (
-    <Main className="main">
-      <div className="container">
-        <div className="header-container">
-          <TitleHead className="header">
-            Net Promoter Score Calculation
-          </TitleHead>
-          <Toggle className="toggle-button" onClick={changeTheme}>
-            {icon}
-          </Toggle>
+  if (!loading && results !== undefined && results.length >= 1) {
+    console.log("results from dashboard: ", results);
+    return (
+      <Main className="main">
+        <div className="container">
+          <div className="header-container">
+            <TitleHead className="header">
+              Net Promoter Score Calculation
+            </TitleHead>
+            <Toggle className="toggle-button" onClick={changeTheme}>
+              {icon}
+            </Toggle>
+          </div>
+          <SubTitie>
+            <p>Net Promoter Score calculations with breakouts and deltas.</p>
+          </SubTitie>
+          <ChartContainer className="chart-container">
+            <BarChart theme={props.theme} />
+          </ChartContainer>
+          <MessageContainer className="message-container">
+            <Message />
+          </MessageContainer>
         </div>
-        <SubTitie>
-          <p>Net Promoter Score calculations with breakouts and deltas.</p>
-        </SubTitie>
-        <ChartContainer className="chart-container">
-          <BarChart theme={props.theme} />
-        </ChartContainer>
-        <MessageContainer className="message-container">
-          <Message />
-        </MessageContainer>
-      </div>
-    </Main>
-  );
+      </Main>
+    );
+  } else {
+    return <div>Data Loading...</div>;
+  }
 };
 
 export default Dashboard;

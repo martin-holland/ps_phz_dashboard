@@ -1,0 +1,15 @@
+.summary {
+    width: 300px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-left: 10px;
+}
+
+.promoters {
+    background-color: #19aade;
+  }
+  .passive {
+    background-color: #1de4bd;
+  }
+  .detractors {
+    background-color: #ef7e32;
+  }
