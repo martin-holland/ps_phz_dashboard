@@ -6,7 +6,6 @@ export default function Summary(props) {
   const { results, loading } = props;
   const [summary, setSummary] = useState({});
 
-  console.log("From summary: ", results);
   let total = results.length;
   const calculateSummary = () => {
     if (results.length === 0) {
