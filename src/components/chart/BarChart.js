@@ -74,22 +74,22 @@ export const data = {
   labels,
   datasets: [
     {
-      barThickness: 30,
-      maxBarThickness: 40,
+      //barThickness: 30,
+      maxBarThickness: 30,
       label: "Promoters",
       data: [100, 289, 156, 134, 178, 123, 145, 178, 198, 123, 178, 234],
       backgroundColor: "#19aade",
     },
     {
-      barThickness: 30,
-      maxBarThickness: 40,
+      //barThickness: 30,
+      maxBarThickness: 30,
       label: "passive",
       data: [23, 56, 69, 67, 89, 61, 23, 45, 24, 34, 89, 46],
       backgroundColor: "#1de4bd",
     },
     {
-      barThickness: 30,
-      maxBarThickness: 40,
+      // barThickness: 30,
+      maxBarThickness: 30,
       label: "Detractors",
       data: [78, 34, 35, 27, 89, 78, 96, 85, 56, 34, 67, 45],
       backgroundColor: "#ef7e32",
