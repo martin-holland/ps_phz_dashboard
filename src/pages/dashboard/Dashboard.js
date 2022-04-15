@@ -41,10 +41,6 @@ const Toggle = styled.button`
     outline: none;
   }
 `;
-const Container = styled.div`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.backgroundColor};
-`;
 
 const SubTitie = styled.div`
   color: ${(props) => props.theme.color};
@@ -75,7 +71,7 @@ const Dashboard = (props) => {
   }, []);
 
   if (!loading && results !== undefined && results.length >= 1) {
-    console.log("results from dashboard: ", results);
+    // console.log("results from dashboard: ", results);
     return (
       <Main className="main">
         <div className="container">
