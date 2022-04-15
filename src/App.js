@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Test></Test>
+        {/* <Test></Test> */}
         <ThemeProvider theme={themes[theme]}>
           <div className="App">
             <Dashboard theme={theme} setTheme={setTheme} />
