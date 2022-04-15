@@ -61,36 +61,36 @@ const Dashboard = (props) => {
   };
   const icon = props.theme === "light" ? <BsMoonStarsFill /> : <BsLightbulb />;
 
-  if (!loading && results !== undefined && results.length >= 1) {
-    console.log("results from dashboard: ", results);
-    return (
-      <Main className="main">
-        <div className="container">
-          <div className="header-container">
-            <TitleHead className="header">
-              Net Promoter Score Calculation
-            </TitleHead>
-            <Toggle className="toggle-button" onClick={changeTheme}>
-              {icon}
-            </Toggle>
-          </div>
-          <SubTitie>
-            <p>Net Promoter Score calculations with breakouts and deltas.</p>
-          </SubTitie>
-          <ChartContainer className="chart-container">
-            <BarChart theme={props.theme} />
-          </ChartContainer>
-          <MessageContainer className="message-container">
-            {results?.slice(0, 5).map((result) => (
-              <Message result={result} key={result.id} />
-            ))}
-          </MessageContainer>
+  // if (!loading && results !== undefined && results.length >= 1) {
+  //   console.log("results from dashboard: ", results);
+  return (
+    <Main className="main">
+      <div className="container">
+        <div className="header-container">
+          <TitleHead className="header">
+            Net Promoter Score Calculation
+          </TitleHead>
+          <Toggle className="toggle-button" onClick={changeTheme}>
+            {icon}
+          </Toggle>
         </div>
-      </Main>
-    );
-  } else {
-    return <div>Data Loading...</div>;
-  }
+        <SubTitie>
+          <p>Net Promoter Score calculations with breakouts and deltas.</p>
+        </SubTitie>
+        <ChartContainer className="chart-container">
+          <BarChart theme={props.theme} />
+        </ChartContainer>
+        <MessageContainer className="message-container">
+          {results?.slice(0, 5).map((result) => (
+            <Message result={result} key={result.id} />
+          ))}
+        </MessageContainer>
+      </div>
+    </Main>
+  );
+  // } else {
+  //   return <div>Data Loading...</div>;
+  // }
 };
 
 export default Dashboard;
