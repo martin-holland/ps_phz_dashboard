@@ -91,7 +91,7 @@ const Dashboard = (props) => {
             <p>Net Promoter Score calculations with breakouts and deltas.</p>
           </SubTitie>
           <ChartContainer className="chart-container">
-            <BarChart theme={props.theme} />
+            <BarChart results={results} theme={props.theme} />
           </ChartContainer>
           <MessageContainer className="message-container">
             {results?.slice(0, 5).map((result) => (

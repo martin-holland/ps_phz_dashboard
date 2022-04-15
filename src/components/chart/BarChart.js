@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./BarChart.css";
 import styled from "styled-components";
 import {
@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
+import { BsPersonPlus } from "react-icons/bs";
 
 ChartJS.register(
   CategoryScale,
@@ -104,6 +105,45 @@ const CircleContainer = styled.div`
   background-color: ${(props) => props.theme.chartbackground};
 `;
 const BarChart = (props) => {
+  const { results } = props;
+  console.log("results from barchart: ", results);
+
+  // Summarising Data:
+  const [summary, setSummary] = useState({});
+
+  let total = results.length;
+  const calculateSummary = () => {
+    if (results.length === 0) {
+      console.log("results is empty");
+    }
+    let promoters = 0;
+    let detractors = 0;
+    let passives = 0;
+    let errorData = 0;
+
+    results.forEach((result) => {
+      if (result.surveyResult === "promoter") {
+        promoters++;
+      } else if (result.surveyResult === "passive") {
+        passives++;
+      } else if (result.surveyResult === "detractor") {
+        detractors++;
+      } else {
+        errorData++;
+      }
+    });
+    setSummary({
+      promoters: promoters,
+      passives: passives,
+      detractors: detractors,
+      errorData: errorData,
+    });
+  };
+
+  useEffect(() => {
+    calculateSummary();
+  }, []);
+
   return (
     <>
       <BarContainer className="bar-container">
@@ -111,15 +151,15 @@ const BarChart = (props) => {
       </BarContainer>
       <CircleContainer className="circle-container">
         <div className="circle-text-container">
-          <p className="responses">Responses: 205</p>
+          <p className="responses">Responses: {total}</p>
           <div className="score-container">
-            <p className="promoters">Promoters: 335</p>
-            <p className="passive">Passive: 24</p>
-            <p className="detractors">Detractors: 45</p>
+            <p className="promoters">Promoters: {summary.promoters}</p>
+            <p className="passive">Passive: {summary.passives}</p>
+            <p className="detractors">Detractors: {summary.detractors}</p>
           </div>
         </div>
         <div className="doughnut-container">
-          <DoughnutChart />
+          <DoughnutChart results={results} />
         </div>
       </CircleContainer>
     </>
