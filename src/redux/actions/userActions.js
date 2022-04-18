@@ -34,6 +34,27 @@ export const logoutUser = () => (dispatch) => {
   dispatch({ type: SET_UNAUTHENTICATED });
 };
 
+export const signupUser = (newUserData) => (dispatch) => {
+  dispatch({ type: LOADING_UI });
+  axios
+    .post(
+      "https://us-central1-promoterscore-14480.cloudfunctions.net/api/signup",
+      newUserData
+    )
+    .then((res) => {
+      console.log(res.data);
+      setAuthorizationHeader(res.data.token);
+      dispatch({ type: CLEAR_ERRORS });
+      dispatch({ type: SET_AUTHENTICATED });
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
+
 const setAuthorizationHeader = (token) => {
   const FBIdToken = `Bearer ${token}`;
   localStorage.setItem("FBIdToken", FBIdToken);

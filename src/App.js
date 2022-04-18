@@ -3,6 +3,7 @@ import "./App.css";
 import Testdemo from "./components/TestDemo/Testdemo";
 // import Test from "./components/Test";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 // Redux Imports
 import { Provider } from "react-redux";
@@ -29,9 +30,10 @@ function App() {
         {/* <Test></Test> */}
         <ThemeProvider theme={themes[theme]}>
           {/* <Login /> */}
-          <div className="App">
+          <Signup />
+          {/* <div className="App">
             <Dashboard theme={theme} setTheme={setTheme} />
-          </div>
+          </div> */}
         </ThemeProvider>
       </Provider>
     </div>

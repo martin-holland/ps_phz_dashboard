@@ -60,6 +60,7 @@ export const options = {
     },
   },
 };
+
 const labels = [
   "Jan",
   "Feb",
