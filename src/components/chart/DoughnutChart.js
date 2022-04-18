@@ -58,9 +58,8 @@ const DoughnutChart = (props) => {
 
   useEffect(() => {
     calculateSummary();
+    //eslint-disable-next-line
   }, []);
-
-  console.log("Summary:", summary);
 
   const data = {
     datasets: [

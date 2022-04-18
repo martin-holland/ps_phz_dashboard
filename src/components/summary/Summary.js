@@ -39,6 +39,7 @@ export default function Summary(props) {
     if (!loading) {
       calculateSummary();
     }
+    //eslint-disable-next-line
   }, [loading]);
 
   console.log("total number of entries: ", total);
