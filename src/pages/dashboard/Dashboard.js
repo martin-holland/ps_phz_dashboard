@@ -76,7 +76,7 @@ const Dashboard = (props) => {
   console.log("Authenticated from Dashboard: ", authenticated);
 
   if (!authenticated) {
-    <Login />;
+    return <Login />;
   } else {
     if (!loading && results !== undefined && results.length >= 1) {
       // console.log("results from dashboard: ", results);
