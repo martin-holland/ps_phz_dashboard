@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { signupUser } from "../redux/actions/userActions";
-
+import { Link } from "react-router-dom";
 export class Signup extends Component {
   state = {
     email: "",
@@ -93,7 +93,12 @@ export class Signup extends Component {
             onChange={this.handleChange}
           ></input>
           <p>{errors.handle}</p>
-          <button type="submit">Signup</button>
+          <Link to="/">
+            <button type="submit">Submit</button>
+          </Link>
+          <Link to="/">
+            <button>Already have account</button>
+          </Link>
         </form>
       </>
     );

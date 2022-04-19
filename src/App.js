@@ -4,7 +4,7 @@ import Testdemo from "./components/TestDemo/Testdemo";
 // import Test from "./components/Test";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Redux Imports
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -28,12 +28,21 @@ function App() {
       <Provider store={store}>
         {/* <Testdemo /> */}
         {/* <Test></Test> */}
+
         <ThemeProvider theme={themes[theme]}>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route
+                path="/dashboard"
+                element={<Dashboard theme={theme} setTheme={setTheme} />}
+              />
+            </Routes>
+          </Router>
+
           {/* <Login /> */}
           {/* <Signup /> */}
-          <div className="App">
-            <Dashboard theme={theme} setTheme={setTheme} />
-          </div>
         </ThemeProvider>
       </Provider>
     </div>

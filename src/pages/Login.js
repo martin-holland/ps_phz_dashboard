@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
+import { Link } from "react-router-dom";
 
 export class Login extends Component {
   state = {
@@ -73,8 +74,13 @@ export class Login extends Component {
               placeholder="Enter Password"
             ></input>
             <p>{!errors.password ? "" : errors.password}</p>
-            <button type="submit">Submit</button>
+            <Link to="/dashboard">
+              <button type="submit">Submit</button>
+            </Link>
           </form>
+          <Link to="/signup">
+            <button>Create account</button>
+          </Link>
         </>
       );
     }

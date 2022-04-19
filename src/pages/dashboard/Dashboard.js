@@ -53,6 +53,7 @@ const MessageContainer = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
 `;
+
 const Dashboard = (props) => {
   // Data destructuring
   const { results, loading } = props.data;
@@ -91,7 +92,7 @@ const Dashboard = (props) => {
           </ChartContainer>
           <MessageContainer className="message-container">
             {results?.slice(0, 5).map((result) => (
-              <Message result={result} key={result.id} />
+              <Message result={result} key={result.surveyId} />
             ))}
           </MessageContainer>
         </div>
