@@ -12,16 +12,6 @@ const options = {
   legend: {
     display: false,
   },
-  elements: {
-    center: {
-      text: "80%",
-      color: "#FF6384", // Default is #000000
-      fontStyle: "Arial", // Default is Arial
-      sidePadding: 20, // Default is 20 (as a percentage)
-      minFontSize: 25, // Default is 20 (in px), set to false and text will not wrap.
-      lineHeight: 25,
-    },
-  },
 };
 
 const DoughnutChart = (props) => {
