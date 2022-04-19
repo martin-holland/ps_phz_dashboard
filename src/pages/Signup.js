@@ -51,14 +51,15 @@ export class Signup extends Component {
     const { errors } = this.state;
 
     return (
-      <>
+      <div id="login">
+        <div id="welcome">Let's get started!</div>
         <form noValidate onSubmit={this.handleSubmit}>
           <input
             id="email"
             name="email"
             type="email"
             label="Email"
-            placeholder="Enter email here"
+            placeholder="Enter email address"
             value={this.state.email}
             onChange={this.handleChange}
           ></input>
@@ -68,7 +69,7 @@ export class Signup extends Component {
             name="password"
             type="password"
             label="Password"
-            placeholder="Enter password here"
+            placeholder="Enter password"
             value={this.state.password}
             onChange={this.handleChange}
           ></input>
@@ -78,7 +79,7 @@ export class Signup extends Component {
             name="confirmPassword"
             type="password"
             label="Confirm Password"
-            placeholder="Please confirm password"
+            placeholder="Confirm password"
             value={this.state.confirmPassword}
             onChange={this.handleChange}
           ></input>
@@ -88,19 +89,19 @@ export class Signup extends Component {
             name="handle"
             type="text"
             label="Username"
-            placeholder="Please enter a username"
+            placeholder="Enter a username"
             value={this.state.handle}
             onChange={this.handleChange}
           ></input>
           <p>{errors.handle}</p>
           <Link to="/">
-            <button type="submit">Submit</button>
+            <button id="signup" type="submit">Signup</button>
           </Link>
           <Link to="/">
-            <button>Already have account</button>
+            <div id="account"><a>Already have an account?</a></div>
           </Link>
-        </form>
-      </>
+
+      </div>
     );
   }
 }
