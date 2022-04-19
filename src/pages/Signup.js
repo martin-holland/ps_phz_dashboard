@@ -52,7 +52,7 @@ export class Signup extends Component {
 
     return (
       <div id="login">
-        <div id="welcome">Let's get started!</div>
+        <div id="welcome"><strong>Let's get started!</strong></div>
         <form noValidate onSubmit={this.handleSubmit}>
           <input
             id="email"
@@ -96,7 +96,7 @@ export class Signup extends Component {
           <p>{errors.handle}</p>
           <Link to="/">
             <button id="signup" type="submit">
-              Signup
+              Register
             </button>
           </Link>
           <Link to="/">
