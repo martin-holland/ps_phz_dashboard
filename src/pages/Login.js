@@ -1,10 +1,12 @@
 import "./Login.css";
 import React, { Component } from "react";
+import Dashboard from "./dashboard/Dashboard";
 
 // Redux Imports
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
+// Routes
 import { Link } from "react-router-dom";
 
 export class Login extends Component {
@@ -48,7 +50,7 @@ export class Login extends Component {
       isAuthenticated = true;
     }
     if (isAuthenticated) {
-      return <>Logged in Successfully.</>;
+      return <Dashboard />;
     } else {
       return (
         <>
@@ -64,7 +66,7 @@ export class Login extends Component {
                 onChange={this.handleChange}
                 placeholder="Enter email"
               ></input>
-              {/* <p>{!errors.email ? "" : errors.email}</p> */}
+              <p>{errors.email}</p>
               <input
                 id="password"
                 name="password"
@@ -75,11 +77,9 @@ export class Login extends Component {
                 placeholder="Enter password"
               ></input>
               <p>{!errors.password ? "" : errors.password}</p>
-              <Link to="/dashboard">
-                <button id="submit" type="submit">
-                  Submit
-                </button>
-              </Link>
+              <button id="submit" type="submit">
+                Submit
+              </button>
             </form>
             <Link to="/signup">
               <div id="newuser">Create an account</div>

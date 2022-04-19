@@ -19,6 +19,7 @@ export const loginUser = (userData) => (dispatch) => {
       setAuthorizationHeader(res.data.token);
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: SET_AUTHENTICATED });
+      console.log("Authentication triggered");
     })
     .catch((err) => {
       dispatch({
