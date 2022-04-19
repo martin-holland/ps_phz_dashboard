@@ -60,7 +60,7 @@ export class Login extends Component {
               label="Email"
               value={this.state.email}
               onChange={this.handleChange}
-              placeholder="Enter Email"
+              placeholder="Enter email"
             ></input>
             {/* <p>{!errors.email ? "" : errors.email}</p> */}
             <input
@@ -70,7 +70,7 @@ export class Login extends Component {
               label="Password"
               value={this.state.password}
               onChange={this.handleChange}
-              placeholder="Enter Password"
+              placeholder="Enter password"
             ></input>
             <p>{!errors.password ? "" : errors.password}</p>
             <button id="submit" type="submit">Submit</button>
