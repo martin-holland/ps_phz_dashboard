@@ -9,3 +9,15 @@
   z-index: 1;
   font-size: 2rem;
 }
+
+#zero {
+  color: black
+}
+
+#positive {
+  color: lime;
+}
+
+#negative {
+  color: red;
+}
