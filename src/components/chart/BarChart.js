@@ -14,6 +14,10 @@ import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
 import { BsPersonPlus } from "react-icons/bs";
 
+// Data conversion
+import dayjs from "dayjs";
+import { summariseData } from "./helperFunctions";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -56,6 +60,7 @@ export const options = {
     },
   },
 };
+
 const labels = [
   "Jan",
   "Feb",
@@ -69,33 +74,9 @@ const labels = [
   "Oct",
   "Nov",
   "Dec",
+  "No Date",
 ];
-export const data = {
-  labels,
-  datasets: [
-    {
-      //barThickness: 30,
-      maxBarThickness: 30,
-      label: "Promoters",
-      data: [100, 289, 156, 134, 178, 123, 145, 178, 198, 123, 178, 234],
-      backgroundColor: "#19aade",
-    },
-    {
-      //barThickness: 30,
-      maxBarThickness: 30,
-      label: "passive",
-      data: [23, 56, 69, 67, 89, 61, 23, 45, 24, 34, 89, 46],
-      backgroundColor: "#1de4bd",
-    },
-    {
-      // barThickness: 30,
-      maxBarThickness: 30,
-      label: "Detractors",
-      data: [78, 34, 35, 27, 89, 78, 96, 85, 56, 34, 67, 45],
-      backgroundColor: "#ef7e32",
-    },
-  ],
-};
+
 const BarContainer = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.chartbackground};
@@ -108,12 +89,75 @@ const BarChart = (props) => {
   const { results } = props;
   console.log("results from barchart: ", results);
 
+  const Jan = [];
+  const Feb = [];
+  const Mar = [];
+  const Apr = [];
+  const May = [];
+  const Jun = [];
+  const Jul = [];
+  const Aug = [];
+  const Sep = [];
+  const Oct = [];
+  const Nov = [];
+  const Dec = [];
+  const noDate = [];
+
+  results.forEach((item) => {
+    const month = dayjs(item.createdAt).month();
+    console.log(month);
+    if (month === 0) Jan.push(item);
+    if (month === 1) Feb.push(item);
+    if (month === 2) Mar.push(item);
+    if (month === 3) Apr.push(item);
+    if (month === 4) May.push(item);
+    if (month === 5) Jun.push(item);
+    if (month === 6) Jul.push(item);
+    if (month === 7) Aug.push(item);
+    if (month === 8) Sep.push(item);
+    if (month === 9) Oct.push(item);
+    if (month === 10) Nov.push(item);
+    if (month === 11) Dec.push(item);
+    if (isNaN(month)) noDate.push(item);
+  });
+
+  console.log(
+    "Months: ",
+    Jan,
+    Feb,
+    Mar,
+    Apr,
+    May,
+    Jun,
+    Jul,
+    Aug,
+    Sep,
+    Oct,
+    Nov,
+    Dec,
+    "No Date Info: ",
+    noDate
+  );
   // Summarising Data:
   const [summary, setSummary] = useState({});
 
+  const [janSummary, setJanSummary] = useState({});
+  const [febSummary, setFebSummary] = useState({});
+  const [marSummary, setMarSummary] = useState({});
+  const [aprSummary, setAprSummary] = useState({});
+  const [maySummary, setMaySummary] = useState({});
+  const [junSummary, setJunSummary] = useState({});
+  const [julSummary, setJulSummary] = useState({});
+  const [augSummary, setAugSummary] = useState({});
+  const [sepSummary, setSepSummary] = useState({});
+  const [octSummary, setOctSummary] = useState({});
+  const [novSummary, setNovSummary] = useState({});
+  const [decSummary, setDecSummary] = useState({});
+  const [noDataSummary, setNoDataSummary] = useState({});
+
   let total = results.length;
-  const calculateSummary = () => {
-    if (results.length === 0) {
+  const calculateSummary = (dataToSummarise) => {
+    if (dataToSummarise.length === 0) {
       console.log("results is empty");
     }
     let promoters = 0;
@@ -121,7 +165,7 @@ const BarChart = (props) => {
     let passives = 0;
     let errorData = 0;
 
-    results.forEach((result) => {
+    dataToSummarise.forEach((result) => {
       if (result.surveyResult === "promoter") {
         promoters++;
       } else if (result.surveyResult === "passive") {
@@ -141,8 +185,96 @@ const BarChart = (props) => {
   };
 
   useEffect(() => {
-    calculateSummary();
+    calculateSummary(results);
+    setJanSummary(summariseData(Jan));
+    setFebSummary(summariseData(Feb));
+    setMarSummary(summariseData(Mar));
+    setAprSummary(summariseData(Apr));
+    setMaySummary(summariseData(May));
+    setJunSummary(summariseData(Jun));
+    setJulSummary(summariseData(Jul));
+    setAugSummary(summariseData(Aug));
+    setSepSummary(summariseData(Sep));
+    setOctSummary(summariseData(Oct));
+    setNovSummary(summariseData(Nov));
+    setDecSummary(summariseData(Dec));
+    setNoDataSummary(summariseData(noDate));
+
+    //eslint-disable-next-line
   }, []);
+
+  console.log("Summary:", summary);
+  console.log("April Summary: ", aprSummary);
+  console.log("April Promoters: ", aprSummary.promoters);
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        barThickness: 30,
+        maxBarThickness: 40,
+        label: "Promoters",
+        data: [
+          janSummary.promoters,
+          febSummary.promoters,
+          marSummary.promoters,
+          aprSummary.promoters,
+          maySummary.promoters,
+          junSummary.promoters,
+          julSummary.promoters,
+          augSummary.promoters,
+          sepSummary.promoters,
+          octSummary.promoters,
+          novSummary.promoters,
+          decSummary.promoters,
+          noDataSummary.promoters,
+        ],
+        backgroundColor: "#19aade",
+      },
+      {
+        barThickness: 30,
+        maxBarThickness: 40,
+        label: "Passive",
+        data: [
+          janSummary.passives,
+          febSummary.passives,
+          marSummary.passives,
+          aprSummary.passives,
+          maySummary.passives,
+          junSummary.passives,
+          julSummary.passives,
+          augSummary.passives,
+          sepSummary.passives,
+          octSummary.passives,
+          novSummary.passives,
+          decSummary.passives,
+          noDataSummary.passives,
+        ],
+        backgroundColor: "#1de4bd",
+      },
+      {
+        barThickness: 30,
+        maxBarThickness: 40,
+        label: "Detractors",
+        data: [
+          janSummary.detractors,
+          febSummary.detractors,
+          marSummary.detractors,
+          aprSummary.detractors,
+          maySummary.detractors,
+          junSummary.detractors,
+          julSummary.detractors,
+          augSummary.detractors,
+          sepSummary.detractors,
+          octSummary.detractors,
+          novSummary.detractors,
+          decSummary.detractors,
+          noDataSummary.detractors,
+        ],
+        backgroundColor: "#ef7e32",
+      },
+    ],
+  };
 
   return (
     <>

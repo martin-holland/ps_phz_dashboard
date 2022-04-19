@@ -1,35 +1,39 @@
 import {
-  SET_USER,
-  SET_AUTHENTICATED,
-  SET_UNAUTHENTICATED,
-  LOADING_USER,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  LOADING_UI,
+  STOP_LOADING_UI,
 } from "../types";
 
 const initialState = {
-  authenticated: false,
   loading: false,
-  credentials: {},
+  errors: null,
 };
+
 // eslint-disable-next-line
 export default function (state = initialState, action) {
   switch (action.type) {
-    case SET_AUTHENTICATED:
+    case SET_ERRORS:
       return {
         ...state,
-        authenticated: true,
-      };
-    case SET_UNAUTHENTICATED:
-      return initialState;
-    case SET_USER:
-      return {
-        authenticated: true,
         loading: false,
-        ...action.payload,
+        errors: action.payload,
       };
-    case LOADING_USER:
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        loading: false,
+        errors: null,
+      };
+    case LOADING_UI:
       return {
         ...state,
         loading: true,
+      };
+    case STOP_LOADING_UI:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;

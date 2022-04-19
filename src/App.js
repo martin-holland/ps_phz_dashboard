@@ -1,5 +1,10 @@
 import "./App.css";
-import Test from "./components/Test";
+// Demo only
+import Testdemo from "./components/TestDemo/Testdemo";
+// import Test from "./components/Test";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+
 // Redux Imports
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -21,8 +26,11 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
+        {/* <Testdemo /> */}
         {/* <Test></Test> */}
         <ThemeProvider theme={themes[theme]}>
+          {/* <Login /> */}
+          {/* <Signup /> */}
           <div className="App">
             <Dashboard theme={theme} setTheme={setTheme} />
           </div>
