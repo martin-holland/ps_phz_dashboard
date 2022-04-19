@@ -50,7 +50,9 @@ export class Login extends Component {
       isAuthenticated = true;
     }
     if (isAuthenticated) {
-      return <Dashboard />;
+      return (
+        <Dashboard theme={this.props.theme} setTheme={this.props.setTheme} />
+      );
     } else {
       return (
         <>

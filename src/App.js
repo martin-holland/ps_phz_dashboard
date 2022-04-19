@@ -32,8 +32,14 @@ function App() {
         <ThemeProvider theme={themes[theme]}>
           <Router>
             <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
+              <Route
+                path="/"
+                element={<Login theme={theme} setTheme={setTheme} />}
+              />
+              <Route
+                path="/signup"
+                element={<Signup theme={theme} setTheme={setTheme} />}
+              />
               <Route
                 path="/dashboard"
                 element={<Dashboard theme={theme} setTheme={setTheme} />}
@@ -43,7 +49,6 @@ function App() {
 
           {/* <Login /> */}
           {/* <Signup /> */}
-
         </ThemeProvider>
       </Provider>
     </div>
