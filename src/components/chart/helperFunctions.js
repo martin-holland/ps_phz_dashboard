@@ -26,3 +26,28 @@ export const summariseData = (dataToSummarise) => {
   };
   return summaryObj;
 };
+
+export const calculateOverallScore = (summary, total) => {
+  console.log("From overall score: ", summary.promoters);
+  let score =
+    ((Number(summary.promoters) - Number(summary.detractors)) / Number(total)) *
+    100;
+  console.log("Overall Score: ", score);
+  score = Math.round(score);
+  if (Math.sign(score) === 1) {
+    return (
+      <div id="positive" className="doughnut-number">
+        {score}
+      </div>
+    );
+  } else if (Math.sign(score) === -1) {
+    <div id="negative" className="doughnut-number">
+      {score}
+    </div>;
+  }
+  return (
+    <div id="zero" className="doughnut-number">
+      {score}
+    </div>
+  );
+};

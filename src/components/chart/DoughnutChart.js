@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 import "./DoughnutChart.css";
+// Data Manipulation
+import { calculateOverallScore } from "./helperFunctions";
+
 Chart.register(ArcElement);
 
 const options = {
@@ -72,7 +75,8 @@ const DoughnutChart = (props) => {
     ],
   };
 
-  console.log("results from Doughnutchart: ", results);
+  console.log("Summary from Doughnut: ", summary);
+  const overallScoreMarkup = calculateOverallScore(summary, total);
 
   return (
     <>
@@ -82,7 +86,7 @@ const DoughnutChart = (props) => {
         options={options}
         className="doughnut"
       />
-      <div className="doughnut-number">75%</div>
+      {overallScoreMarkup}
     </>
   );
 };
