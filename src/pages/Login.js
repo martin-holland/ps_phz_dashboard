@@ -50,8 +50,8 @@ export class Login extends Component {
       return <>Logged in Successfully.</>;
     } else {
       return (
-        <>
-          <div>Login</div>
+        <div id="login">
+          <div id="welcome">Welcome back!</div>
           <form noValidate onSubmit={this.handleSubmit}>
             <input
               id="email"
@@ -73,9 +73,10 @@ export class Login extends Component {
               placeholder="Enter Password"
             ></input>
             <p>{!errors.password ? "" : errors.password}</p>
-            <button type="submit">Submit</button>
+            <button id="submit" type="submit">Submit</button>
+            <div id="newuser"><a>Create an account</a></div>
           </form>
-        </>
+        </div>
       );
     }
   }

@@ -1,0 +1,65 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #000036;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000036;
+  padding: 40px 60px;
+  border-radius: 3px;
+}
+
+#welcome {
+  margin-bottom: 20px;
+}
+
+#email,
+#password,
+#confirmPassword,
+#handle {
+  height: 35px;
+  width: 200px;
+  border-radius: 3px;
+  margin: 10px 10px;
+  background-color: #b1cff9;
+  border: none;
+  color: #000036;
+  text-indent: 7px;
+}
+#signup {
+  height: 35px;
+  width: 95px;
+  border-radius: 3px;
+  margin: 10px;
+  background-color: #799ed2;
+  color: #000036;
+  border: none;
+}
+
+#signup:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #000036;
+}
+
+#account {
+    margin-top: 20px;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
