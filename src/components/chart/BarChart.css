@@ -2,6 +2,8 @@
   width: 60%;
   height: 400px;
   margin: 1rem;
+  border: 1px solid transparent;
+  border-radius: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .chart {
@@ -11,6 +13,8 @@
   width: 30%;
   height: 400px;
   margin: 1rem;
+  border: 1px solid transparent;
+  border-radius: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   font-size: 1rem;
 }
@@ -47,25 +51,33 @@
   background-color: #ef7e32;
 }
 .doughnut-container {
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
   margin: auto;
+  padding: 10px;
 }
-@media (max-width: 950px) {
+@media (max-width: 930px) {
   .bar-container {
-    width: 50%;
+    width: 80%;
   }
   .circle-container {
     width: 40%;
     margin: 10px;
   }
 }
-@media (max-width: 850px) {
+
+@media (max-width: 670px) {
+  .circle-container {
+    width: 80%;
+  }
+}
+@media (max-width: 330px) {
   .bar-container {
-    width: 90%;
+    width: 100%;
   }
   .circle-container {
-    width: 50%;
-    margin: 10px;
+    width: 100%;
+    margin: 5px;
+    font-size: 0.8rem;
   }
 }
