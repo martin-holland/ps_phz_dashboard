@@ -76,10 +76,11 @@ export class Login extends Component {
                 onChange={this.handleChange}
                 placeholder="Enter password"
               ></input>
-              <p>{!errors.password ? "" : errors.password}</p>
+              <p>{errors.password}</p>
               <button id="submit" type="submit">
                 Submit
               </button>
+              <p>{errors.general}</p>
             </form>
             <Link to="/signup">
               <div id="newuser">Create an account</div>
