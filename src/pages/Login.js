@@ -53,7 +53,7 @@ export class Login extends Component {
       return (
         <>
           <div id="login">
-            <div id="welcome">Welcome back!</div>
+            <div id="welcome"><strong>Welcome back!</strong></div>
             <form noValidate onSubmit={this.handleSubmit}>
               <input
                 id="email"
@@ -77,7 +77,7 @@ export class Login extends Component {
               <p>{!errors.password ? "" : errors.password}</p>
               <Link to="/dashboard">
                 <button id="submit" type="submit">
-                  Submit
+                  Sign In
                 </button>
               </Link>
             </form>
