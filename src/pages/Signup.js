@@ -95,12 +95,14 @@ export class Signup extends Component {
           ></input>
           <p>{errors.handle}</p>
           <Link to="/">
-            <button id="signup" type="submit">Signup</button>
+            <button id="signup" type="submit">
+              Signup
+            </button>
           </Link>
           <Link to="/">
-            <div id="account"><a>Already have an account?</a></div>
+            <div id="account">Already have an account?</div>
           </Link>
-
+        </form>
       </div>
     );
   }

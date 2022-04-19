@@ -52,37 +52,39 @@ export class Login extends Component {
     } else {
       return (
         <>
-        <div id="login">
-          <div id="welcome">Welcome back!</div>
-          <form noValidate onSubmit={this.handleSubmit}>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              label="Email"
-              value={this.state.email}
-              onChange={this.handleChange}
-              placeholder="Enter email"
-            ></input>
-            {/* <p>{!errors.email ? "" : errors.email}</p> */}
-            <input
-              id="password"
-              name="password"
-              type="password"
-              label="Password"
-              value={this.state.password}
-              onChange={this.handleChange}
-              placeholder="Enter password"
-            ></input>
-            <p>{!errors.password ? "" : errors.password}</p>
-            <Link to="/dashboard">
-               <button id="submit" type="submit">Submit</button>
+          <div id="login">
+            <div id="welcome">Welcome back!</div>
+            <form noValidate onSubmit={this.handleSubmit}>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                label="Email"
+                value={this.state.email}
+                onChange={this.handleChange}
+                placeholder="Enter email"
+              ></input>
+              {/* <p>{!errors.email ? "" : errors.email}</p> */}
+              <input
+                id="password"
+                name="password"
+                type="password"
+                label="Password"
+                value={this.state.password}
+                onChange={this.handleChange}
+                placeholder="Enter password"
+              ></input>
+              <p>{!errors.password ? "" : errors.password}</p>
+              <Link to="/dashboard">
+                <button id="submit" type="submit">
+                  Submit
+                </button>
+              </Link>
+            </form>
+            <Link to="/signup">
+              <div id="newuser">Create an account</div>
             </Link>
-          </form>
-          <Link to="/signup">
-            <div id="newuser"><a>Create an account</a></div>
-          </Link>
-    </div>
+          </div>
         </>
       );
     }
