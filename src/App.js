@@ -29,8 +29,8 @@ function App() {
         {/* <Testdemo /> */}
         {/* <Test></Test> */}
         <ThemeProvider theme={themes[theme]}>
-          {/* <Login /> */}
-          <Signup />
+          <Login />
+          {/* <Signup /> */}
           {/* <div className="App">
             <Dashboard theme={theme} setTheme={setTheme} />
           </div> */}

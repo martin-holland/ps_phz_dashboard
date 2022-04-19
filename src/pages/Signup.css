@@ -19,9 +19,9 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #000036;
+  border: 2px solid #000036;
   padding: 40px 60px;
-  border-radius: 3px;
+  border-radius: 5px;
 }
 
 #welcome {
@@ -36,17 +36,22 @@ form {
   width: 200px;
   border-radius: 3px;
   margin: 10px 10px;
-  background-color: #b1cff9;
+  background-color: #d7e7ff;
   border: none;
   color: #000036;
   text-indent: 7px;
 }
+
+::placeholder {
+    color: #1560bd;
+}
+
 #signup {
-  height: 35px;
+  height: 30px;
   width: 95px;
   border-radius: 3px;
   margin: 10px;
-  background-color: #799ed2;
+  background-color: #b1cff9;
   color: #000036;
   border: none;
 }
@@ -58,8 +63,8 @@ form {
 }
 
 #account {
-    margin-top: 20px;
-    cursor: pointer;
-    text-decoration: underline;
-    font-size: 0.9rem;
+  margin-top: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 0.9rem;
 }
