@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
+import { Link } from "react-router-dom";
 
 export class Login extends Component {
   state = {
@@ -50,6 +51,7 @@ export class Login extends Component {
       return <>Logged in Successfully.</>;
     } else {
       return (
+        <>
         <div id="login">
           <div id="welcome">Welcome back!</div>
           <form noValidate onSubmit={this.handleSubmit}>
@@ -73,10 +75,15 @@ export class Login extends Component {
               placeholder="Enter password"
             ></input>
             <p>{!errors.password ? "" : errors.password}</p>
-            <button id="submit" type="submit">Submit</button>
-            <div id="newuser"><a>Create an account</a></div>
+            <Link to="/dashboard">
+               <button id="submit" type="submit">Submit</button>
+            </Link>
           </form>
-        </div>
+          <Link to="/signup">
+            <div id="newuser"><a>Create an account</a></div>
+          </Link>
+    </div>
+        </>
       );
     }
   }
