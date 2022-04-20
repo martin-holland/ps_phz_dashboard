@@ -19,7 +19,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 3px solid #1560bd;
+  box-shadow: 0 0 3px #000036;
   padding: 40px 60px;
   border-radius: 5px;
 }
@@ -34,26 +34,29 @@ form {
 #confirmPassword,
 #handle {
   height: 35px;
-  width: 200px;
+  width: 250px;
   border-radius: 3px;
   margin: 10px 10px;
-  background-color: #d7e7ff;
+  /* background-color: #d7e7ff; */
+  background-color: #C6DBEB;
   border: none;
   color: #000036;
   text-indent: 7px;
 }
 
 ::placeholder {
-    color: #1560bd;
+    color: #000036;
 }
 
 #signup {
   height: 30px;
-  width: 95px;
+  width: 125px;
   border-radius: 3px;
   margin: 10px;
-  background-color: #b1cff9;
-  color: #000036;
+  /* background-color: #b1cff9; */
+  background-color: #4C7DA0;
+  color: white;
+  font-size: 1rem;
   border: none;
 }
 
@@ -66,6 +69,6 @@ form {
 #account {
   margin-top: 20px;
   cursor: pointer;
-  text-decoration: underline;
+  text-decoration: none;
   font-size: 0.9rem;
 }
