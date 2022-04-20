@@ -19,13 +19,14 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid #000036;
+  border: 3px solid #1560bd;
   padding: 40px 60px;
   border-radius: 5px;
 }
 
 #welcome {
   margin-bottom: 20px;
+  font-size: 1.2rem;
 }
 
 #email,
@@ -58,8 +59,8 @@ form {
 
 #signup:hover {
   cursor: pointer;
-  background-color: white;
   border: 1px solid #000036;
+  box-shadow: 0 0 3px #000036;
 }
 
 #account {
