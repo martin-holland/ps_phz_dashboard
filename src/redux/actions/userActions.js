@@ -19,11 +19,12 @@ export const loginUser = (userData) => (dispatch) => {
       setAuthorizationHeader(res.data.token);
       dispatch({ type: CLEAR_ERRORS });
       dispatch({ type: SET_AUTHENTICATED });
+      console.log("Authentication triggered");
     })
     .catch((err) => {
       dispatch({
         type: SET_ERRORS,
-        payload: err.message,
+        payload: err.response.data,
       });
     });
 };

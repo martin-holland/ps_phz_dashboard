@@ -4,6 +4,7 @@ import styled from "styled-components";
 import "./Dashboard.css";
 import BarChart from "../../components/chart/BarChart";
 import Message from "../../components/message/Message";
+import Login from "../Login";
 
 // Redux imports
 import { connect } from "react-redux";
@@ -57,6 +58,7 @@ const MessageContainer = styled.div`
 const Dashboard = (props) => {
   // Data destructuring
   const { results, loading } = props.data;
+  const { authenticated } = props.user;
   console.log("results from dashboard: ", results);
 
   //theme
@@ -71,45 +73,53 @@ const Dashboard = (props) => {
     //eslint-disable-next-line
   }, []);
 
-  if (!loading && results !== undefined && results.length >= 1) {
-    // console.log("results from dashboard: ", results);
-    return (
-      <Main className="main">
-        <div className="container">
-          <div className="header-container">
-            <TitleHead className="header">
-              Net Promoter Score Calculation
-            </TitleHead>
-            <Toggle className="toggle-button" onClick={changeTheme}>
-              {icon}
-            </Toggle>
-          </div>
-          <SubTitie>
-            <p>Net Promoter Score calculations with breakouts and deltas.</p>
-          </SubTitie>
-          <ChartContainer className="chart-container">
-            <BarChart results={results} theme={props.theme} />
-          </ChartContainer>
-          <MessageContainer className="message-container">
-            {results?.slice(0, 5).map((result) => (
-              <Message result={result} key={result.surveyId} />
-            ))}
-          </MessageContainer>
-        </div>
-      </Main>
-    );
+  console.log("Authenticated from Dashboard: ", authenticated);
+
+  if (!authenticated) {
+    return <Login />;
   } else {
-    return <div>Data Loading...</div>;
+    if (!loading && results !== undefined && results.length >= 1) {
+      // console.log("results from dashboard: ", results);
+      return (
+        <Main className="main">
+          <div className="container">
+            <div className="header-container">
+              <TitleHead className="header">
+                Net Promoter Score Calculation
+              </TitleHead>
+              <Toggle className="toggle-button" onClick={changeTheme}>
+                {icon}
+              </Toggle>
+            </div>
+            <SubTitie>
+              <p>Net Promoter Score calculations with breakouts and deltas.</p>
+            </SubTitie>
+            <ChartContainer className="chart-container">
+              <BarChart results={results} theme={props.theme} />
+            </ChartContainer>
+            <MessageContainer className="message-container">
+              {results?.slice(0, 5).map((result) => (
+                <Message result={result} key={result.surveyId} />
+              ))}
+            </MessageContainer>
+          </div>
+        </Main>
+      );
+    } else {
+      return <div>Data Loading...</div>;
+    }
   }
 };
 
 Dashboard.propTypes = {
   getAllData: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   data: state.data,
+  user: state.user,
 });
 
 export default connect(mapStateToProps, { getAllData })(Dashboard);

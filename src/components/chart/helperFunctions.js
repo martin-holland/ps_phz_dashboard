@@ -34,16 +34,18 @@ export const calculateOverallScore = (summary, total) => {
     100;
   console.log("Overall Score: ", score);
   score = Math.round(score);
-  if (Math.sign(score) === 1) {
+  if (score >= 1) {
     return (
       <div id="positive" className="doughnut-number">
         {score}
       </div>
     );
-  } else if (Math.sign(score) === -1) {
-    <div id="negative" className="doughnut-number">
-      {score}
-    </div>;
+  } else if (score < 0) {
+    return (
+      <div id="negative" className="doughnut-number">
+        {score}
+      </div>
+    );
   }
   return (
     <div id="zero" className="doughnut-number">
