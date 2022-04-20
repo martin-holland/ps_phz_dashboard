@@ -66,13 +66,13 @@ const DoughnutChart = (props) => {
   };
 
   const fakeSummary = {
-    promoters: 5,
+    promoters: 10,
     passives: 1,
-    detractors: 6,
+    detractors: 10,
     errorData: 1,
   };
 
-  const fakeTotal = 13;
+  const fakeTotal = 22;
 
   console.log("Summary from Doughnut: ", summary);
   // summary, total should be in here

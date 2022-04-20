@@ -45,11 +45,9 @@ export class Login extends Component {
     } = this.props;
     const { errors } = this.state;
 
-    let isAuthenticated = false;
-    if (this.props.user.authenticated === true) {
-      isAuthenticated = true;
-    }
-    if (isAuthenticated) {
+    console.log("Props from Login: ", this.props);
+
+    if (this.props.user.authenticated) {
       return (
         <Dashboard theme={this.props.theme} setTheme={this.props.setTheme} />
       );
