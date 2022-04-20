@@ -78,7 +78,7 @@ export class Login extends Component {
               ></input>
               <p>{errors.password}</p>
               <button id="submit" type="submit">
-                Submit
+                Sign In
               </button>
               <p>{errors.general}</p>
             </form>
