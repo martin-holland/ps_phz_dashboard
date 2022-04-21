@@ -66,18 +66,18 @@ const DoughnutChart = (props) => {
   };
 
   const fakeSummary = {
-    promoters: 10,
+    promoters: 30,
     passives: 1,
     detractors: 10,
     errorData: 1,
   };
 
-  const fakeTotal = 22;
+  const fakeTotal = 42;
 
   console.log("Summary from Doughnut: ", summary);
   // summary, total should be in here
   const overallScoreMarkup = calculateOverallScore(fakeSummary, fakeTotal);
-
+  console.log(overallScoreMarkup);
   return (
     <>
       <Doughnut

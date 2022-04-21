@@ -34,21 +34,36 @@ export const calculateOverallScore = (summary, total) => {
     100;
   console.log("Overall Score: ", score);
   score = Math.round(score);
+  let scoreString = score.toString();
+
   if (score >= 1) {
     return (
-      <div id="positive" className="doughnut-number">
+      <div
+        id="positive"
+        className={`doughnut-number ${
+          scoreString.length === 1 ? "one" : "two"
+        }`}
+      >
         {score}
       </div>
     );
   } else if (score < 0) {
     return (
-      <div id="negative" className="doughnut-number">
+      <div
+        id="negative"
+        className={`doughnut-number ${
+          scoreString.length === 1 ? "one" : "two"
+        }`}
+      >
         {score}
       </div>
     );
   }
   return (
-    <div id="zero" className="doughnut-number">
+    <div
+      id="zero"
+      className={`doughnut-number ${scoreString.length === 1 ? "one" : "two"}`}
+    >
       {score}
     </div>
   );
