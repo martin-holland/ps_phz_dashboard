@@ -36,12 +36,13 @@ export const options = {
         },
       },
     },
+
     autocolors: false,
-    title: {
-      display: true,
-      text: "Total respondents 450",
-      color: "white",
-    },
+    // title: {
+    //   display: true,
+    //   text: "Total respondents 450",
+    //   color: "black",
+    // },
   },
   responsive: true,
   maintainAspectRatio: false,

@@ -1,11 +1,11 @@
 export const darkTheme = {
   backgroundColor: "#1f1f1e",
-  color: "white",
-  chartbackground: "white ",
+  color: "#F8F9F9",
+  chartbackground: "#D5D8DC  ",
 };
 
 export const lightTheme = {
-  backgroundColor: "white",
+  backgroundColor: "#F8F9F9 ",
   color: "black",
-  chartbackground: "white",
+  chartbackground: "#F8F9F9 ",
 };
