@@ -74,7 +74,7 @@ const labels = [
   "Oct",
   "Nov",
   "Dec",
-  "No Date",
+  // "No Date",
 ];
 
 const BarContainer = styled.div`
@@ -118,7 +118,7 @@ const BarChart = (props) => {
     if (month === 9) Oct.push(item);
     if (month === 10) Nov.push(item);
     if (month === 11) Dec.push(item);
-    if (isNaN(month)) noDate.push(item);
+    // if (isNaN(month)) noDate.push(item);
   });
 
   console.log(
@@ -134,9 +134,9 @@ const BarChart = (props) => {
     Sep,
     Oct,
     Nov,
-    Dec,
-    "No Date Info: ",
-    noDate
+    Dec
+    // "No Date Info: ",
+    // noDate
   );
   // Summarising Data:
   const [summary, setSummary] = useState({});
@@ -153,7 +153,7 @@ const BarChart = (props) => {
   const [octSummary, setOctSummary] = useState({});
   const [novSummary, setNovSummary] = useState({});
   const [decSummary, setDecSummary] = useState({});
-  const [noDataSummary, setNoDataSummary] = useState({});
+  // const [noDataSummary, setNoDataSummary] = useState({});
 
   let total = results.length;
   const calculateSummary = (dataToSummarise) => {
@@ -198,7 +198,7 @@ const BarChart = (props) => {
     setOctSummary(summariseData(Oct));
     setNovSummary(summariseData(Nov));
     setDecSummary(summariseData(Dec));
-    setNoDataSummary(summariseData(noDate));
+    // setNoDataSummary(summariseData(noDate));
 
     //eslint-disable-next-line
   }, []);
@@ -227,7 +227,7 @@ const BarChart = (props) => {
           octSummary.promoters,
           novSummary.promoters,
           decSummary.promoters,
-          noDataSummary.promoters,
+          // noDataSummary.promoters,
         ],
         backgroundColor: "#19aade",
       },
@@ -248,7 +248,7 @@ const BarChart = (props) => {
           octSummary.passives,
           novSummary.passives,
           decSummary.passives,
-          noDataSummary.passives,
+          // noDataSummary.passives,
         ],
         backgroundColor: "#1de4bd",
       },
@@ -269,7 +269,7 @@ const BarChart = (props) => {
           octSummary.detractors,
           novSummary.detractors,
           decSummary.detractors,
-          noDataSummary.detractors,
+          // noDataSummary.detractors,
         ],
         backgroundColor: "#ef7e32",
       },
