@@ -1,4 +1,9 @@
 import axios from "axios";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import { app } from "../../firebase/config";
+
 import {
   SET_ERRORS,
   LOADING_UI,
@@ -7,26 +12,38 @@ import {
   SET_UNAUTHENTICATED,
 } from "../types";
 
+// New Login
+const AuthProvider = new firebase.auth.GoogleAuthProvider();
+
+// Old login with username and password
+
+// export const loginUser = (userData) => (dispatch) => {
+//   dispatch({ type: LOADING_UI });
+//   axios
+//     .post(
+//       "https://us-central1-promoterscore-14480.cloudfunctions.net/api/login",
+//       userData
+//     )
+//     .then((res) => {
+//       //   console.log(res.data);
+//       setAuthorizationHeader(res.data.token);
+//       dispatch({ type: CLEAR_ERRORS });
+//       dispatch({ type: SET_AUTHENTICATED });
+//       console.log("Authentication triggered");
+//     })
+//     .catch((err) => {
+//       dispatch({
+//         type: SET_ERRORS,
+//         payload: err.response.data,
+//       });
+//     });
+// };
+
 export const loginUser = (userData) => (dispatch) => {
   dispatch({ type: LOADING_UI });
-  axios
-    .post(
-      "https://us-central1-promoterscore-14480.cloudfunctions.net/api/login",
-      userData
-    )
-    .then((res) => {
-      //   console.log(res.data);
-      setAuthorizationHeader(res.data.token);
-      dispatch({ type: CLEAR_ERRORS });
-      dispatch({ type: SET_AUTHENTICATED });
-      console.log("Authentication triggered");
-    })
-    .catch((err) => {
-      dispatch({
-        type: SET_ERRORS,
-        payload: err.response.data,
-      });
-    });
+  dispatch({ type: CLEAR_ERRORS });
+  dispatch({ type: SET_AUTHENTICATED });
+  console.log("Authentication triggered");
 };
 
 export const logoutUser = () => (dispatch) => {
