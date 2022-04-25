@@ -27,6 +27,57 @@ ChartJS.register(
   Legend
 );
 
+export const options = {
+  plugins: {
+    legend: {
+      labels: {
+        color: "black",
+        font: {
+          size: 18,
+        },
+      },
+    },
+    autocolors: false,
+    title: {
+      display: true,
+      text: "Total respondents 450",
+      color: "white",
+    },
+  },
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+    xAxes: {
+      stacked: true,
+      ticks: {
+        color: "black",
+      },
+    },
+    y: {
+      stacked: true,
+      ticks: {
+        color: "black",
+      },
+    },
+  },
+};
+
+const labels = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+  // "No Date",
+];
+
 const BarContainer = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.chartbackground};
@@ -68,9 +119,26 @@ const BarChart = (props) => {
     if (month === 9) Oct.push(item);
     if (month === 10) Nov.push(item);
     if (month === 11) Dec.push(item);
-    if (isNaN(month)) noDate.push(item);
+    // if (isNaN(month)) noDate.push(item);
   });
 
+  console.log(
+    "Months: ",
+    Jan,
+    Feb,
+    Mar,
+    Apr,
+    May,
+    Jun,
+    Jul,
+    Aug,
+    Sep,
+    Oct,
+    Nov,
+    Dec
+    // "No Date Info: ",
+    // noDate
+  );
   console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
   // Summarising Data:
   const [summary, setSummary] = useState({});
@@ -87,7 +155,7 @@ const BarChart = (props) => {
   const [octSummary, setOctSummary] = useState({});
   const [novSummary, setNovSummary] = useState({});
   const [decSummary, setDecSummary] = useState({});
-  const [noDataSummary, setNoDataSummary] = useState({});
+  // const [noDataSummary, setNoDataSummary] = useState({});
 
   let total = results.length;
 
@@ -171,7 +239,7 @@ const BarChart = (props) => {
     setOctSummary(summariseData(Oct));
     setNovSummary(summariseData(Nov));
     setDecSummary(summariseData(Dec));
-    setNoDataSummary(summariseData(noDate));
+    // setNoDataSummary(summariseData(noDate));
 
     //eslint-disable-next-line
   }, []);
@@ -200,7 +268,7 @@ const BarChart = (props) => {
           octSummary.promoters,
           novSummary.promoters,
           decSummary.promoters,
-          noDataSummary.promoters,
+          // noDataSummary.promoters,
         ],
         backgroundColor: "#19aade",
       },
@@ -221,7 +289,7 @@ const BarChart = (props) => {
           octSummary.passives,
           novSummary.passives,
           decSummary.passives,
-          noDataSummary.passives,
+          // noDataSummary.passives,
         ],
         backgroundColor: "#1de4bd",
       },
@@ -242,7 +310,7 @@ const BarChart = (props) => {
           octSummary.detractors,
           novSummary.detractors,
           decSummary.detractors,
-          noDataSummary.detractors,
+          // noDataSummary.detractors,
         ],
         backgroundColor: "#ef7e32",
       },
