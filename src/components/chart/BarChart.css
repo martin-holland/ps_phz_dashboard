@@ -17,11 +17,9 @@
   border-radius: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   font-size: 1rem;
+  
 }
 .circle-text-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 1rem;
 }
 .responses {
@@ -31,6 +29,16 @@
 .score-container * {
   border: 1px solid black;
   color: black !important;
+ 
+  
+}
+.score-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem 0;
+  padding: 5px;
 }
 .promoters,
 .passive,
@@ -39,7 +47,7 @@
   width: fit-content;
   height: 35px;
   border-radius: 30px;
-  margin-top: 5px;
+  margin: 5px;
 }
 .promoters {
   background-color: #19aade;
