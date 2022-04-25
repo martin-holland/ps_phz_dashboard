@@ -3,8 +3,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 90vw;
-  padding: 0.5rem 1rem;
+  width: 95vw;
+  padding:0 1rem;
 }
 .list {
   display: flex;
@@ -12,10 +12,12 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   width: 100%;
   margin: 0.5rem 0;
+  
 }
 .message-box {
   display: flex;
   flex-direction: row;
+  padding: 5px;
 }
 
 .message-box * {
@@ -39,7 +41,7 @@
   font-size: 2rem;
 }
 .message {
-  margin-top: 0.5rem;
+  padding-top: 0.7rem;
 }
 .date-box {
   margin: 0.5rem;

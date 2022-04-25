@@ -12,7 +12,6 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
-import { BsPersonPlus } from "react-icons/bs";
 
 // Data conversion
 import dayjs from "dayjs";
@@ -184,7 +183,7 @@ const BarChart = (props) => {
     labels,
     datasets: [
       {
-        barThickness: 30,
+        barThickness: 40,
         maxBarThickness: 40,
         label: "Promoters",
         data: [
@@ -205,7 +204,7 @@ const BarChart = (props) => {
         backgroundColor: "#19aade",
       },
       {
-        barThickness: 30,
+        barThickness: 40,
         maxBarThickness: 40,
         label: "Passive",
         data: [
@@ -226,7 +225,7 @@ const BarChart = (props) => {
         backgroundColor: "#1de4bd",
       },
       {
-        barThickness: 30,
+        barThickness: 40,
         maxBarThickness: 40,
         label: "Detractors",
         data: [
