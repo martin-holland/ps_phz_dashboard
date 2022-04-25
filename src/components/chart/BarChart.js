@@ -26,7 +26,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-<<<<<<< HEAD
+
 export const options = {
   plugins: {
     legend: {
@@ -77,8 +77,6 @@ const labels = [
   "Dec",
   // "No Date",
 ];
-=======
->>>>>>> b85174b2a01232d4af6b3e5538d07871f5af0e13
 
 const BarContainer = styled.div`
   color: ${(props) => props.theme.color};
@@ -124,7 +122,6 @@ const BarChart = (props) => {
     // if (isNaN(month)) noDate.push(item);
   });
 
-<<<<<<< HEAD
   console.log(
     "Months: ",
     Jan,
@@ -142,9 +139,8 @@ const BarChart = (props) => {
     // "No Date Info: ",
     // noDate
   );
-=======
   console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
->>>>>>> b85174b2a01232d4af6b3e5538d07871f5af0e13
+
   // Summarising Data:
   const [summary, setSummary] = useState({});
 
