@@ -140,6 +140,7 @@ const BarChart = (props) => {
     // noDate
   );
   console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
+
   // Summarising Data:
   const [summary, setSummary] = useState({});
 
