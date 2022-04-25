@@ -98,7 +98,7 @@ const Dashboard = (props) => {
               <BarChart results={results} theme={props.theme} />
             </ChartContainer>
             <MessageContainer className="message-container">
-              {results?.slice(0, 5).map((result) => (
+              {results?.slice(0, 20).map((result) => (
                 <Message result={result} key={result.surveyId} />
               ))}
             </MessageContainer>
