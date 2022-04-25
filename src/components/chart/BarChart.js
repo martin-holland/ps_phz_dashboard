@@ -26,57 +26,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-export const options = {
-  plugins: {
-    legend: {
-      labels: {
-        color: "black",
-        font: {
-          size: 18,
-        },
-      },
-    },
-
-    autocolors: false,
-    // title: {
-    //   display: true,
-    //   text: "Total respondents 450",
-    //   color: "black",
-    // },
-  },
-  responsive: true,
-  maintainAspectRatio: false,
-  scales: {
-    xAxes: {
-      stacked: true,
-      ticks: {
-        color: "black",
-      },
-    },
-    y: {
-      stacked: true,
-      ticks: {
-        color: "black",
-      },
-    },
-  },
-};
-
-const labels = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-  "No Date",
-];
 
 const BarContainer = styled.div`
   color: ${(props) => props.theme.color};
@@ -122,23 +71,7 @@ const BarChart = (props) => {
     if (isNaN(month)) noDate.push(item);
   });
 
-  console.log(
-    "Months: ",
-    Jan,
-    Feb,
-    Mar,
-    Apr,
-    May,
-    Jun,
-    Jul,
-    Aug,
-    Sep,
-    Oct,
-    Nov,
-    Dec,
-    "No Date Info: ",
-    noDate
-  );
+  console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
   // Summarising Data:
   const [summary, setSummary] = useState({});
 
@@ -157,6 +90,45 @@ const BarChart = (props) => {
   const [noDataSummary, setNoDataSummary] = useState({});
 
   let total = results.length;
+
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: "black",
+          font: {
+            size: 18,
+          },
+        },
+      },
+
+      autocolors: false,
+      title: {
+        display: true,
+        text: `Total respondents ${total}`,
+        color: "black",
+      },
+    },
+    responsive: true,
+
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: {
+        stacked: true,
+        ticks: {
+          color: "black",
+        },
+      },
+      y: {
+        stacked: true,
+        ticks: {
+          color: "black",
+        },
+      },
+    },
+  };
+
+  const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
   const calculateSummary = (dataToSummarise) => {
     if (dataToSummarise.length === 0) {
       console.log("results is empty");
@@ -283,14 +255,14 @@ const BarChart = (props) => {
         <Bar options={options} data={data} className="chart" />
       </BarContainer>
       <CircleContainer className="circle-container">
-        <div className="circle-text-container">
-          <p className="responses">Responses: {total}</p>
-          <div className="score-container">
-            <p className="promoters">Promoters: {summary.promoters}</p>
-            <p className="passive">Passive: {summary.passives}</p>
-            <p className="detractors">Detractors: {summary.detractors}</p>
-          </div>
+        {/* <div className="circle-text-container"> */}
+        {/* <p className="responses">Responses: {total}</p> */}
+        <div className="score-container">
+          <p className="promoters">Promoters: {summary.promoters}</p>
+          <p className="passive">Passive: {summary.passives}</p>
+          <p className="detractors">Detractors: {summary.detractors}</p>
         </div>
+
         <div className="doughnut-container">
           <DoughnutChart results={results} />
         </div>
