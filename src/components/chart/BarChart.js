@@ -369,9 +369,9 @@ const BarChart = (props) => {
         {/* <div className="circle-text-container"> */}
         {/* <p className="responses">Responses: {total}</p> */}
         <div className="parent-box">
-          <div className="lastMonthNPS">Previous NPS : {IntLastmonthNPS}</div>
+          <div className="lastMonthNPS">Previous Score : {IntLastmonthNPS}</div>
           <div className="currentMonthNPS">
-            Net Promoter's Score : {IntcurrentNPS}
+            Net Promoter Score : {IntcurrentNPS}
           </div>
         </div>
         <div className="doughnut-parent">
