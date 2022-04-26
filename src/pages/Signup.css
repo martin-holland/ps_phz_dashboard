@@ -19,8 +19,9 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 3px #000036;
-  padding: 40px 60px;
+  border: 1px solid transparent;
+  box-shadow: 0px 5px 15px #000036;
+  padding: 5px;
   border-radius: 5px;
 }
 
@@ -49,12 +50,12 @@ form {
 }
 
 #signup {
-  height: 30px;
+  height: 35px;
   width: 125px;
   border-radius: 3px;
   margin: 10px;
   /* background-color: #b1cff9; */
-  background-color: #4C7DA0;
+  background-color: #4f86f7;
   color: white;
   font-size: 1rem;
   border: none;

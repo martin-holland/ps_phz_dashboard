@@ -81,11 +81,9 @@ export class Login extends Component {
       return (
         <>
           <div id="login">
-            <div id="welcome">
-              <strong>Welcome back!</strong>
-            </div>
+  
             <button id="google-signin" onClick={(event) => this.handleSubmit()}>
-              Sign in with Google
+              <strong>Sign in with Google</strong>
             </button>
             <p>{errors.general}</p>
             <p>{errors.email}</p>
