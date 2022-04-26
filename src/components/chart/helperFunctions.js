@@ -87,8 +87,7 @@ const getSixMonths = () => {
   ];
   var currentMonth = new Date().getMonth();
   for (let i = 0; i < 6; i++) {
-    const nameOfMonth = currentMonth - i;
-
+    const nameOfMonth = currentMonth + i;
     label.push(months[nameOfMonth]);
   }
 };

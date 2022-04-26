@@ -79,7 +79,7 @@
     width: 80%;
   }
 }
-@media (max-width: 330px) {
+@media (max-width: 380px) {
   .bar-container {
     width: 100%;
   }
@@ -87,5 +87,10 @@
     width: 100%;
     margin: 5px;
     font-size: 0.8rem;
+  }
+  .doughnut-container {
+    height: 200px;
+    width: 200px;
+    
   }
 }

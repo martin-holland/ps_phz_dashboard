@@ -24,18 +24,17 @@ const TitleHead = styled.h1`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
   transition: all 0.5s ease;
-  margin: 1rem;
-  font-size: 1.5rem;
+  margin: 0.5rem;
+  font-size: 1.2rem;
 `;
-const Toggle = styled.button`
+const Toggle = styled.p`
   cursor: pointer;
   position: absolute;
-  top: 0;
-  right: 10px;
-  height: 30px;
-  width: 40px;
+  top: 5px;
+  right: 60px;
   margin-top: 1rem;
-  border-radius: 5px;
+  border: none;
+
   transition: all 0.5s ease;
 
   &:focus {
@@ -43,10 +42,6 @@ const Toggle = styled.button`
   }
 `;
 
-const SubTitie = styled.div`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.backgroundColor};
-`;
 const ChartContainer = styled.div`
   color: ${(props) => props.theme.color};
 `;
@@ -65,7 +60,12 @@ const Dashboard = (props) => {
   const changeTheme = () => {
     props.theme === "light" ? props.setTheme("dark") : props.setTheme("light");
   };
-  const icon = props.theme === "light" ? <BsMoonStarsFill /> : <BsLightbulb />;
+  const icon =
+    props.theme === "light" ? (
+      <BsMoonStarsFill size={30} />
+    ) : (
+      <BsLightbulb size={30} color="white" />
+    );
 
   // Data retrieval
   useEffect(() => {
@@ -91,9 +91,6 @@ const Dashboard = (props) => {
                 {icon}
               </Toggle>
             </div>
-            <SubTitie>
-              <p>Net Promoter Score calculations with breakouts and deltas.</p>
-            </SubTitie>
             <ChartContainer className="chart-container">
               <BarChart results={results} theme={props.theme} />
             </ChartContainer>

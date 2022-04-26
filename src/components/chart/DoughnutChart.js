@@ -16,11 +16,9 @@ const options = {
 
 const DoughnutChart = (props) => {
   const { results } = props;
-
   // Summarising Data:
   const [summary, setSummary] = useState({});
 
-  let total = results.length;
   const calculateSummary = () => {
     if (results.length === 0) {
       console.log("results is empty");
