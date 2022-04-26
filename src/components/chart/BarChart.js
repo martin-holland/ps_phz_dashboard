@@ -322,6 +322,44 @@ const BarChart = (props) => {
     ],
   };
 
+  const currentMonth = new Date().getMonth();
+  const monthlySummary = [
+    janSummary,
+    febSummary,
+    marSummary,
+    aprSummary,
+    maySummary,
+    junSummary,
+    julSummary,
+    augSummary,
+    sepSummary,
+    octSummary,
+    novSummary,
+    decSummary,
+  ];
+
+  console.log("output", monthlySummary[currentMonth]);
+
+  let currentMonthSummary = monthlySummary[currentMonth];
+  let lastMonthSummary = monthlySummary[currentMonth - 1];
+
+  let currentNPS =
+    ((currentMonthSummary.promoters - currentMonthSummary.detractors) /
+      (currentMonthSummary.promoters +
+        currentMonthSummary.detractors +
+        currentMonthSummary.passives)) *
+    100;
+  console.log("current nps", Math.floor(currentNPS));
+  const IntcurrentNPS = Math.floor(currentNPS);
+  let lastMonthNPS =
+    ((lastMonthSummary.promoters - currentMonthSummary.detractors) /
+      (lastMonthSummary.promoters +
+        lastMonthSummary.detractors +
+        lastMonthSummary.passives)) *
+    100;
+  console.log("last month nps", Math.floor(lastMonthNPS));
+  const IntLastmonthNPS = Math.floor(lastMonthNPS);
+
   return (
     <>
       <BarContainer className="bar-container">
@@ -330,14 +368,21 @@ const BarChart = (props) => {
       <CircleContainer className="circle-container">
         {/* <div className="circle-text-container"> */}
         {/* <p className="responses">Responses: {total}</p> */}
-        <div className="score-container">
-          <p className="promoters">Promoters: {summary.promoters}</p>
-          <p className="passive">Passive: {summary.passives}</p>
-          <p className="detractors">Detractors: {summary.detractors}</p>
+        <div className="parent-box">
+          <div className="lastMonthNPS">Previous NPS : {IntLastmonthNPS}</div>
+          <div className="currentMonthNPS">
+            Net Promoter's Score : {IntcurrentNPS}
+          </div>
         </div>
-
-        <div className="doughnut-container">
-          <DoughnutChart results={results} />
+        <div className="doughnut-parent">
+          <div className="score-container">
+            <p className="promoters">Promoters: {summary.promoters}</p>
+            <p className="passive">Passive: {summary.passives}</p>
+            <p className="detractors">Detractors: {summary.detractors}</p>
+          </div>
+          <div className="doughnut-container">
+            <DoughnutChart results={results} />
+          </div>
         </div>
       </CircleContainer>
     </>
