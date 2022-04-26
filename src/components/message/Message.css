@@ -46,3 +46,15 @@
 .date-box {
   margin: 0.5rem;
 }
+@media (max-width: 380px) {
+  
+  .list {
+    display: flex;
+    justify-content: none;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 100%;
+    margin: 0.5rem 0;
+    
+  }
+
+}

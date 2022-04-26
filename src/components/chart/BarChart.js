@@ -106,6 +106,10 @@ const BarChart = (props) => {
         display: true,
         text: `Total respondents ${total}`,
         color: "black",
+        font: {
+          size: 18,
+        },
+        padding: 20,
       },
     },
     responsive: true,
@@ -184,7 +188,8 @@ const BarChart = (props) => {
     datasets: [
       {
         barThickness: 40,
-        maxBarThickness: 40,
+        maxBarThickness: 25,
+
         label: "Promoters",
         data: [
           janSummary.promoters,
@@ -205,7 +210,7 @@ const BarChart = (props) => {
       },
       {
         barThickness: 40,
-        maxBarThickness: 40,
+        maxBarThickness: 25,
         label: "Passive",
         data: [
           janSummary.passives,
@@ -226,7 +231,7 @@ const BarChart = (props) => {
       },
       {
         barThickness: 40,
-        maxBarThickness: 40,
+        maxBarThickness: 25,
         label: "Detractors",
         data: [
           janSummary.detractors,

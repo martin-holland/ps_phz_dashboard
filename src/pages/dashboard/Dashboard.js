@@ -25,7 +25,7 @@ const TitleHead = styled.h1`
   background-color: ${(props) => props.theme.backgroundColor};
   transition: all 0.5s ease;
   margin: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 `;
 const Toggle = styled.p`
   cursor: pointer;
