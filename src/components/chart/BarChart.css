@@ -5,9 +5,26 @@
   border: 1px solid transparent;
   border-radius: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+ 
 }
 .chart {
   padding: 20px;
+  height: 350px;
+}
+.datefilter-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+
+}
+.datefilter-box *{
+ margin: 0.5rem;
+ padding: 5px;
+}
+.datefilter-box button{
+  border:1px solid black;
+  border-radius: 5px;
 }
 .circle-container {
   width: 30%;
@@ -19,17 +36,10 @@
   font-size: 1rem;
   
 }
-.circle-text-container {
-  padding: 1rem;
-}
-.responses {
-  color: black !important;
-  margin-top: 1rem;
-}
+
 .score-container * {
   border: 1px solid black;
   color: black !important;
- 
   
 }
 .score-container{
@@ -37,7 +47,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1rem 0;
+  margin: 1.8rem 0;
   padding: 5px;
 }
 .promoters,
