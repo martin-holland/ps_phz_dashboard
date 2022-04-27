@@ -357,14 +357,6 @@ const BarChart = (props) => {
         <div className="chart">
           <Bar options={options} data={data} id="myChart" />
         </div>
-        <div className="datefilter-box">
-          Start:
-          <input type="date" id="start" />
-          End:
-          <input type="date" id="end" />
-          <button onClick={filterDate}>Filter</button>
-          <button>Reset</button>
-        </div>
       </BarContainer>
       <CircleContainer className="circle-container">
         {/* <div className="circle-text-container"> */}
