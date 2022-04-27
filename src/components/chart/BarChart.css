@@ -58,24 +58,35 @@
   justify-content: center;
   align-items: center;
 }
+
 .lastMonthNPS {
-  height: 95px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
   padding: 5px;
   margin: 10px;
+  height: 60px;
   width: 120px;
-  border: 2px solid black;
-  border-radius: 30px;
-  box-shadow: 10px 5px 5px red;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  box-shadow: 0px 5px 15px lightgray;
 }
 
 .currentMonthNPS {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
   padding: 5px;
   margin: 10px;
-  height: 95px;
+  height: 60px;
   width: 120px;
-  border: 2px solid black;
-  border-radius: 30px;
-  box-shadow: 10px 5px 5px red;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  box-shadow: 0px 5px 15px lightgray;
 }
 .score-container {
   flex-direction: column;
@@ -87,13 +98,17 @@
 .promoters,
 .passive,
 .detractors {
-  padding: 0.5rem;
-  width: fit-content;
+  padding: 10px;
+  min-width: 120px auto;
   height: 35px;
-  border-radius: 30px;
-  margin: 5px;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 0.95rem;
+  border: none;
+  box-shadow: 0px 5px 15px lightgray;
 }
 .promoters {
+  margin-top: 50px;
   background-color: #19aade;
 }
 .passive {

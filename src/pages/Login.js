@@ -2,6 +2,7 @@ import "./Login.css";
 import React, { Component } from "react";
 import Dashboard from "./dashboard/Dashboard";
 import axios from "axios";
+import googleLogo from "../assets/GLogo.svg"
 
 // Authentication
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -79,9 +80,10 @@ export class Login extends Component {
       );
     } else {
       return (
-        <>
+        <div id="login-page">
+        <h3>Welcome to Promoter Score Dashboard!</h3>
           <div id="login">
-  
+            <img src={googleLogo}/>
             <button id="google-signin" onClick={(event) => this.handleSubmit()}>
               <strong>Sign in with Google</strong>
             </button>
@@ -89,7 +91,7 @@ export class Login extends Component {
             <p>{errors.email}</p>
             <p>{errors.password}</p>
           </div>
-        </>
+        </div>
       );
     }
   }
