@@ -5,6 +5,7 @@ import "./Dashboard.css";
 import BarChart from "../../components/chart/BarChart";
 import Message from "../../components/message/Message";
 import Login from "../Login";
+import { useState } from "react";
 
 // Redux imports
 import { connect } from "react-redux";
@@ -54,6 +55,8 @@ const Dashboard = (props) => {
   // Data destructuring
   const { results, loading } = props.data;
   const { authenticated } = props.user;
+  const [newResults, setNewResults] = useState([]);
+  const [sixMonthsAgo, setSixMonthsAgo] = useState();
   console.log("results from dashboard: ", results);
 
   //theme
@@ -67,11 +70,32 @@ const Dashboard = (props) => {
       <BsLightbulb size={25} color="white" />
     );
 
+  const sixMonthsAgoFunc = () => {
+    let sixMonthsAgo = new Date();
+    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+    sixMonthsAgo = sixMonthsAgo.toISOString().split("T")[0];
+    console.log("6 months ago was: ", sixMonthsAgo);
+    setSixMonthsAgo(sixMonthsAgo);
+  };
+
+  const filterDate = () => {
+    let start = new Date(document.getElementById("start").value).toISOString();
+    console.log("start date: ", start);
+    let end = new Date(document.getElementById("end").value).toISOString();
+    console.log("end date: ", end);
+    let newResults = results.filter(
+      (date) => date.createdAt >= start && date.createdAt <= end
+    );
+    console.log("Results from filter: ", newResults);
+    setNewResults(newResults);
+  };
+
   // Data retrieval
   useEffect(() => {
     props.getAllData();
+    sixMonthsAgoFunc();
     //eslint-disable-next-line
-  }, []);
+  }, [newResults]);
 
   console.log("Authenticated from Dashboard: ", authenticated);
 
@@ -92,10 +116,22 @@ const Dashboard = (props) => {
               </Toggle>
             </div>
             <ChartContainer className="chart-container">
-              <BarChart results={results} theme={props.theme} />
+              <BarChart results={newResults} theme={props.theme} />
             </ChartContainer>
+            <div className="datefilter-box">
+              Start:
+              <input type="date" id="start" defaultValue={sixMonthsAgo} />
+              End:
+              <input
+                type="date"
+                id="end"
+                defaultValue={new Date().toISOString().split("T")[0]}
+              />
+              <button onClick={filterDate}>Filter</button>
+              <button>Reset</button>
+            </div>
             <MessageContainer className="message-container">
-              {results?.slice(0, 20).map((result) => (
+              {newResults?.slice(0, 20).map((result) => (
                 <Message result={result} key={result.surveyId} />
               ))}
             </MessageContainer>
