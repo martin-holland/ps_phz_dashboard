@@ -1,8 +1,8 @@
-import { LOADING_DATA, SET_DATA } from "../types";
+import { LOADING_DATA, SET_DATA, SET_NEW_RESULTS } from "../types";
 
 const initialState = {
   results: [],
-  singleResult: {},
+  defaultResults: [],
   loading: false,
 };
 
@@ -18,6 +18,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         results: action.payload,
+        loading: false,
+      };
+    case SET_NEW_RESULTS:
+      return {
+        ...state,
+        defaultResults: action.payload,
         loading: false,
       };
     default:

@@ -1,4 +1,5 @@
 export const SET_DATA = "SET_DATA";
+export const SET_NEW_RESULTS = "SET_NEW_RESULTS";
 export const LOADING_DATA = "LOADING_DATA";
 
 export const LOADING_UI = "LOADING_UI";
