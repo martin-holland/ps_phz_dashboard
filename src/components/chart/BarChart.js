@@ -190,15 +190,20 @@ const BarChart = (props) => {
     "November",
     "December",
   ];
-  const convertedDates = results.map((item) =>
-    new Date(item.createdAt).toUTCString()
-  );
-  console.log(convertedDates);
+
+  // const convertedDates = results.map((item) =>
+  //   new Date(item.createdAt).toUTCString()
+  // );
+  // console.log(convertedDates);
   const filterDate = (months) => {
-    let start = new Date(document.getElementById("start").value).toUTCString();
-    console.log(start);
-    let end = new Date(document.getElementById("end").value).toUTCString();
-    console.log(end);
+    let start = new Date(document.getElementById("start").value).toISOString();
+    console.log("start date: ", start);
+    let end = new Date(document.getElementById("end").value).toISOString();
+    console.log("end date: ", end);
+    let newResults = results.filter(
+      (date) => date.createdAt >= start && date.createdAt <= end
+    );
+    console.log(newResults);
   };
 
   // const filterDate = () => {
