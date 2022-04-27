@@ -342,6 +342,17 @@ const BarChart = (props) => {
         <div className="chart">
           <Bar options={options} data={data} id="myChart" />
         </div>
+<<<<<<< HEAD
+=======
+        <div className="datefilter-box">
+          Start:
+          <input type="date" id="start" />
+          End:
+          <input type="date" id="end" />
+          <button onClick={filterDate}>Filter</button>
+          <button>Reset</button>
+        </div>
+>>>>>>> b8218fe (added input field for chart dates)
       </BarContainer>
       <CircleContainer className="circle-container">
         {/* <div className="circle-text-container"> */}
