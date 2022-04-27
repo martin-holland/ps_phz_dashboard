@@ -87,12 +87,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "e2e":"cypress open"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:cypress/recommended"
     ]
   },
   "browserslist": {
@@ -107,5 +109,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://us-central1-promoterscore-14480.cloudfunctions.net/api"
+  "proxy": "https://us-central1-promoterscore-14480.cloudfunctions.net/api",
+  "devDependencies": {
+    "cypress": "^9.6.0",
+    "eslint-plugin-cypress": "^2.12.1"
+  }
 }
