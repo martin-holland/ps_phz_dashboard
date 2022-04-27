@@ -68,29 +68,3 @@ export const calculateOverallScore = (summary, total) => {
     </div>
   );
 };
-
-let label = [];
-const getSixMonths = () => {
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  var currentMonth = new Date().getMonth();
-  for (let i = 0; i < 6; i++) {
-    const nameOfMonth = currentMonth + i;
-    label.push(months[nameOfMonth]);
-  }
-};
-getSixMonths();
-console.log(label);
-// ['April', 'May', 'June', 'July', 'August']

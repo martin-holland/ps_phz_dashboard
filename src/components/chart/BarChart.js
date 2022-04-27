@@ -26,57 +26,6 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  plugins: {
-    legend: {
-      labels: {
-        color: "black",
-        font: {
-          size: 18,
-        },
-      },
-    },
-    autocolors: false,
-    title: {
-      display: true,
-      text: "Total respondents 450",
-      color: "white",
-    },
-  },
-  responsive: true,
-  maintainAspectRatio: false,
-  scales: {
-    xAxes: {
-      stacked: true,
-      ticks: {
-        color: "black",
-      },
-    },
-    y: {
-      stacked: true,
-      ticks: {
-        color: "black",
-      },
-    },
-  },
-};
-
-const labels = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-  // "No Date",
-];
-
 const BarContainer = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.chartbackground};
@@ -101,7 +50,6 @@ const BarChart = (props) => {
   const Oct = [];
   const Nov = [];
   const Dec = [];
-  const noDate = [];
 
   results.forEach((item) => {
     const month = dayjs(item.createdAt).month();
@@ -121,24 +69,24 @@ const BarChart = (props) => {
     // if (isNaN(month)) noDate.push(item);
   });
 
-  console.log(
-    "Months: ",
-    Jan,
-    Feb,
-    Mar,
-    Apr,
-    May,
-    Jun,
-    Jul,
-    Aug,
-    Sep,
-    Oct,
-    Nov,
-    Dec
-    // "No Date Info: ",
-    // noDate
-  );
-  console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
+  // console.log(
+  //   "Months: ",
+  //   Jan,
+  //   Feb,
+  //   Mar,
+  //   Apr,
+  //   May,
+  //   Jun,
+  //   Jul,
+  //   Aug,
+  //   Sep,
+  //   Oct,
+  //   Nov,
+  //   Dec
+  //   // "No Date Info: ",
+  //   // noDate
+  // );
+  // console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
 
   // Summarising Data:
   const [summary, setSummary] = useState({});
@@ -178,7 +126,7 @@ const BarChart = (props) => {
         font: {
           size: 18,
         },
-        padding: 20,
+        padding: 10,
       },
     },
     responsive: true,
@@ -200,7 +148,6 @@ const BarChart = (props) => {
     },
   };
 
-  const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
   const calculateSummary = (dataToSummarise) => {
     if (dataToSummarise.length === 0) {
       console.log("results is empty");
@@ -228,6 +175,45 @@ const BarChart = (props) => {
       errorData: errorData,
     });
   };
+  const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const convertedDates = results.map((item) =>
+    new Date(item.createdAt).toUTCString()
+  );
+  console.log(convertedDates);
+  const filterDate = (months) => {
+    let start = new Date(document.getElementById("start").value).toUTCString();
+    console.log(start);
+    let end = new Date(document.getElementById("end").value).toUTCString();
+    console.log(end);
+  };
+
+  // const filterDate = () => {
+  //   let start = new Date(document.getElementById("start").value);
+  //   let isoStartDate = new Date(start).toISOString().split("-");
+  //   // console.log(start);
+  //   let end = new Date(document.getElementById("end").value);
+  //   let isoEndDate = new Date(end).toISOString().split("-");
+  //   console.log(end);
+
+  //   let start_month_index = parseInt(isoStartDate[1], 10) - 1;
+  //   console.log("The start month is " + months[start_month_index]);
+  //   let end_month_index = parseInt(isoEndDate[1], 10) - 1;
+  //   console.log("The end month is " + months[end_month_index]);
+  //};
 
   useEffect(() => {
     calculateSummary(results);
@@ -253,7 +239,7 @@ const BarChart = (props) => {
   console.log("April Promoters: ", aprSummary.promoters);
 
   const data = {
-    labels,
+    labels: months1,
     datasets: [
       {
         barThickness: 40,
@@ -363,7 +349,17 @@ const BarChart = (props) => {
   return (
     <>
       <BarContainer className="bar-container">
-        <Bar options={options} data={data} className="chart" />
+        <div className="chart">
+          <Bar options={options} data={data} id="myChart" />
+        </div>
+        <div className="datefilter-box">
+          Start:
+          <input type="date" id="start" />
+          End:
+          <input type="date" id="end" />
+          <button onClick={filterDate}>Filter</button>
+          <button>Reset</button>
+        </div>
       </BarContainer>
       <CircleContainer className="circle-container">
         {/* <div className="circle-text-container"> */}

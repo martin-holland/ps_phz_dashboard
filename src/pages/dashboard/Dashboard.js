@@ -62,9 +62,9 @@ const Dashboard = (props) => {
   };
   const icon =
     props.theme === "light" ? (
-      <BsMoonStarsFill size={30} />
+      <BsMoonStarsFill size={25} />
     ) : (
-      <BsLightbulb size={30} color="white" />
+      <BsLightbulb size={25} color="white" />
     );
 
   // Data retrieval
