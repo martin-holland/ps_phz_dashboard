@@ -194,6 +194,51 @@ const BarChart = (props) => {
     "December",
   ];
 
+  const promoterSummaries = [
+    janSummary.promoters,
+    febSummary.promoters,
+    marSummary.promoters,
+    aprSummary.promoters,
+    maySummary.promoters,
+    junSummary.promoters,
+    julSummary.promoters,
+    augSummary.promoters,
+    sepSummary.promoters,
+    octSummary.promoters,
+    novSummary.promoters,
+    decSummary.promoters,
+  ];
+
+  const passiveSummaries = [
+    janSummary.passives,
+    febSummary.passives,
+    marSummary.passives,
+    aprSummary.passives,
+    maySummary.passives,
+    junSummary.passives,
+    julSummary.passives,
+    augSummary.passives,
+    sepSummary.passives,
+    octSummary.passives,
+    novSummary.passives,
+    decSummary.passives,
+  ];
+
+  const detractorSummaries = [
+    janSummary.detractors,
+    febSummary.detractors,
+    marSummary.detractors,
+    aprSummary.detractors,
+    maySummary.detractors,
+    junSummary.detractors,
+    julSummary.detractors,
+    augSummary.detractors,
+    sepSummary.detractors,
+    octSummary.detractors,
+    novSummary.detractors,
+    decSummary.detractors,
+  ];
+
   const thisMonth = new Date().getMonth();
   console.log("Today's month is: ", thisMonth);
 
@@ -201,6 +246,20 @@ const BarChart = (props) => {
     ...months.slice(thisMonth),
     ...months.slice(0, thisMonth),
   ];
+
+  const rollingPromoters = [
+    ...promoterSummaries.slice(thisMonth),
+    ...promoterSummaries.slice(0, thisMonth),
+  ];
+  const rollingPassives = [
+    ...passiveSummaries.slice(thisMonth),
+    ...passiveSummaries.slice(0, thisMonth),
+  ];
+  const rollingDetractors = [
+    ...detractorSummaries.slice(thisMonth),
+    ...detractorSummaries.slice(0, thisMonth),
+  ];
+
   console.log("Rolling Months: ", rollingMonths);
 
   const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
@@ -245,63 +304,21 @@ const BarChart = (props) => {
         maxBarThickness: 18,
 
         label: "Promoters",
-        data: [
-          janSummary.promoters,
-          febSummary.promoters,
-          marSummary.promoters,
-          aprSummary.promoters,
-          maySummary.promoters,
-          junSummary.promoters,
-          julSummary.promoters,
-          augSummary.promoters,
-          sepSummary.promoters,
-          octSummary.promoters,
-          novSummary.promoters,
-          decSummary.promoters,
-          // noDataSummary.promoters,
-        ],
+        data: rollingPromoters,
         backgroundColor: "#19aade",
       },
       {
         barThickness: 20,
         maxBarThickness: 18,
         label: "Passive",
-        data: [
-          janSummary.passives,
-          febSummary.passives,
-          marSummary.passives,
-          aprSummary.passives,
-          maySummary.passives,
-          junSummary.passives,
-          julSummary.passives,
-          augSummary.passives,
-          sepSummary.passives,
-          octSummary.passives,
-          novSummary.passives,
-          decSummary.passives,
-          // noDataSummary.passives,
-        ],
+        data: rollingPassives,
         backgroundColor: "#1de4bd",
       },
       {
         barThickness: 20,
         maxBarThickness: 18,
         label: "Detractors",
-        data: [
-          janSummary.detractors,
-          febSummary.detractors,
-          marSummary.detractors,
-          aprSummary.detractors,
-          maySummary.detractors,
-          junSummary.detractors,
-          julSummary.detractors,
-          augSummary.detractors,
-          sepSummary.detractors,
-          octSummary.detractors,
-          novSummary.detractors,
-          decSummary.detractors,
-          // noDataSummary.detractors,
-        ],
+        data: rollingDetractors,
         backgroundColor: "#ef7e32",
       },
     ],
