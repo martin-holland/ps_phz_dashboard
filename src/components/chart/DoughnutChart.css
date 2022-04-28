@@ -4,15 +4,16 @@
 .doughnut-number {
   position: relative;
   top: 45%;
-  margin: auto;
+  /* margin: auto; */
   z-index: 1;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  width: min-content;
 }
 .one {
-  left: 45%;
+  left: 100px;
 }
 .two {
-  left: 39.5%;
+  left: 95px;
 }
 
 #zero {
