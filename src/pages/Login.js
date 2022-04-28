@@ -39,19 +39,10 @@ export class Login extends Component {
       .then((result) => {
         const credential = result.user;
         token = credential.accessToken;
-        const user = result.user;
-        console.log(user);
         this.setAuthorizationHeader(credential.accessToken);
         this.props.loginUser();
       })
       .catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
         console.log(error);
       });
   };
@@ -83,7 +74,6 @@ export class Login extends Component {
         <div id="login-page">
         <h3>Welcome to Promoter Score Dashboard!</h3>
           <div id="login">
-            <img src={googleLogo}/>
             <button id="google-signin" onClick={(event) => this.handleSubmit()}>
               <strong>Sign in with Google</strong>
             </button>

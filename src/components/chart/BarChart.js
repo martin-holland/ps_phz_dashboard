@@ -35,7 +35,12 @@ const CircleContainer = styled.div`
   background-color: ${(props) => props.theme.chartbackground};
 `;
 const BarChart = (props) => {
+  // componentDidUpdate(prevProps, prevState) {
+  //   let something;
+  // }
+
   const { results } = props;
+
   console.log("results from barchart: ", results);
 
   const Jan = [];
@@ -237,7 +242,7 @@ const BarChart = (props) => {
     // setNoDataSummary(summariseData(noDate));
 
     //eslint-disable-next-line
-  }, []);
+  }, [props]);
 
   console.log("Summary:", summary);
   console.log("April Summary: ", aprSummary);

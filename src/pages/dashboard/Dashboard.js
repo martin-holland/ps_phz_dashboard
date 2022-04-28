@@ -9,7 +9,7 @@ import { useState } from "react";
 
 // Redux imports
 import { connect } from "react-redux";
-import { getAllData } from "../../redux/actions/dataActions";
+import { getAllData, getSixMonths } from "../../redux/actions/dataActions";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 
@@ -53,7 +53,7 @@ const MessageContainer = styled.div`
 
 const Dashboard = (props) => {
   // Data destructuring
-  const { results, loading } = props.data;
+  const { defaultResults, results, loading } = props.data;
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
@@ -74,19 +74,15 @@ const Dashboard = (props) => {
     let sixMonthsAgo = new Date();
     sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
     sixMonthsAgo = sixMonthsAgo.toISOString().split("T")[0];
-    console.log("6 months ago was: ", sixMonthsAgo);
     setSixMonthsAgo(sixMonthsAgo);
   };
 
   const filterDate = () => {
     let start = new Date(document.getElementById("start").value).toISOString();
-    console.log("start date: ", start);
     let end = new Date(document.getElementById("end").value).toISOString();
-    console.log("end date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
     );
-    console.log("Results from filter: ", newResults);
     setNewResults(newResults);
   };
 
@@ -95,15 +91,14 @@ const Dashboard = (props) => {
     props.getAllData();
     sixMonthsAgoFunc();
     //eslint-disable-next-line
-  }, [newResults]);
-
-  console.log("Authenticated from Dashboard: ", authenticated);
+  }, []);
 
   if (!authenticated) {
     return <Login />;
   } else {
     if (!loading && results !== undefined && results.length >= 1) {
-      // console.log("results from dashboard: ", results);
+      console.log("default results: ", defaultResults);
+      console.log("newResults: ", newResults);
       return (
         <Main className="main">
           <div className="container">
@@ -116,7 +111,10 @@ const Dashboard = (props) => {
               </Toggle>
             </div>
             <ChartContainer className="chart-container">
-              <BarChart results={newResults} theme={props.theme} />
+              <BarChart
+                results={newResults.length > 0 ? newResults : defaultResults}
+                theme={props.theme}
+              />
             </ChartContainer>
             <div className="datefilter-box">
               Start:
@@ -131,9 +129,11 @@ const Dashboard = (props) => {
               <button>Reset</button>
             </div>
             <MessageContainer className="message-container">
-              {newResults?.slice(0, 20).map((result) => (
-                <Message result={result} key={result.surveyId} />
-              ))}
+              {(newResults.length > 0 ? newResults : defaultResults)
+                .slice(0, 20)
+                .map((result) => (
+                  <Message result={result} key={result.surveyId} />
+                ))}
             </MessageContainer>
           </div>
         </Main>
@@ -155,4 +155,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { getAllData })(Dashboard);
+export default connect(mapStateToProps, { getAllData, getSixMonths })(
+  Dashboard
+);
