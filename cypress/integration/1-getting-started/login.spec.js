@@ -1,13 +1,12 @@
 describe("The Promoter Score Form", () => {
-  beforeEach(() => {
-    cy.visit("http://localhost:3000");
-  });
+  beforeEach(() => {});
 
   it("Login User with VALID Google credentials", () => {
-    cy.get("div[id=welcome]").should("be.visible");
-    cy.wait(5000);
+    //cy.get("div[id=google-signin]").should("be.visible");
+    cy.login();
+    cy.visit("/");
     cy.get("button[id = google-signin]").click();
-    cy.get("span#class=VfPpkd-vQzf8d").should("be.visible");
+    cy.get("div[class=datefilter-box]").should("be.visible");
   });
   /* it("Login User with INVALID Google credentials", () => {
     cy.get("div[id=welcome]").should("be.visible");

@@ -16,7 +16,25 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
+
+const admin = require("firebase-admin");
+const cypressFirebasePlugin = require("cypress-firebase").plugin;
+
 module.exports = (on, config) => {
+  const extendedConfig = cypressFirebasePlugin(on, config, admin);
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+  return extendedConfig;
+};
+dotenv.config();
+
+export default (on, config) => {
+  // ...
+  config.env.googleRefreshToken = process.env.GOOGLE_REFRESH_TOKEN;
+  config.env.googleClientId = process.env.REACT_APP_GOOGLE_CLIENTID;
+  config.env.googleClientSecret = process.env.REACT_APP_GOOGLE_CLIENT_SECRET;
+
+  // plugins code ...
+
+  return config;
+};

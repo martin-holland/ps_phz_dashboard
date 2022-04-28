@@ -88,7 +88,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e":"cypress open"
+    "e2e": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -112,6 +112,8 @@
   "proxy": "https://us-central1-promoterscore-14480.cloudfunctions.net/api",
   "devDependencies": {
     "cypress": "^9.6.0",
-    "eslint-plugin-cypress": "^2.12.1"
+    "cypress-firebase": "^2.2.1",
+    "eslint-plugin-cypress": "^2.12.1",
+    "firebase-admin": "^9.12.0"
   }
 }
