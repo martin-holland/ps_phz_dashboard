@@ -74,6 +74,7 @@ export class Login extends Component {
         <div id="login-page">
         <h3>Welcome to Promoter Score Dashboard!</h3>
           <div id="login">
+          <img src={googleLogo}/>
             <button id="google-signin" onClick={(event) => this.handleSubmit()}>
               <strong>Sign in with Google</strong>
             </button>

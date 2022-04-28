@@ -96,7 +96,7 @@
 .passive,
 .detractors {
   padding: 10px;
-  min-width: 120px auto;
+  min-width: 120px fit-content;
   height: 35px;
   border-radius: 5px;
   margin: 10px;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Table } from "react";
 import "./Message.css";
 const Message = ({ result }) => {
   const colorChange = (rating) => {
@@ -23,7 +23,7 @@ const Message = ({ result }) => {
         </div>
         <div className="date-box">
           <p>
-            Created: {new Date(result.createdAt).toLocaleString().slice(0, 10)}
+            {new Date(result.createdAt).toLocaleString().slice(0, 10)}
           </p>
         </div>
       </li>
