@@ -35,10 +35,6 @@ const CircleContainer = styled.div`
   background-color: ${(props) => props.theme.chartbackground};
 `;
 const BarChart = (props) => {
-  // componentDidUpdate(prevProps, prevState) {
-  //   let something;
-  // }
-
   const { results } = props;
 
   console.log("results from barchart: ", results);
@@ -71,27 +67,7 @@ const BarChart = (props) => {
     if (month === 9) Oct.push(item);
     if (month === 10) Nov.push(item);
     if (month === 11) Dec.push(item);
-    // if (isNaN(month)) noDate.push(item);
   });
-
-  // console.log(
-  //   "Months: ",
-  //   Jan,
-  //   Feb,
-  //   Mar,
-  //   Apr,
-  //   May,
-  //   Jun,
-  //   Jul,
-  //   Aug,
-  //   Sep,
-  //   Oct,
-  //   Nov,
-  //   Dec
-  //   // "No Date Info: ",
-  //   // noDate
-  // );
-  // console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
 
   // Summarising Data:
   const [summary, setSummary] = useState({});
@@ -108,7 +84,6 @@ const BarChart = (props) => {
   const [octSummary, setOctSummary] = useState({});
   const [novSummary, setNovSummary] = useState({});
   const [decSummary, setDecSummary] = useState({});
-  // const [noDataSummary, setNoDataSummary] = useState({});
 
   let total = results.length;
 
@@ -264,19 +239,6 @@ const BarChart = (props) => {
 
   const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 
-  // const convertedDates = results.map((item) =>
-  //   new Date(item.createdAt).toUTCString()
-  // );
-  // console.log(convertedDates);
-  const filterDate = (months) => {
-    let start = new Date(document.getElementById("start").value).toISOString();
-    console.log("start date: ", start);
-    let end = new Date(document.getElementById("end").value).toISOString();
-    console.log("end date: ", end);
-    let newResults = results.filter(
-      (date) => date.createdAt >= start && date.createdAt <= end
-    );
-  };
   useEffect(() => {
     calculateSummary(results);
     setJanSummary(summariseData(Jan));
@@ -351,7 +313,6 @@ const BarChart = (props) => {
         currentMonthSummary.detractors +
         currentMonthSummary.passives)) *
     100;
-  console.log("current nps", Math.floor(currentNPS));
   const IntcurrentNPS = Math.floor(currentNPS);
   let lastMonthNPS =
     ((lastMonthSummary.promoters - currentMonthSummary.detractors) /
@@ -359,7 +320,6 @@ const BarChart = (props) => {
         lastMonthSummary.detractors +
         lastMonthSummary.passives)) *
     100;
-  console.log("last month nps", Math.floor(lastMonthNPS));
   const IntLastmonthNPS = Math.floor(lastMonthNPS);
 
   return (
