@@ -21,7 +21,6 @@ const DoughnutChart = (props) => {
   let total = results.length;
   const calculateSummary = () => {
     if (results.length === 0) {
-      console.log("results is empty");
     }
     let promoters = 0;
     let detractors = 0;

@@ -155,7 +155,6 @@ const BarChart = (props) => {
 
   const calculateSummary = (dataToSummarise) => {
     if (dataToSummarise.length === 0) {
-      console.log("results is empty");
     }
     let promoters = 0;
     let detractors = 0;
@@ -180,7 +179,6 @@ const BarChart = (props) => {
       errorData: errorData,
     });
   };
-  const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
   const months = [
     "January",
     "February",
@@ -196,6 +194,17 @@ const BarChart = (props) => {
     "December",
   ];
 
+  const thisMonth = new Date().getMonth();
+  console.log("Today's month is: ", thisMonth);
+
+  const rollingMonths = [
+    ...months.slice(thisMonth),
+    ...months.slice(0, thisMonth),
+  ];
+  console.log("Rolling Months: ", rollingMonths);
+
+  const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+
   // const convertedDates = results.map((item) =>
   //   new Date(item.createdAt).toUTCString()
   // );
@@ -208,22 +217,7 @@ const BarChart = (props) => {
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
     );
-    console.log(newResults);
   };
-
-  // const filterDate = () => {
-  //   let start = new Date(document.getElementById("start").value);
-  //   let isoStartDate = new Date(start).toISOString().split("-");
-  //   // console.log(start);
-  //   let end = new Date(document.getElementById("end").value);
-  //   let isoEndDate = new Date(end).toISOString().split("-");
-  //   console.log(end);
-
-  //   let start_month_index = parseInt(isoStartDate[1], 10) - 1;
-  //   console.log("The start month is " + months[start_month_index]);
-  //   let end_month_index = parseInt(isoEndDate[1], 10) - 1;
-  //   console.log("The end month is " + months[end_month_index]);
-  //};
 
   useEffect(() => {
     calculateSummary(results);
@@ -244,12 +238,8 @@ const BarChart = (props) => {
     //eslint-disable-next-line
   }, [props]);
 
-  console.log("Summary:", summary);
-  console.log("April Summary: ", aprSummary);
-  console.log("April Promoters: ", aprSummary.promoters);
-
   const data = {
-    labels: months1,
+    labels: rollingMonths,
     datasets: [
       {
         barThickness: 40,
@@ -361,6 +351,10 @@ const BarChart = (props) => {
       <BarContainer className="bar-container">
         <div className="chart">
           <Bar options={options} data={data} id="myChart" />
+        </div>
+        <div className="years-container">
+          <div className="year">{new Date().getFullYear()}</div>
+          <div className="year">{new Date().getFullYear() - 1}</div>
         </div>
       </BarContainer>
       <CircleContainer className="circle-container">

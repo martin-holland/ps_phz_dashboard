@@ -120,6 +120,17 @@
   margin: auto;
   padding: 10px;
 }
+
+.years-container {
+  display: flex;
+  justify-content: space-between;
+}
+.year {
+  font-size: 0.75rem;
+  padding: 10px;
+}
+
+
 @media (max-width: 930px) {
   .bar-container {
     width: 80%;
