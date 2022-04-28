@@ -1,7 +1,4 @@
 export const summariseData = (dataToSummarise) => {
-  if (dataToSummarise.length === 0) {
-    console.log("results is empty");
-  }
   let promoters = 0;
   let detractors = 0;
   let passives = 0;
@@ -28,11 +25,9 @@ export const summariseData = (dataToSummarise) => {
 };
 
 export const calculateOverallScore = (summary, total) => {
-  console.log("From overall score: ", summary.promoters);
   let score =
     ((Number(summary.promoters) - Number(summary.detractors)) / Number(total)) *
     100;
-  console.log("Overall Score: ", score);
   score = Math.round(score);
   let scoreString = score.toString();
 
