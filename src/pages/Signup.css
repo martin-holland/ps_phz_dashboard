@@ -1,4 +1,4 @@
-body {
+/* body {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,7 +38,6 @@ form {
   width: 250px;
   border-radius: 3px;
   margin: 10px 10px;
-  /* background-color: #d7e7ff; */
   background-color: #C6DBEB;
   border: none;
   color: #000036;
@@ -54,7 +53,6 @@ form {
   width: 125px;
   border-radius: 3px;
   margin: 10px;
-  /* background-color: #b1cff9; */
   background-color: #4f86f7;
   color: white;
   font-size: 1rem;
@@ -72,4 +70,4 @@ form {
   cursor: pointer;
   text-decoration: none;
   font-size: 0.9rem;
-}
+} */

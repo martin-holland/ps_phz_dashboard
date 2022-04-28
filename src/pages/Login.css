@@ -1,9 +1,5 @@
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  height: 100%;
   color: #000036;
 }
 
@@ -14,15 +10,33 @@ form {
   align-items: center;
 }
 
-#login {
+#login-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+
+h3 {
+  color: #000036;
+font-size:x-large;
+}
+
+#login {
   border: 1px solid transparent;
   box-shadow: 0px 5px 15px #000036;
   padding: 5px;
   border-radius: 5px;
+  margin: 100px 100px;
+}
+
+#login img {
+  width: 35px;
+  height: 35px;
+  position: relative;
+  left: 20px;
+  top: 12px;
 }
 
 #welcome {
@@ -36,7 +50,6 @@ form {
   width: 250px;
   border-radius: 3px;
   margin: 10px 10px;
-  /* background-color: #d7e7ff; */
   background-color: #C6DBEB;
   border: none;
   color: #000036;
@@ -48,17 +61,12 @@ form {
 }
 
 #google-signin {
-  height: 45px;
+  height: 50px;
   width: 250px;
   border-radius: 3px;
   margin: 10px;
   margin-left: 25px;
-  /* background-color: #b1cff9; */
   background-color: transparent;
-  background: url("/public/GLogo.svg") no-repeat;
-  background-attachment: fixed;
-  background-position:43%;
-  
   color: #000036;
   font-size: 1rem;
   border: none;

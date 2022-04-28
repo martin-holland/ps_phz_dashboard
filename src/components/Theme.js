@@ -1,7 +1,7 @@
 export const darkTheme = {
   backgroundColor: "#1f1f1e",
   color: "#F8F9F9",
-  chartbackground: "#D5D8DC  ",
+  chartbackground: "#F5F5F5",
 };
 
 export const lightTheme = {
