@@ -179,7 +179,6 @@ const BarChart = (props) => {
       errorData: errorData,
     });
   };
-  const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
   const months = [
     "January",
     "February",
@@ -194,6 +193,17 @@ const BarChart = (props) => {
     "November",
     "December",
   ];
+
+  const thisMonth = new Date().getMonth();
+  console.log("Today's month is: ", thisMonth);
+
+  const rollingMonths = [
+    ...months.slice(thisMonth),
+    ...months.slice(0, thisMonth),
+  ];
+  console.log("Rolling Months: ", rollingMonths);
+
+  const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 
   // const convertedDates = results.map((item) =>
   //   new Date(item.createdAt).toUTCString()
@@ -229,7 +239,7 @@ const BarChart = (props) => {
   }, [props]);
 
   const data = {
-    labels: months1,
+    labels: rollingMonths,
     datasets: [
       {
         barThickness: 40,
@@ -341,6 +351,10 @@ const BarChart = (props) => {
       <BarContainer className="bar-container">
         <div className="chart">
           <Bar options={options} data={data} id="myChart" />
+        </div>
+        <div className="years-container">
+          <div className="year">{new Date().getFullYear()}</div>
+          <div className="year">{new Date().getFullYear() - 1}</div>
         </div>
       </BarContainer>
       <CircleContainer className="circle-container">
