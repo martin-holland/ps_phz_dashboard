@@ -131,7 +131,7 @@ const BarChart = (props) => {
         font: {
           size: 18,
         },
-        padding: 10,
+        // padding: 10,
       },
     },
     responsive: true,
@@ -139,13 +139,13 @@ const BarChart = (props) => {
     maintainAspectRatio: false,
     scales: {
       xAxes: {
-        stacked: true,
+        // stacked: true,
         ticks: {
           color: "black",
         },
       },
       y: {
-        stacked: true,
+        // stacked: true,
         ticks: {
           color: "black",
         },
@@ -231,8 +231,8 @@ const BarChart = (props) => {
     labels: months1,
     datasets: [
       {
-        barThickness: 40,
-        maxBarThickness: 25,
+        barThickness: 20,
+        maxBarThickness: 18,
 
         label: "Promoters",
         data: [
@@ -253,8 +253,8 @@ const BarChart = (props) => {
         backgroundColor: "#19aade",
       },
       {
-        barThickness: 40,
-        maxBarThickness: 25,
+        barThickness: 20,
+        maxBarThickness: 18,
         label: "Passive",
         data: [
           janSummary.passives,
@@ -274,8 +274,8 @@ const BarChart = (props) => {
         backgroundColor: "#1de4bd",
       },
       {
-        barThickness: 40,
-        maxBarThickness: 25,
+        barThickness: 20,
+        maxBarThickness: 18,
         label: "Detractors",
         data: [
           janSummary.detractors,
