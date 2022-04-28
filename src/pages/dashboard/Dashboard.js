@@ -86,6 +86,13 @@ const Dashboard = (props) => {
     setNewResults(newResults);
   };
 
+  const resetDate = () => {
+    let start = document.getElementById("start");
+    start.value = sixMonthsAgo;
+    let end = document.getElementById("end");
+    end.value = new Date().toISOString().split("T")[0];
+    setNewResults(defaultResults);
+  };
   // Data retrieval
   useEffect(() => {
     props.getAllData();
@@ -126,7 +133,7 @@ const Dashboard = (props) => {
                 defaultValue={new Date().toISOString().split("T")[0]}
               />
               <button onClick={filterDate}>Filter</button>
-              <button>Reset</button>
+              <button onClick={resetDate}>Reset</button>
             </div>
             <MessageContainer className="message-container">
               {(newResults.length > 0 ? newResults : defaultResults)
