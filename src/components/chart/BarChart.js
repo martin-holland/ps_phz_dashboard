@@ -106,11 +106,10 @@ const BarChart = (props) => {
         font: {
           size: 18,
         },
-        // padding: 10,
       },
     },
     responsive: true,
-
+    // padding: 10,
     maintainAspectRatio: false,
     scales: {
       xAxes: {
@@ -262,9 +261,9 @@ const BarChart = (props) => {
     labels: rollingMonths,
     datasets: [
       {
-        barThickness: 20,
-        maxBarThickness: 18,
-
+        barThickness: 15,
+        maxBarThickness: 16,
+        padding: 10,
         label: "Promoters",
         data: rollingPromoters,
         backgroundColor: "#19aade",
@@ -272,6 +271,7 @@ const BarChart = (props) => {
       {
         barThickness: 20,
         maxBarThickness: 18,
+        padding: 10,
         label: "Passive",
         data: rollingPassives,
         backgroundColor: "#1de4bd",

@@ -19,18 +19,34 @@
   justify-content: center;
   align-items: center;
 }
-
-.chart-container,
+.datefilter-box{
+  padding: 0.5rem;
+}
+/* .chart-container,
 .header-container {
   margin: 1rem;
-}
+} */
 
-.message-container {
+/* .message-container {
   margin-top: 30px;
   display: grid; 
   grid-auto-rows: 1fr; 
   grid-template-columns: 1fr 1fr; 
   gap: 1em 1em; 
+} */
+.message-container, .line-container{
+  width: 50%;
+  height: 400px;
+  
+}
+.message-container{
+  overflow-y: scroll;
+}
+
+.bottom-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .loader {
   display: flex;
@@ -61,10 +77,18 @@
     top: 0;
     right: 5px;
   }
-  .message-container {
+  /* .message-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
+  } */
+  .message-container, .line-container{
+    width: 90%;
+    height: 400px;
+  
+  }
+  .bottom-container{
+  flex-direction: column;  
   }
 }
 @media (max-width: 460px) {

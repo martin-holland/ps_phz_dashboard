@@ -1,13 +1,13 @@
 .bar-container {
-  width: 60%;
+  width: 65%;
   height: 400px;
-  margin: 1rem;
+  /* margin: 1rem; */
   border: 1px solid transparent;
   border-radius: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .chart {
-  padding: 20px;
+  padding: 10px;
   height: 350px;
 }
 .datefilter-box {
@@ -34,7 +34,7 @@
 }
 
 .circle-text-container {
-  padding: 1rem;
+  padding: 0.5rem;
   display: flex;
 }
 
@@ -86,21 +86,22 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .score-container {
-  flex-direction: column;
+  /* flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 1.8rem 0;
+  justify-content: center; */
+  margin: 1rem 0;
+  margin-left: 1rem;
   padding: 5px;
 }
 .promoters,
 .passive,
 .detractors {
   padding: 10px;
-  min-width: 120px fit-content;
+  min-width:fit-content;
   height: 35px;
   border-radius: 5px;
-  margin: 10px;
-  font-size: 0.95rem;
+  margin: 10px 0;
+  font-size: 0.85rem;
   border: none;
   box-shadow: 0px 5px 15px lightgray;
 }
@@ -130,21 +131,37 @@
   padding: 10px;
 }
 
-@media (max-width: 930px) {
+
+@media (max-width: 1200px) {
   .bar-container {
-    width: 80%;
+    width: 70%;
   }
   .circle-container {
-    width: 40%;
+    width: 60%;
     margin: 10px;
+    font-size: 0.8rem;
   }
+}
+@media (max-width: 1000px) {
+  .bar-container {
+    width: 90%;
+  }
+  .circle-container {
+    width: 80%;
+    margin: 10px;
+    font-size: 0.8rem;
+  }
+  /* .score-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #ef7e32;
+    justify-content: center;
+    margin: 1.8rem 0;
+    padding: 5px;
+  } */
 }
 
-@media (max-width: 670px) {
-  .circle-container {
-    width: 80%;
-  }
-}
+
 @media (max-width: 380px) {
   .bar-container {
     width: 100%;

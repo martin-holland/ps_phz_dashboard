@@ -6,7 +6,9 @@ import BarChart from "../../components/chart/BarChart";
 import Message from "../../components/message/Message";
 import Login from "../Login";
 import { useState } from "react";
+import LineChart from "../../components/chart/LineChart";
 import { ThreeCircles } from "react-loader-spinner";
+
 
 // Redux imports
 import { connect } from "react-redux";
@@ -51,7 +53,10 @@ const MessageContainer = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
 `;
-
+const LineChartContainer = styled.div`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
 const Dashboard = (props) => {
   // Data destructuring
   const { defaultResults, results, loading } = props.data;
@@ -136,13 +141,18 @@ const Dashboard = (props) => {
               <button onClick={filterDate}>Filter</button>
               <button onClick={resetDate}>Reset</button>
             </div>
-            <MessageContainer className="message-container">
-              {(newResults.length > 0 ? newResults : defaultResults)
-                .slice(0, 20)
-                .map((result) => (
-                  <Message result={result} key={result.surveyId} />
-                ))}
-            </MessageContainer>
+            <div className="bottom-container">
+              <MessageContainer className="message-container">
+                {(newResults.length > 0 ? newResults : defaultResults)
+                  .slice(0, 20)
+                  .map((result) => (
+                    <Message result={result} key={result.surveyId} />
+                  ))}
+              </MessageContainer>
+              <LineChartContainer className="line-container">
+                <LineChart results={results} theme={props.theme} />
+              </LineChartContainer>
+            </div>
           </div>
         </Main>
       );
