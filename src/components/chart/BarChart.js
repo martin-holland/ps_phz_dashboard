@@ -131,11 +131,10 @@ const BarChart = (props) => {
         font: {
           size: 18,
         },
-        // padding: 10,
       },
     },
     responsive: true,
-
+    // padding: 10,
     maintainAspectRatio: false,
     scales: {
       xAxes: {
@@ -242,9 +241,9 @@ const BarChart = (props) => {
     labels: rollingMonths,
     datasets: [
       {
-        barThickness: 20,
-        maxBarThickness: 18,
-
+        barThickness: 15,
+        maxBarThickness: 16,
+        padding: 10,
         label: "Promoters",
         data: [
           janSummary.promoters,
@@ -266,6 +265,7 @@ const BarChart = (props) => {
       {
         barThickness: 20,
         maxBarThickness: 18,
+        padding: 10,
         label: "Passive",
         data: [
           janSummary.passives,
@@ -288,6 +288,7 @@ const BarChart = (props) => {
         barThickness: 20,
         maxBarThickness: 18,
         label: "Detractors",
+        padding: 10,
         data: [
           janSummary.detractors,
           febSummary.detractors,
