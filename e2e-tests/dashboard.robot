@@ -24,10 +24,12 @@ Window Count
 Window Handler
     ${handle}=    Get Window Handles
     Log    ${handle}
-  #  ${WINDOW_HANDLER}=    Get Window Identifiers
-  #  Log    ${WINDOW_HANDLER}
-  #  ${WINDOW_HANDLER}=    Get Window Titles
-  #  Log    ${WINDOW_HANDLER}
+    ${WINDOW_HANDLER}=    Get Window Identifiers
+    Log    ${WINDOW_HANDLER}
+    ${WINDOW_HANDLER}=    Get Window Titles
+    Log    ${WINDOW_HANDLER}
+    ${WINDOW_HANDLER}=    Get Window Names
+    Log    ${WINDOW_HANDLER}
 
 Login User
     ${window_handles}=    Get Window Handles
@@ -65,7 +67,7 @@ Login User
     Switch Window    ${main_app_handle}
     Sleep    5
     Wait Until Element Contains    xpath://*[contains(concat(' ', @class, ' '), ' header ')]    Net Promoter Score Calculation
-
+    
 *** Test Cases ***
 Login with Google credentials
     Login User

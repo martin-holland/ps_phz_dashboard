@@ -25,3 +25,7 @@ yarn-error.log*
 
 serviceAccount.json
 cypress.env.json
+
+selenium-screenshot*.png
+log.html
+output.html
