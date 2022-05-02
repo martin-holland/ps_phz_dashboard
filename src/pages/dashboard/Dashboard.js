@@ -7,6 +7,8 @@ import Message from "../../components/message/Message";
 import Login from "../Login";
 import { useState } from "react";
 import LineChart from "../../components/chart/LineChart";
+import { ThreeCircles } from "react-loader-spinner";
+
 
 // Redux imports
 import { connect } from "react-redux";
@@ -155,7 +157,16 @@ const Dashboard = (props) => {
         </Main>
       );
     } else {
-      return <div>Data Loading...</div>;
+      return (
+        <div className="loader">
+          <ThreeCircles
+            color="red"
+            outerCircleColor="#19aade"
+            middleCircleColor="#1de4bd"
+            innerCircleColor="#ef7e32"
+          />
+        </div>
+      );
     }
   }
 };

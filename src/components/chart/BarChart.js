@@ -35,10 +35,6 @@ const CircleContainer = styled.div`
   background-color: ${(props) => props.theme.chartbackground};
 `;
 const BarChart = (props) => {
-  // componentDidUpdate(prevProps, prevState) {
-  //   let something;
-  // }
-
   const { results } = props;
 
   console.log("results from barchart: ", results);
@@ -71,27 +67,7 @@ const BarChart = (props) => {
     if (month === 9) Oct.push(item);
     if (month === 10) Nov.push(item);
     if (month === 11) Dec.push(item);
-    // if (isNaN(month)) noDate.push(item);
   });
-
-  // console.log(
-  //   "Months: ",
-  //   Jan,
-  //   Feb,
-  //   Mar,
-  //   Apr,
-  //   May,
-  //   Jun,
-  //   Jul,
-  //   Aug,
-  //   Sep,
-  //   Oct,
-  //   Nov,
-  //   Dec
-  //   // "No Date Info: ",
-  //   // noDate
-  // );
-  // console.log("Months: ", Jan, Feb, Mar, Apr, May, Jun);
 
   // Summarising Data:
   const [summary, setSummary] = useState({});
@@ -108,7 +84,6 @@ const BarChart = (props) => {
   const [octSummary, setOctSummary] = useState({});
   const [novSummary, setNovSummary] = useState({});
   const [decSummary, setDecSummary] = useState({});
-  // const [noDataSummary, setNoDataSummary] = useState({});
 
   let total = results.length;
 
@@ -193,6 +168,51 @@ const BarChart = (props) => {
     "December",
   ];
 
+  const promoterSummaries = [
+    janSummary.promoters,
+    febSummary.promoters,
+    marSummary.promoters,
+    aprSummary.promoters,
+    maySummary.promoters,
+    junSummary.promoters,
+    julSummary.promoters,
+    augSummary.promoters,
+    sepSummary.promoters,
+    octSummary.promoters,
+    novSummary.promoters,
+    decSummary.promoters,
+  ];
+
+  const passiveSummaries = [
+    janSummary.passives,
+    febSummary.passives,
+    marSummary.passives,
+    aprSummary.passives,
+    maySummary.passives,
+    junSummary.passives,
+    julSummary.passives,
+    augSummary.passives,
+    sepSummary.passives,
+    octSummary.passives,
+    novSummary.passives,
+    decSummary.passives,
+  ];
+
+  const detractorSummaries = [
+    janSummary.detractors,
+    febSummary.detractors,
+    marSummary.detractors,
+    aprSummary.detractors,
+    maySummary.detractors,
+    junSummary.detractors,
+    julSummary.detractors,
+    augSummary.detractors,
+    sepSummary.detractors,
+    octSummary.detractors,
+    novSummary.detractors,
+    decSummary.detractors,
+  ];
+
   const thisMonth = new Date().getMonth();
   console.log("Today's month is: ", thisMonth);
 
@@ -200,23 +220,23 @@ const BarChart = (props) => {
     ...months.slice(thisMonth),
     ...months.slice(0, thisMonth),
   ];
+
+  const rollingPromoters = [
+    ...promoterSummaries.slice(thisMonth),
+    ...promoterSummaries.slice(0, thisMonth),
+  ];
+  const rollingPassives = [
+    ...passiveSummaries.slice(thisMonth),
+    ...passiveSummaries.slice(0, thisMonth),
+  ];
+  const rollingDetractors = [
+    ...detractorSummaries.slice(thisMonth),
+    ...detractorSummaries.slice(0, thisMonth),
+  ];
+
   console.log("Rolling Months: ", rollingMonths);
 
   const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
-
-  // const convertedDates = results.map((item) =>
-  //   new Date(item.createdAt).toUTCString()
-  // );
-  // console.log(convertedDates);
-  const filterDate = (months) => {
-    let start = new Date(document.getElementById("start").value).toISOString();
-    console.log("start date: ", start);
-    let end = new Date(document.getElementById("end").value).toISOString();
-    console.log("end date: ", end);
-    let newResults = results.filter(
-      (date) => date.createdAt >= start && date.createdAt <= end
-    );
-  };
 
   useEffect(() => {
     calculateSummary(results);
@@ -245,21 +265,7 @@ const BarChart = (props) => {
         maxBarThickness: 16,
         padding: 10,
         label: "Promoters",
-        data: [
-          janSummary.promoters,
-          febSummary.promoters,
-          marSummary.promoters,
-          aprSummary.promoters,
-          maySummary.promoters,
-          junSummary.promoters,
-          julSummary.promoters,
-          augSummary.promoters,
-          sepSummary.promoters,
-          octSummary.promoters,
-          novSummary.promoters,
-          decSummary.promoters,
-          // noDataSummary.promoters,
-        ],
+        data: rollingPromoters,
         backgroundColor: "#19aade",
       },
       {
@@ -267,43 +273,14 @@ const BarChart = (props) => {
         maxBarThickness: 18,
         padding: 10,
         label: "Passive",
-        data: [
-          janSummary.passives,
-          febSummary.passives,
-          marSummary.passives,
-          aprSummary.passives,
-          maySummary.passives,
-          junSummary.passives,
-          julSummary.passives,
-          augSummary.passives,
-          sepSummary.passives,
-          octSummary.passives,
-          novSummary.passives,
-          decSummary.passives,
-          // noDataSummary.passives,
-        ],
+        data: rollingPassives,
         backgroundColor: "#1de4bd",
       },
       {
         barThickness: 20,
         maxBarThickness: 18,
         label: "Detractors",
-        padding: 10,
-        data: [
-          janSummary.detractors,
-          febSummary.detractors,
-          marSummary.detractors,
-          aprSummary.detractors,
-          maySummary.detractors,
-          junSummary.detractors,
-          julSummary.detractors,
-          augSummary.detractors,
-          sepSummary.detractors,
-          octSummary.detractors,
-          novSummary.detractors,
-          decSummary.detractors,
-          // noDataSummary.detractors,
-        ],
+        data: rollingDetractors,
         backgroundColor: "#ef7e32",
       },
     ],
@@ -328,16 +305,18 @@ const BarChart = (props) => {
   console.log("output", monthlySummary[currentMonth]);
 
   let currentMonthSummary = monthlySummary[currentMonth];
-  let lastMonthSummary = monthlySummary[currentMonth - 1];
 
+  let lastMonthSummary = monthlySummary[currentMonth - 1];
   let currentNPS =
     ((currentMonthSummary.promoters - currentMonthSummary.detractors) /
       (currentMonthSummary.promoters +
         currentMonthSummary.detractors +
         currentMonthSummary.passives)) *
     100;
+
   console.log("current nps", Math.floor(currentNPS));
-  const IntcurrentNPS = Math.floor(currentNPS);
+  let IntcurrentNPS = Math.floor(currentNPS);
+
   let lastMonthNPS =
     ((lastMonthSummary.promoters - currentMonthSummary.detractors) /
       (lastMonthSummary.promoters +
@@ -345,8 +324,14 @@ const BarChart = (props) => {
         lastMonthSummary.passives)) *
     100;
   console.log("last month nps", Math.floor(lastMonthNPS));
-  const IntLastmonthNPS = Math.floor(lastMonthNPS);
+  let IntLastmonthNPS = Math.floor(lastMonthNPS);
 
+  if (isNaN(IntLastmonthNPS)) {
+    IntLastmonthNPS = "No Data";
+  }
+  if (isNaN(IntcurrentNPS)) {
+    IntcurrentNPS = "No Data";
+  }
   return (
     <>
       <BarContainer className="bar-container">
