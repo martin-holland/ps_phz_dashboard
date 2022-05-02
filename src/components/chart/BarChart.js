@@ -37,8 +37,6 @@ const CircleContainer = styled.div`
 const BarChart = (props) => {
   const { results } = props;
 
-  console.log("results from barchart: ", results);
-
   const Jan = [];
   const Feb = [];
   const Mar = [];
@@ -54,7 +52,6 @@ const BarChart = (props) => {
 
   results.forEach((item) => {
     const month = dayjs(item.createdAt).month();
-    console.log(month);
     if (month === 0) Jan.push(item);
     if (month === 1) Feb.push(item);
     if (month === 2) Mar.push(item);
@@ -215,7 +212,6 @@ const BarChart = (props) => {
   ];
 
   const thisMonth = new Date().getMonth();
-  console.log("Today's month is: ", thisMonth);
 
   const rollingMonths = [
     ...months.slice(thisMonth),
@@ -234,8 +230,6 @@ const BarChart = (props) => {
     ...detractorSummaries.slice(thisMonth),
     ...detractorSummaries.slice(0, thisMonth),
   ];
-
-  console.log("Rolling Months: ", rollingMonths);
 
   const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 
@@ -301,8 +295,6 @@ const BarChart = (props) => {
     novSummary,
     decSummary,
   ];
-
-  console.log("output", monthlySummary[currentMonth]);
 
   let currentMonthSummary = monthlySummary[currentMonth];
   let lastMonthSummary = monthlySummary[currentMonth - 1];

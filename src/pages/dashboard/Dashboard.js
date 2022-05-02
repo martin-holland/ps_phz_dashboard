@@ -7,9 +7,11 @@ import Message from "../../components/message/Message";
 import Login from "../Login";
 import { useState } from "react";
 import { ThreeCircles } from "react-loader-spinner";
+import dayjs from "dayjs";
+import { months } from "../../util/months";
 
 // Redux imports
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import { getAllData, getSixMonths } from "../../redux/actions/dataActions";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
@@ -54,11 +56,18 @@ const MessageContainer = styled.div`
 
 const Dashboard = (props) => {
   // Data destructuring
-  const { defaultResults, results, loading } = props.data;
+  const { datesByYearAndMonth, defaultResults, results, loading } = props.data;
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
   console.log("results from dashboard: ", results);
+  // Testing datesByYearAndMonth
+  console.log(
+    "Dashboard datesByYearAndMonth: ",
+    datesByYearAndMonth.forEach((item) => {
+      console.log(item);
+    })
+  );
 
   //theme
   const changeTheme = () => {
@@ -105,8 +114,6 @@ const Dashboard = (props) => {
     return <Login />;
   } else {
     if (!loading && results !== undefined && results.length >= 1) {
-      console.log("default results: ", defaultResults);
-      console.log("newResults: ", newResults);
       return (
         <Main className="main">
           <div className="container">
