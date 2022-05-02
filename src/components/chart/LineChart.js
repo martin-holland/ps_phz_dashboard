@@ -80,7 +80,20 @@ const LineChart = (props) => {
       },
     },
   };
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
   const data = {
     labels: months,
     datasets: [

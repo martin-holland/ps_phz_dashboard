@@ -101,15 +101,14 @@ const BarChart = (props) => {
         text: `Total respondents ${total}`,
         color: "black",
         font: {
-          size: 18,
+          size: 14,
         },
       },
     },
     responsive: true,
-    // padding: 10,
     maintainAspectRatio: false,
     scales: {
-      xAxes: {
+      x: {
         // stacked: true,
         ticks: {
           color: "black",
@@ -151,18 +150,18 @@ const BarChart = (props) => {
     });
   };
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
     "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   const promoterSummaries = [
@@ -255,24 +254,22 @@ const BarChart = (props) => {
     labels: rollingMonths,
     datasets: [
       {
-        barThickness: 15,
-        maxBarThickness: 16,
-        padding: 10,
+        barThickness: 20,
+        maxBarThickness: 15,
         label: "Promoters",
         data: rollingPromoters,
         backgroundColor: "#19aade",
       },
       {
         barThickness: 20,
-        maxBarThickness: 18,
-        padding: 10,
+        // maxBarThickness: 15,
         label: "Passive",
         data: rollingPassives,
         backgroundColor: "#1de4bd",
       },
       {
         barThickness: 20,
-        maxBarThickness: 18,
+        // maxBarThickness: 15,
         label: "Detractors",
         data: rollingDetractors,
         backgroundColor: "#ef7e32",

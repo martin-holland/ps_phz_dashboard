@@ -1,7 +1,6 @@
 .bar-container {
   width: 65%;
   height: 400px;
-  /* margin: 1rem; */
   border: 1px solid transparent;
   border-radius: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -133,6 +132,7 @@
 
 
 @media (max-width: 1200px) {
+
   .bar-container {
     width: 70%;
   }
@@ -162,9 +162,10 @@
 }
 
 
-@media (max-width: 380px) {
+@media (max-width: 700px) {
   .bar-container {
-    width: 100%;
+    width: 90%;
+     
   }
   .circle-container {
     width: 100%;
@@ -175,4 +176,21 @@
     height: 200px;
     width: 200px;
   }
+}
+@media (max-width: 450px) {
+  .bar-container {
+    width: 95%;
+     
+  }
+  .chart {
+    padding: 5px;
+  }
+}
+@media (max-width: 350px) {
+  .bar-container {
+    width: 300px;
+    height:400px;
+  
+  }
+  
 }
