@@ -1,6 +1,9 @@
 export const SET_DATA = "SET_DATA";
 export const SET_NEW_RESULTS = "SET_NEW_RESULTS";
 export const LOADING_DATA = "LOADING_DATA";
+export const DATE_ORDERED = "DATE_ORDERED";
+export const MONTH_ORDERED = "MONTH_ORDERED";
+export const YEARS_AND_MONTHS_ORDERED = "YEARS_AND_MONTHS_ORDERED";
 
 export const LOADING_UI = "LOADING_UI";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
