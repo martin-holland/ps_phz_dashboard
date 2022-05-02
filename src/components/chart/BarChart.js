@@ -326,8 +326,8 @@ const BarChart = (props) => {
   console.log("output", monthlySummary[currentMonth]);
 
   let currentMonthSummary = monthlySummary[currentMonth];
-  let lastMonthSummary = monthlySummary[currentMonth - 1];
 
+  let lastMonthSummary = monthlySummary[currentMonth - 1];
   let currentNPS =
     ((currentMonthSummary.promoters - currentMonthSummary.detractors) /
       (currentMonthSummary.promoters +
@@ -335,7 +335,9 @@ const BarChart = (props) => {
         currentMonthSummary.passives)) *
     100;
   console.log("current nps", Math.floor(currentNPS));
-  const IntcurrentNPS = Math.floor(currentNPS);
+
+  let IntcurrentNPS = Math.floor(currentNPS);
+
   let lastMonthNPS =
     ((lastMonthSummary.promoters - currentMonthSummary.detractors) /
       (lastMonthSummary.promoters +
@@ -343,8 +345,14 @@ const BarChart = (props) => {
         lastMonthSummary.passives)) *
     100;
   console.log("last month nps", Math.floor(lastMonthNPS));
-  const IntLastmonthNPS = Math.floor(lastMonthNPS);
+  let IntLastmonthNPS = Math.floor(lastMonthNPS);
 
+  if (isNaN(IntLastmonthNPS)) {
+    IntLastmonthNPS = "No Data";
+  }
+  if (isNaN(IntcurrentNPS)) {
+    IntcurrentNPS = "No Data";
+  }
   return (
     <>
       <BarContainer className="bar-container">
