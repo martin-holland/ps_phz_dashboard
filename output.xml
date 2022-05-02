@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.8.9 on darwin)" generated="20220429 13:20:59.653" rpa="false" schemaversion="3">
+<suite id="s1" name="Dashboard" source="/Users/bc-macair019/code/a-matta/unittests-phzfrontend/dashboard/ps_phz_dashboard/e2e-tests/dashboard.robot">
+<test id="s1-t1" name="Get Window Handler" line="75">
+<kw name="Open UI Application" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220429 13:20:59.752" level="INFO">Opening browser 'chrome' to base url 'http://localhost:3000'.</msg>
+<status status="PASS" starttime="20220429 13:20:59.752" endtime="20220429 13:21:08.188"/>
+</kw>
+<status status="PASS" starttime="20220429 13:20:59.752" endtime="20220429 13:21:08.188"/>
+</kw>
+<kw name="Window Handler">
+<kw name="Get Window Handles" library="SeleniumLibrary">
+<var>${handle}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20220429 13:21:08.191" level="INFO">${handle} = ['CDwindow-122BB1EC502C1AD7C7F35B2DCB49667A']</msg>
+<status status="PASS" starttime="20220429 13:21:08.189" endtime="20220429 13:21:08.191"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${handle}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220429 13:21:08.191" level="INFO">['CDwindow-122BB1EC502C1AD7C7F35B2DCB49667A']</msg>
+<status status="PASS" starttime="20220429 13:21:08.191" endtime="20220429 13:21:08.191"/>
+</kw>
+<kw name="Get Window Identifiers" library="SeleniumLibrary">
+<var>${WINDOW_HANDLER}</var>
+<doc>Returns and logs id attributes of all windows of the selected browser.</doc>
+<msg timestamp="20220429 13:21:08.363" level="INFO">Altogether 1 item.
+1: undefined</msg>
+<msg timestamp="20220429 13:21:08.363" level="INFO">${WINDOW_HANDLER} = ['undefined']</msg>
+<status status="PASS" starttime="20220429 13:21:08.191" endtime="20220429 13:21:08.363"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${WINDOW_HANDLER}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220429 13:21:08.363" level="INFO">['undefined']</msg>
+<status status="PASS" starttime="20220429 13:21:08.363" endtime="20220429 13:21:08.363"/>
+</kw>
+<kw name="Get Window Titles" library="SeleniumLibrary">
+<var>${WINDOW_HANDLER}</var>
+<doc>Returns and logs titles of all windows of the selected browser.</doc>
+<msg timestamp="20220429 13:21:08.372" level="INFO">Altogether 1 item.
+1: React App</msg>
+<msg timestamp="20220429 13:21:08.372" level="INFO">${WINDOW_HANDLER} = ['React App']</msg>
+<status status="PASS" starttime="20220429 13:21:08.363" endtime="20220429 13:21:08.372"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${WINDOW_HANDLER}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220429 13:21:08.372" level="INFO">['React App']</msg>
+<status status="PASS" starttime="20220429 13:21:08.372" endtime="20220429 13:21:08.372"/>
+</kw>
+<kw name="Get Window Names" library="SeleniumLibrary">
+<var>${WINDOW_HANDLER}</var>
+<doc>Returns and logs names of all windows of the selected browser.</doc>
+<msg timestamp="20220429 13:21:08.392" level="INFO">Altogether 1 item.
+1: undefined</msg>
+<msg timestamp="20220429 13:21:08.392" level="INFO">${WINDOW_HANDLER} = ['undefined']</msg>
+<status status="PASS" starttime="20220429 13:21:08.372" endtime="20220429 13:21:08.392"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${WINDOW_HANDLER}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220429 13:21:08.392" level="INFO">['undefined']</msg>
+<status status="PASS" starttime="20220429 13:21:08.392" endtime="20220429 13:21:08.392"/>
+</kw>
+<status status="PASS" starttime="20220429 13:21:08.189" endtime="20220429 13:21:08.392"/>
+</kw>
+<status status="PASS" starttime="20220429 13:20:59.752" endtime="20220429 13:21:08.392"/>
+</test>
+<status status="PASS" starttime="20220429 13:20:59.654" endtime="20220429 13:21:08.393"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Dashboard">Dashboard</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
