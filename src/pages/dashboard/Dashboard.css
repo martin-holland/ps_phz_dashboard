@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: white;
+  /* background-color: white; */
 }
 
 .container {
@@ -21,6 +21,7 @@
 }
 .datefilter-box{
   padding: 0.5rem;
+  width: 90vw;
 }
 /* .chart-container,
 .header-container {
@@ -82,6 +83,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
   } */
+ 
   .message-container, .line-container{
     width: 90%;
     height: 400px;

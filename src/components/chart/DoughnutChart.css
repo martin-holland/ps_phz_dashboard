@@ -27,3 +27,12 @@
 #negative {
   color: #ef7e32;
 }
+@media (max-width: 730px) {
+  .doughnut-number {
+    position: relative;
+    top: 45%;
+    left: 40%;
+    font-size: 1.5rem;
+   
+  }
+}
