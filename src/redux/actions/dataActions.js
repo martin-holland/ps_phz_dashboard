@@ -23,7 +23,9 @@ export const getAllData = () => (dispatch) => {
         type: SET_DATA,
         payload: res.data,
       });
-      let today = new Date().toISOString().split("T")[0];
+      let today = new Date();
+      today.setDate(today.getDate() + 1);
+      today = today.toISOString().split("T")[0];
       let sixMonthsAgo = new Date();
       sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
       sixMonthsAgo = sixMonthsAgo.toISOString().split("T")[0];
