@@ -330,10 +330,6 @@ const BarChart = (props) => {
         <div className="chart">
           <Bar options={options} data={data} id="myChart" />
         </div>
-        <div className="years-container">
-          <div className="year">{new Date().getFullYear()}</div>
-          <div className="year">{new Date().getFullYear() - 1}</div>
-        </div>
       </BarContainer>
       <CircleContainer className="circle-container">
         {/* <div className="circle-text-container"> */}
