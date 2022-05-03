@@ -11,9 +11,8 @@ import { ThreeCircles } from "react-loader-spinner";
 import dayjs from "dayjs";
 import { months } from "../../util/months";
 
-
 // Redux imports
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { getAllData, getSixMonths } from "../../redux/actions/dataActions";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
@@ -94,7 +93,10 @@ const Dashboard = (props) => {
 
   const filterDate = () => {
     let start = new Date(document.getElementById("start").value).toISOString();
-    let end = new Date(document.getElementById("end").value).toISOString();
+    let end = new Date(document.getElementById("end").value);
+    end.setDate(end.getDate() + 1);
+    end = end.toISOString();
+    console.log("End Date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
     );
@@ -106,8 +108,9 @@ const Dashboard = (props) => {
     start.value = sixMonthsAgo;
     let end = document.getElementById("end");
     end.value = new Date().toISOString().split("T")[0];
-    setNewResults(defaultResults);
+    filterDate();
   };
+
   // Data retrieval
   useEffect(() => {
     props.getAllData();
