@@ -216,15 +216,6 @@ const LineChart = (props) => {
       },
 
       autocolors: false,
-      title: {
-        display: true,
-        text: `Total respondents ${total}`,
-        color: "black",
-        font: {
-          size: 18,
-        },
-        padding: 10,
-      },
     },
     responsive: true,
     hoverRadius: 12,

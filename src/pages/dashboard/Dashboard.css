@@ -36,8 +36,9 @@
   gap: 1em 1em; 
 } */
 .message-container, .line-container{
-  width: 50%;
+  width: 50vw;
   height: 400px;
+  min-height: 300px;
   
 }
 .message-container{
