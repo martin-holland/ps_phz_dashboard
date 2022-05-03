@@ -160,7 +160,10 @@ const Dashboard = (props) => {
                   ))}
               </MessageContainer>
               <LineChartContainer className="line-container">
-                <LineChart results={results} theme={props.theme} />
+                <LineChart
+                  results={newResults.length > 0 ? newResults : defaultResults}
+                  theme={props.theme}
+                />
               </LineChartContainer>
             </div>
           </div>

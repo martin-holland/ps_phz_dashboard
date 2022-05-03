@@ -246,19 +246,6 @@ const LineChart = (props) => {
       },
     },
   };
-  const data = {
-    labels: rollingMonths,
-    datasets: [
-      {
-        label: "Nps",
-        data: npsScore,
-        tension: 0.5,
-        type: "line",
-        borderWidth: 2,
-        backgroundColor: "#0E5881",
-      },
-    ],
-  };
 
   useEffect(() => {
     calculateSummary(results);
@@ -274,14 +261,11 @@ const LineChart = (props) => {
     setOctSummary(summariseData(Oct));
     setNovSummary(summariseData(Nov));
     setDecSummary(summariseData(Dec));
-    // setNoDataSummary(summariseData(noDate));
 
     //eslint-disable-next-line
   }, [props]);
 
   const calculateNpsScore = (summary) => {
-    // console.log("monthSumarry");
-    // console.log(monthSumarry);
     if (rollingPromoters === undefined && rollingDetractors === undefined) {
       return "results is empty";
     }
@@ -289,9 +273,13 @@ const LineChart = (props) => {
     for (let i = 0; i <= rollingMonths.length - 1; i++) {
       let total1 =
         rollingPromoters[i] + rollingPassives[i] + rollingDetractors[i];
-      score1.push(
-        ((rollingPromoters[i] - rollingDetractors[i]) / total1) * 100
-      );
+      let score = ((rollingPromoters[i] - rollingDetractors[i]) / total1) * 100;
+      score = Math.round(score);
+
+      if (isNaN(score)) {
+        score = 0;
+      }
+      score1.push(score);
     }
     setNpsScore(score1);
   };
@@ -310,12 +298,40 @@ const LineChart = (props) => {
     // setOctNps(calculateNpsScore(octSummary));
     // setNovNps(calculateNpsScore(novSummary));
     // setDecNps(calculateNpsScore(decSummary));
-  }, [props]);
+
+    //eslint-disable-next-line
+  }, [
+    props,
+    janSummary,
+    febSummary,
+    marSummary,
+    aprSummary,
+    maySummary,
+    junSummary,
+    julSummary,
+    augSummary,
+    sepSummary,
+    octSummary,
+    novSummary,
+    decSummary,
+  ]);
 
   console.log("Summary:", summary);
   console.log("April Summary: ", aprSummary);
   console.log(npsScore);
-
+  const data = {
+    labels: rollingMonths,
+    datasets: [
+      {
+        label: "Nps",
+        data: npsScore,
+        tension: 0.5,
+        type: "line",
+        borderWidth: 2,
+        backgroundColor: "#0E5881",
+      },
+    ],
+  };
   return (
     <LineContainer>
       <div className="linechart">
