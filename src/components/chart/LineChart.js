@@ -198,23 +198,6 @@ const LineChart = (props) => {
     novSummary,
     decSummary,
   ];
-  const calculateNpsScore = (monthlySummary) => {
-    // console.log("monthSumarry");
-    // console.log(monthSumarry);
-    let score1 = [];
-    if (monthlySummary.length === 0) {
-      return "results is empty";
-    }
-    for (let i = 0; i <= monthlySummary.length - 1; i++) {
-      let total1 =
-        rollingPromoters[i] + rollingPassives[i] + rollingDetractors[i];
-      score1.push(
-        ((rollingPromoters[i] - rollingDetractors[i]) / total1) * 100
-      );
-    }
-    setNpsScore(score1);
-  };
-
   const currentMonth = new Date().getMonth();
 
   console.log("output", monthlySummary[currentMonth]);
@@ -296,6 +279,23 @@ const LineChart = (props) => {
     //eslint-disable-next-line
   }, [props]);
 
+  const calculateNpsScore = (summary) => {
+    // console.log("monthSumarry");
+    // console.log(monthSumarry);
+    if (rollingPromoters === undefined && rollingDetractors === undefined) {
+      return "results is empty";
+    }
+    let score1 = [];
+    for (let i = 0; i <= rollingMonths.length - 1; i++) {
+      let total1 =
+        rollingPromoters[i] + rollingPassives[i] + rollingDetractors[i];
+      score1.push(
+        ((rollingPromoters[i] - rollingDetractors[i]) / total1) * 100
+      );
+    }
+    setNpsScore(score1);
+  };
+
   useEffect(() => {
     calculateNpsScore(monthlySummary);
     // setJanNps(calculateNpsScore(janSummary));
@@ -310,7 +310,7 @@ const LineChart = (props) => {
     // setOctNps(calculateNpsScore(octSummary));
     // setNovNps(calculateNpsScore(novSummary));
     // setDecNps(calculateNpsScore(decSummary));
-  }, [results]);
+  }, [props]);
 
   console.log("Summary:", summary);
   console.log("April Summary: ", aprSummary);
@@ -319,7 +319,7 @@ const LineChart = (props) => {
   return (
     <LineContainer>
       <div className="linechart">
-        <Line options={options} data={data} id="myChart" />
+        {npsScore && <Line options={options} data={data} id="myChart" />}
       </div>
     </LineContainer>
   );
