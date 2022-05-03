@@ -30,33 +30,20 @@ export const calculateOverallScore = (summary, total) => {
     100;
   score = Math.round(score);
   let scoreString = score.toString();
-
-  if (score >= 1) {
-    return (
-      <div
-        id="positive"
-        className={`doughnut-number ${
-          scoreString.length === 1 ? "one" : "two"
-        }`}
-      >
-        {score}
-      </div>
-    );
-  } else if (score < 0) {
-    return (
-      <div
-        id="negative"
-        className={`doughnut-number ${
-          scoreString.length === 1 ? "one" : "two"
-        }`}
-      >
-        {score}
-      </div>
-    );
+  if (isNaN(score)) {
+    score = 0;
   }
+  let idvalue = "zero";
+  if (score < 0) {
+    idvalue = "negative";
+  }
+  if (score > 0) {
+    idvalue = "positive";
+  }
+
   return (
     <div
-      id="zero"
+      id={idvalue}
       className={`doughnut-number ${scoreString.length === 1 ? "one" : "two"}`}
     >
       {score}
