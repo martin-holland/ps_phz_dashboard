@@ -66,6 +66,7 @@ export const getSixMonths = (results) => (dispatch) => {
   let newResults = results.filter(
     (date) => date.createdAt >= sixMonthsAgo && date.createdAt <= today
   );
+  return newResults;
 };
 
 function orderByYear(results) {
