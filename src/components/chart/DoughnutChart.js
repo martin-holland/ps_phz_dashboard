@@ -49,7 +49,7 @@ const DoughnutChart = (props) => {
   useEffect(() => {
     calculateSummary();
     //eslint-disable-next-line
-  }, []);
+  }, [results]);
 
   const data = {
     datasets: [
@@ -61,15 +61,6 @@ const DoughnutChart = (props) => {
       },
     ],
   };
-
-  const fakeSummary = {
-    promoters: 10,
-    passives: 1,
-    detractors: 10,
-    errorData: 1,
-  };
-
-  const fakeTotal = 42;
 
   // summary, total should be in here
   const overallScoreMarkup = calculateOverallScore(summary, total);
