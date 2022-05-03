@@ -268,7 +268,7 @@ const LineChart = (props) => {
     datasets: [
       {
         label: "Nps",
-        data: [...npsScore],
+        data: npsScore,
         tension: 0.5,
         type: "line",
         borderWidth: 2,
