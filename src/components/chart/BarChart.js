@@ -293,14 +293,14 @@ const BarChart = (props) => {
     decSummary,
   ];
 
-  let currentMonthSummary = monthlySummary[currentMonth];
-  let lastMonthSummary = monthlySummary[currentMonth - 1];
+  /*let currentMonthSummary = rollingMonths[0];
+  let lastMonthSummary = rollingMonths[11];
+  console.log("Current Monthly summary", currentMonthSummary);
+  console.log("Last Monthly summary", lastMonthSummary);*/
 
   let currentNPS =
-    ((currentMonthSummary.promoters - currentMonthSummary.detractors) /
-      (currentMonthSummary.promoters +
-        currentMonthSummary.detractors +
-        currentMonthSummary.passives)) *
+    ((rollingPromoters[0] - rollingDetractors[0]) /
+      (rollingPromoters[0] + rollingDetractors[0] + rollingPassives[0])) *
     100;
 
   //console.log("current nps", Math.floor(currentNPS));
@@ -308,10 +308,8 @@ const BarChart = (props) => {
   let IntcurrentNPS = Math.floor(currentNPS);
 
   let lastMonthNPS =
-    ((lastMonthSummary.promoters - currentMonthSummary.detractors) /
-      (lastMonthSummary.promoters +
-        lastMonthSummary.detractors +
-        lastMonthSummary.passives)) *
+    ((rollingPromoters[11] - rollingDetractors[11]) /
+      (rollingPromoters[11] + rollingDetractors[11] + rollingPassives[11])) *
     100;
 
   //console.log("last month nps", Math.floor(lastMonthNPS));
