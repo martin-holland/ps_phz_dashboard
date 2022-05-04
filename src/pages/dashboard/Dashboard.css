@@ -45,6 +45,11 @@
   overflow-y: scroll;
 }
 
+input {
+  font-family: inherit;
+  text-indent: 3px;
+}
+
 .bottom-container{
   display: flex;
   justify-content: center;

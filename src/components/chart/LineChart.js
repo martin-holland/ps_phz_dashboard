@@ -314,7 +314,7 @@ const LineChart = (props) => {
     labels: rollingMonths,
     datasets: [
       {
-        label: "Nps",
+        label: "Promoter Score",
         data: npsScore,
         tension: 0.5,
         type: "line",
