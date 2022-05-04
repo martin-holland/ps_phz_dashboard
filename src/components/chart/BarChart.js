@@ -347,7 +347,7 @@ const BarChart = (props) => {
             <p className="detractors">Detractors: {summary.detractors}</p>
           </div>
           <div className="doughnut-container">
-            <DoughnutChart results={results} />
+            <DoughnutChart results={results} currentNPS={currentNPS} />
           </div>
         </div>
       </CircleContainer>
