@@ -10,6 +10,10 @@ import LineChart from "../../components/chart/LineChart";
 import { ThreeCircles } from "react-loader-spinner";
 import dayjs from "dayjs";
 import { months } from "../../util/months";
+import Tippy from "@tippyjs/react";
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/themes/light.css';
+import 'tippy.js/themes/translucent.css';
 
 // Redux imports
 import { connect } from "react-redux";
@@ -127,11 +131,14 @@ const Dashboard = (props) => {
           <div className="container">
             <div className="header-container">
               <TitleHead className="header">
-                Net Promoter Score Calculation
+                Promoter Score Calculation
               </TitleHead>
+              <Tippy theme='light' delay={1000} content={<span> 
+                Change theme</span>}>
               <Toggle className="toggle-button" onClick={changeTheme}>
                 {icon}
               </Toggle>
+              </Tippy>
             </div>
             <ChartContainer className="chart-container">
               <BarChart
@@ -141,15 +148,27 @@ const Dashboard = (props) => {
             </ChartContainer>
             <div className="datefilter-box">
               Start:
+              <Tippy theme='light' delay={1000} content={<span> 
+                Choose start date</span>}>
               <input type="date" id="start" defaultValue={sixMonthsAgo} />
+              </Tippy>
               End:
+              <Tippy theme='light' delay={1000} content={<span> 
+                Choose end date</span>}>
               <input
                 type="date"
                 id="end"
                 defaultValue={new Date().toISOString().split("T")[0]}
               />
+              </Tippy>
+              <Tippy theme='light' delay={1000} content={<span> 
+                Filter data</span>}>
               <button onClick={filterDate}>Filter</button>
+              </Tippy>
+              <Tippy theme='light' delay={1000} content={<span> 
+                Reset</span>}>
               <button onClick={resetDate}>Reset</button>
+              </Tippy>
             </div>
             <div className="bottom-container">
               <MessageContainer className="message-container">
