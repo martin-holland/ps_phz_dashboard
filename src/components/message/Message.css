@@ -40,15 +40,11 @@
   background-color: #19aade;
 }
 .ratings {
-  font-size: 1.5rem;
-}
-.message {
-  padding: 0.7rem;
+  font-size: 2rem;
+  padding:0 10px;
 }
 .date-box {
-  display:flex;
-  align-items: center;
-  margin: 0.5rem;
+  margin: auto;
 }
 @media (max-width: 380px) {
   
