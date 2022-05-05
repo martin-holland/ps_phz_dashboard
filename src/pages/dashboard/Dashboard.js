@@ -18,6 +18,7 @@ import "tippy.js/themes/translucent.css";
 // Redux imports
 import { connect } from "react-redux";
 import { getAllData, getSixMonths } from "../../redux/actions/dataActions";
+import { logoutUser } from "../../redux/actions/userActions";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 
@@ -115,6 +116,10 @@ const Dashboard = (props) => {
     filterDate();
   };
 
+  // const logoutFunction = () => {
+  //   props.logoutUser();
+  // };
+
   // Data retrieval
   useEffect(() => {
     props.getAllData();
@@ -130,6 +135,7 @@ const Dashboard = (props) => {
         <Main className="main">
           <div className="container">
             <div className="header-container">
+              <button onClick={() => props.logoutUser()}>Logout</button>
               <TitleHead className="header">
                 Promoter Score Calculation
               </TitleHead>
@@ -216,6 +222,7 @@ const Dashboard = (props) => {
 
 Dashboard.propTypes = {
   getAllData: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
 };
@@ -225,6 +232,8 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, { getAllData, getSixMonths })(
-  Dashboard
-);
+export default connect(mapStateToProps, {
+  getAllData,
+  getSixMonths,
+  logoutUser,
+})(Dashboard);
