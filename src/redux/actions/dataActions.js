@@ -46,11 +46,11 @@ export const getAllData = () => (dispatch) => {
         type: MONTH_ORDERED,
         payload: datesByMonth,
       });
-      const datesByYearAndMonth = orderByYearAndMonth(res.data);
-      dispatch({
-        type: YEARS_AND_MONTHS_ORDERED,
-        payload: datesByYearAndMonth,
-      });
+      // const datesByYearAndMonth = orderByYearAndMonth(res.data);
+      // dispatch({
+      //   type: YEARS_AND_MONTHS_ORDERED,
+      //   payload: datesByYearAndMonth,
+      // });
     })
     .catch((err) => {
       dispatch({
