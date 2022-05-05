@@ -309,6 +309,7 @@ const LineChart = (props) => {
 
   console.log("Summary:", summary);
   console.log("April Summary: ", aprSummary);
+  console.log("May Summary: ", maySummary);
   console.log(npsScore);
   const data = {
     labels: rollingMonths,
