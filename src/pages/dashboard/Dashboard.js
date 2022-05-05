@@ -152,12 +152,18 @@ const Dashboard = (props) => {
                 Promoter Score Calculation
               </TitleHead>
               <div className="navbar-rightbox">
-                <LogoutButton
-                  className="logout-button"
-                  onClick={() => props.logoutUser()}
+                <Tippy
+                  theme="light"
+                  delay={250}
+                  content={<span>Log user out</span>}
                 >
-                  logout
-                </LogoutButton>
+                  <LogoutButton
+                    className="logout-button"
+                    onClick={() => props.logoutUser()}
+                  >
+                    Logout
+                  </LogoutButton>
+                </Tippy>
 
                 <Tippy
                   theme="light"
