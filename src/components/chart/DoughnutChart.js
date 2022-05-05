@@ -15,7 +15,8 @@ const options = {
 };
 
 const DoughnutChart = (props) => {
-  const { results } = props;
+  const { results, currentNPS } = props;
+
   // Summarising Data:
   const [summary, setSummary] = useState({});
   let total = results.length;
@@ -63,7 +64,7 @@ const DoughnutChart = (props) => {
   };
 
   // summary, total should be in here
-  const overallScoreMarkup = calculateOverallScore(summary, total);
+  const overallScoreMarkup = calculateOverallScore(currentNPS);
   return (
     <>
       <Doughnut
