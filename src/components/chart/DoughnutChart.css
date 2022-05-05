@@ -4,7 +4,6 @@
 .doughnut-number {
   position: relative;
   top: 45%;
-  /* margin: auto; */
   z-index: 1;
   font-size: 1.8rem;
   width: min-content;

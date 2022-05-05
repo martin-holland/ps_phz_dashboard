@@ -22,10 +22,8 @@
   justify-content: flex-start;
   align-items: center; 
   width:100%;
+ 
 }
-
-
-
 .indicator {
   min-width: 0.4rem;
   height: 3rem;
@@ -45,6 +43,7 @@
 }
 .date-box {
   margin: auto;
+  margin-right: 5px;
 }
 @media (max-width: 380px) {
   
