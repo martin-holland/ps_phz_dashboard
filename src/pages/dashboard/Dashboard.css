@@ -21,7 +21,25 @@
 }
 .datefilter-box{
   padding: 0.5rem;
-  width: 90vw;
+  width: 95vw;
+  background-color: skyblue;
+}
+
+.datefilter-box input {
+  font-size: large;
+}
+
+.datefilter-box button {
+  font-size: large;
+  padding: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+}
+
+.datefilter-box button:hover {
+  color: white;
+  background-color: gray;
 }
 /* .chart-container,
 .header-container {
@@ -54,6 +72,8 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 .loader {
   display: flex;

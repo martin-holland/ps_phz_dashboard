@@ -229,6 +229,8 @@ const BarChart = (props) => {
     ...detractorSummaries.slice(0, thisMonth),
   ];
 
+  console.log("Rolling Promoters", rollingPromoters);
+
   const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 
   useEffect(() => {
