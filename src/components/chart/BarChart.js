@@ -189,7 +189,8 @@ const BarChart = (props) => {
     decSummary.detractors,
   ];
 
-  const thisMonth = new Date().getMonth();
+  let thisMonth = new Date().getMonth();
+  thisMonth = thisMonth - 11;
 
   const rollingMonths = [
     ...months.slice(thisMonth),
@@ -291,7 +292,7 @@ const BarChart = (props) => {
         <div className="parent-box">
           <div className="lastMonthNPS">Previous Score : {IntLastmonthNPS}</div>
           <div className="currentMonthNPS">
-            Net Promoter Score : {IntcurrentNPS}
+            Promoter Score : {IntcurrentNPS}
           </div>
         </div>
         <div className="doughnut-parent">
