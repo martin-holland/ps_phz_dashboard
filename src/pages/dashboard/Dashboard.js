@@ -37,12 +37,20 @@ const TitleHead = styled.h1`
   margin: 0.5rem;
   font-size: 1.2rem;
 `;
+const LogoutButton = styled.button`
+  color: ${(props) => props.theme.color};
+  background-color: ${(props) => props.theme.backgroundColor};
+  transition: all 0.5s ease;
+  margin: 0.5rem;
+  font-size: 1.2rem;
+`;
 const Toggle = styled.p`
   cursor: pointer;
-  position: absolute;
-  top: 5px;
-  right: 60px;
-  margin-top: 1rem;
+  // position: absolute;
+  // top: 5px;
+  // right: 60px;
+  padding: 5px;
+  margin-top: 0.5rem;
   border: none;
 
   transition: all 0.5s ease;
@@ -135,19 +143,27 @@ const Dashboard = (props) => {
         <Main className="main">
           <div className="container">
             <div className="header-container">
-              <button onClick={() => props.logoutUser()}>Logout</button>
               <TitleHead className="header">
                 Promoter Score Calculation
               </TitleHead>
-              <Tippy
-                theme="light"
-                delay={250}
-                content={<span>Change theme</span>}
-              >
-                <Toggle className="toggle-button" onClick={changeTheme}>
-                  {icon}
-                </Toggle>
-              </Tippy>
+              <div className="navbar-rightbox">
+                <LogoutButton
+                  className="logout-button"
+                  onClick={() => props.logoutUser()}
+                >
+                  logout
+                </LogoutButton>
+
+                <Tippy
+                  theme="light"
+                  delay={250}
+                  content={<span>Change theme</span>}
+                >
+                  <Toggle className="toggle-button" onClick={changeTheme}>
+                    {icon}
+                  </Toggle>
+                </Tippy>
+              </div>
             </div>
             <ChartContainer className="chart-container">
               <BarChart
