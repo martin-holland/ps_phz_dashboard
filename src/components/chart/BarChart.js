@@ -307,7 +307,7 @@ const BarChart = (props) => {
 
   //console.log("current nps", Math.floor(currentNPS));
 
-  let IntcurrentNPS = Math.floor(currentNPS);
+  let IntcurrentNPS = Math.round(currentNPS);
 
   let lastMonthNPS =
     ((rollingPromoters[11] - rollingDetractors[11]) /
@@ -315,7 +315,7 @@ const BarChart = (props) => {
     100;
 
   //console.log("last month nps", Math.floor(lastMonthNPS));
-  let IntLastmonthNPS = Math.floor(lastMonthNPS);
+  let IntLastmonthNPS = Math.round(lastMonthNPS);
 
   if (isNaN(IntLastmonthNPS)) {
     IntLastmonthNPS = "No Data";
