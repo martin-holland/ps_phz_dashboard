@@ -84,7 +84,7 @@ const BarChart = (props) => {
         labels: {
           color: "black",
           font: {
-            size: 18,
+            size: 16,
           },
         },
       },
@@ -103,13 +103,13 @@ const BarChart = (props) => {
     maintainAspectRatio: false,
     scales: {
       x: {
-        // stacked: true,
+        stacked: false,
         ticks: {
           color: "black",
         },
       },
       y: {
-        // stacked: true,
+        stacked: false,
         ticks: {
           color: "black",
         },
@@ -235,22 +235,22 @@ const BarChart = (props) => {
     labels: rollingMonths,
     datasets: [
       {
-        barThickness: 20,
-        maxBarThickness: 15,
+        barThickness: 14,
+        maxBarThickness: 20,
         label: "Promoters",
         data: rollingPromoters,
         backgroundColor: "#19aade",
       },
       {
-        barThickness: 20,
-        // maxBarThickness: 15,
+        barThickness: 14,
+        maxBarThickness: 20,
         label: "Passive",
         data: rollingPassives,
         backgroundColor: "#1de4bd",
       },
       {
-        barThickness: 20,
-        // maxBarThickness: 15,
+        barThickness: 14,
+        maxBarThickness: 20,
         label: "Detractors",
         data: rollingDetractors,
         backgroundColor: "#ef7e32",
@@ -259,8 +259,8 @@ const BarChart = (props) => {
   };
 
   let currentNPS =
-    ((rollingPromoters[0] - rollingDetractors[0]) /
-      (rollingPromoters[0] + rollingDetractors[0] + rollingPassives[0])) *
+    ((rollingPromoters[11] - rollingDetractors[11]) /
+      (rollingPromoters[11] + rollingDetractors[11] + rollingPassives[11])) *
     100;
 
   //console.log("current nps", Math.floor(currentNPS));
@@ -268,8 +268,8 @@ const BarChart = (props) => {
   let IntcurrentNPS = Math.round(currentNPS);
 
   let lastMonthNPS =
-    ((rollingPromoters[11] - rollingDetractors[11]) /
-      (rollingPromoters[11] + rollingDetractors[11] + rollingPassives[11])) *
+    ((rollingPromoters[10] - rollingDetractors[10]) /
+      (rollingPromoters[10] + rollingDetractors[10] + rollingPassives[10])) *
     100;
 
   //console.log("last month nps", Math.floor(lastMonthNPS));
