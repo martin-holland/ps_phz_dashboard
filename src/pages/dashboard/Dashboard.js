@@ -63,6 +63,11 @@ const Toggle = styled.p`
 const ChartContainer = styled.div`
   color: ${(props) => props.theme.color};
 `;
+const FilterBox = styled.div`
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.color};
+  transition: all 0.5s ease;
+`;
 const MessageContainer = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.backgroundColor};
@@ -171,7 +176,7 @@ const Dashboard = (props) => {
                 theme={props.theme}
               />
             </ChartContainer>
-            <div className="datefilter-box">
+            <FilterBox className="datefilter-box">
               Start:
               <Tippy
                 theme="light"
@@ -202,7 +207,7 @@ const Dashboard = (props) => {
               <Tippy theme="light" delay={250} content={<span>Reset</span>}>
                 <button onClick={resetDate}>Reset</button>
               </Tippy>
-            </div>
+            </FilterBox>
             <div className="bottom-container">
               <MessageContainer className="message-container">
                 {(newResults.length > 0 ? newResults : defaultResults)
