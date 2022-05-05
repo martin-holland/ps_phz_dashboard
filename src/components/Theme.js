@@ -5,7 +5,7 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  backgroundColor: "#F8F9F9 ",
+  backgroundColor: "#F8F9F9",
   color: "black",
-  chartbackground: "#F8F9F9 ",
+  chartbackground: "#F8F9F9",
 };

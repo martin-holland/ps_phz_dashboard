@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement } from "chart.js";
 import "./DoughnutChart.css";
+
 // Data Manipulation
 import { calculateOverallScore } from "./helperFunctions";
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./BarChart.css";
-import styled from "styled-components";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +11,10 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
+import { months } from "../../util/months";
+
+// Styles
+import { BarContainer, CircleContainer } from "./BarChartStyles";
 
 // Data conversion
 import dayjs from "dayjs";
@@ -26,14 +29,6 @@ ChartJS.register(
   Legend
 );
 
-const BarContainer = styled.div`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.chartbackground};
-`;
-const CircleContainer = styled.div`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.chartbackground};
-`;
 const BarChart = (props) => {
   const { results } = props;
 
@@ -68,7 +63,6 @@ const BarChart = (props) => {
 
   // Summarising Data:
   const [summary, setSummary] = useState({});
-
   const [janSummary, setJanSummary] = useState({});
   const [febSummary, setFebSummary] = useState({});
   const [marSummary, setMarSummary] = useState({});
@@ -149,20 +143,6 @@ const BarChart = (props) => {
       errorData: errorData,
     });
   };
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
 
   const promoterSummaries = [
     janSummary.promoters,
@@ -231,8 +211,6 @@ const BarChart = (props) => {
 
   console.log("Rolling Promoters", rollingPromoters);
 
-  const months1 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
-
   useEffect(() => {
     calculateSummary(results);
     setJanSummary(summariseData(Jan));
@@ -279,27 +257,6 @@ const BarChart = (props) => {
     ],
   };
 
-  const currentMonth = new Date().getMonth();
-  const monthlySummary = [
-    janSummary,
-    febSummary,
-    marSummary,
-    aprSummary,
-    maySummary,
-    junSummary,
-    julSummary,
-    augSummary,
-    sepSummary,
-    octSummary,
-    novSummary,
-    decSummary,
-  ];
-
-  /*let currentMonthSummary = rollingMonths[0];
-  let lastMonthSummary = rollingMonths[11];
-  console.log("Current Monthly summary", currentMonthSummary);
-  console.log("Last Monthly summary", lastMonthSummary);*/
-
   let currentNPS =
     ((rollingPromoters[0] - rollingDetractors[0]) /
       (rollingPromoters[0] + rollingDetractors[0] + rollingPassives[0])) *
@@ -307,7 +264,7 @@ const BarChart = (props) => {
 
   //console.log("current nps", Math.floor(currentNPS));
 
-  let IntcurrentNPS = Math.floor(currentNPS);
+  let IntcurrentNPS = Math.round(currentNPS);
 
   let lastMonthNPS =
     ((rollingPromoters[11] - rollingDetractors[11]) /
@@ -315,7 +272,7 @@ const BarChart = (props) => {
     100;
 
   //console.log("last month nps", Math.floor(lastMonthNPS));
-  let IntLastmonthNPS = Math.floor(lastMonthNPS);
+  let IntLastmonthNPS = Math.round(lastMonthNPS);
 
   if (isNaN(IntLastmonthNPS)) {
     IntLastmonthNPS = "No Data";
@@ -331,8 +288,6 @@ const BarChart = (props) => {
         </div>
       </BarContainer>
       <CircleContainer className="circle-container">
-        {/* <div className="circle-text-container"> */}
-        {/* <p className="responses">Responses: {total}</p> */}
         <div className="parent-box">
           <div className="lastMonthNPS">Previous Score : {IntLastmonthNPS}</div>
           <div className="currentMonthNPS">
