@@ -1,7 +1,8 @@
 .linechart{	
   width: 100%;
   margin: auto;
-  padding: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
   height: 400px;
 }
 .myChart {

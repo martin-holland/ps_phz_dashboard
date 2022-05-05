@@ -41,12 +41,17 @@
   background-color: #19aade;
 }
 .ratings {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 .message {
-  padding-top: 0.7rem;
+  /* padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  padding-left: 0.7rem; */
+  padding: 0.7rem;
 }
 .date-box {
+  display:flex;
+  align-items: center;
   margin: 0.5rem;
 }
 @media (max-width: 380px) {
