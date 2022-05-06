@@ -1,4 +1,4 @@
-import React, { Table } from "react";
+import React, { Table, useEffect } from "react";
 import "./Message.css";
 const Message = ({ result }) => {
   const colorChange = (rating) => {
@@ -11,6 +11,8 @@ const Message = ({ result }) => {
     }
   };
 
+  useEffect(() => {}, [result]);
+
   return (
     <div className="messages-list-container">
       <li className="list">
@@ -22,9 +24,7 @@ const Message = ({ result }) => {
           </p>
         </div>
         <div className="date-box">
-          <p>
-            {new Date(result.createdAt).toLocaleString().slice(0, 10)}
-          </p>
+          <p>{new Date(result.createdAt).toLocaleString().slice(0, 10)}</p>
         </div>
       </li>
     </div>

@@ -129,9 +129,7 @@ const Dashboard = (props) => {
     filterDate();
   };
 
-  // const logoutFunction = () => {
-  //   props.logoutUser();
-  // };
+  console.log("Dates by year and Month: ", datesByYearAndMonth);
 
   // Data retrieval
   useEffect(() => {
@@ -217,7 +215,7 @@ const Dashboard = (props) => {
             <div className="bottom-container">
               <MessageContainer className="message-container">
                 {(newResults.length > 0 ? newResults : defaultResults)
-                  .slice(0, 20)
+                  // .slice(0, 100)
                   .map((result) => (
                     <Message result={result} key={result.surveyId} />
                   ))}
