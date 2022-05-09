@@ -128,7 +128,7 @@ const Dashboard = (props) => {
     filterDate();
   };
 
-  console.log("Dates by year and Month: ", datesByYearAndMonth);
+  //console.log("Dates by year and Month: ", datesByYearAndMonth);
 
   // Data retrieval
   useEffect(() => {
