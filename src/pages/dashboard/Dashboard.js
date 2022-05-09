@@ -8,8 +8,6 @@ import Login from "../Login";
 import { useState } from "react";
 import LineChart from "../../components/chart/LineChart";
 import { ThreeCircles } from "react-loader-spinner";
-import dayjs from "dayjs";
-import { months } from "../../util/months";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
@@ -117,7 +115,7 @@ const Dashboard = (props) => {
     console.log("End Date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
-    ); 
+    );
     //return newResults
     setNewResults(newResults); //setNewResults(filterDate())
   };
@@ -141,109 +139,101 @@ const Dashboard = (props) => {
 
   if (!authenticated) {
     return <Login />;
-  } else {
-    if (!loading && results !== undefined && results.length >= 1) {
-      return (
-        <Main className="main">
-          <div className="container">
-            <div className="header-container">
-              <TitleHead className="header">
-                Promoter Score Calculation
-              </TitleHead>
-              <div className="navbar-rightbox">
-                <Tippy
-                  theme="light"
-                  delay={250}
-                  content={<span>Log user out</span>}
-                >
-                  <LogoutButton
-                    className="logout-button"
-                    onClick={() => props.logoutUser()}
-                  >
-                    Logout
-                  </LogoutButton>
-                </Tippy>
-
-                <Tippy
-                  theme="light"
-                  delay={250}
-                  content={<span>Change theme</span>}
-                >
-                  <Toggle className="toggle-button" onClick={changeTheme}>
-                    {icon}
-                  </Toggle>
-                </Tippy>
-              </div>
-            </div>
-            <ChartContainer className="chart-container">
-              <BarChart
-                results={newResults.length > 0 ? newResults : defaultResults}
-                theme={props.theme}
-              />
-            </ChartContainer>
-            <FilterBox className="datefilter-box">
-              Start:
-              <Tippy
-                theme="light"
-                delay={250}
-                content={<span>Choose start date</span>}
-              >
-                <input type="date" id="start" defaultValue={sixMonthsAgo} />
-              </Tippy>
-              End:
-              <Tippy
-                theme="light"
-                delay={250}
-                content={<span>Choose end date</span>}
-              >
-                <input
-                  type="date"
-                  id="end"
-                  defaultValue={new Date().toISOString().split("T")[0]}
-                />
-              </Tippy>
-              <Tippy
-                theme="light"
-                delay={250}
-                content={<span>Filter data</span>}
-              >
-                <button onClick={filterDate}>Filter</button>
-              </Tippy>
-              <Tippy theme="light" delay={250} content={<span>Reset</span>}>
-                <button onClick={resetDate}>Reset</button>
-              </Tippy>
-            </FilterBox>
-            <div className="bottom-container">
-              <MessageContainer className="message-container">
-                {(newResults.length > 0 ? newResults : defaultResults)
-                  // .slice(0, 100)
-                  .map((result) => (
-                    <Message result={result} key={result.surveyId} />
-                  ))}
-              </MessageContainer>
-              <LineChartContainer className="line-container">
-                <LineChart
-                  results={newResults.length > 0 ? newResults : defaultResults}
-                  theme={props.theme}
-                />
-              </LineChartContainer>
-            </div>
-          </div>
-        </Main>
-      );
-    } else {
-      return (
-        <div className="loader">
-          <ThreeCircles
-            color="red"
-            outerCircleColor="#19aade"
-            middleCircleColor="#1de4bd"
-            innerCircleColor="#ef7e32"
-          />
-        </div>
-      );
-    }
   }
+  if (loading || results === undefined || results.length === 0) {
+    return (
+      <div className="loader">
+        <ThreeCircles
+          color="red"
+          outerCircleColor="#19aade"
+          middleCircleColor="#1de4bd"
+          innerCircleColor="#ef7e32"
+        />
+      </div>
+    );
+  }
+  return (
+    <Main className="main">
+      <div className="container">
+        <div className="header-container">
+          <TitleHead className="header">Promoter Score Calculation</TitleHead>
+          <div className="navbar-rightbox">
+            <Tippy
+              theme="light"
+              delay={250}
+              content={<span>Log user out</span>}
+            >
+              <LogoutButton
+                className="logout-button"
+                onClick={() => props.logoutUser()}
+              >
+                Logout
+              </LogoutButton>
+            </Tippy>
+
+            <Tippy
+              theme="light"
+              delay={250}
+              content={<span>Change theme</span>}
+            >
+              <Toggle className="toggle-button" onClick={changeTheme}>
+                {icon}
+              </Toggle>
+            </Tippy>
+          </div>
+        </div>
+        <ChartContainer className="chart-container">
+          <BarChart
+            results={newResults.length > 0 ? newResults : defaultResults}
+            theme={props.theme}
+          />
+        </ChartContainer>
+        <FilterBox className="datefilter-box">
+          Start:
+          <Tippy
+            theme="light"
+            delay={250}
+            content={<span>Choose start date</span>}
+          >
+            <input type="date" id="start" defaultValue={sixMonthsAgo} />
+          </Tippy>
+          End:
+          <Tippy
+            theme="light"
+            delay={250}
+            content={<span>Choose end date</span>}
+          >
+            <input
+              type="date"
+              id="end"
+              defaultValue={new Date().toISOString().split("T")[0]}
+            />
+          </Tippy>
+          <Tippy theme="light" delay={250} content={<span>Filter data</span>}>
+            <button onClick={filterDate}>Filter</button>
+          </Tippy>
+          <Tippy theme="light" delay={250} content={<span>Reset</span>}>
+            <button onClick={resetDate}>Reset</button>
+          </Tippy>
+        </FilterBox>
+        <div className="bottom-container">
+          <MessageContainer className="message-container">
+            {(newResults.length > 0 ? newResults : defaultResults)
+              // .slice(0, 100)
+              .map((result) => (
+                <Message result={result} key={result.surveyId} />
+              ))}
+          </MessageContainer>
+          <LineChartContainer className="line-container">
+            <LineChart
+              results={newResults.length > 0 ? newResults : defaultResults}
+              theme={props.theme}
+            />
+          </LineChartContainer>
+        </div>
+      </div>
+    </Main>
+  );
 };
 
 Dashboard.propTypes = {
