@@ -1,82 +1,38 @@
-import { BsMoonStarsFill } from "react-icons/bs";
-import { BsLightbulb } from "react-icons/bs";
-import styled from "styled-components";
-import "./Dashboard.css";
+import { useEffect, useState } from "react";
+import { ThreeCircles } from "react-loader-spinner";
+//components
 import BarChart from "../../components/chart/BarChart";
 import Message from "../../components/message/Message";
 import Login from "../Login";
-import { useState } from "react";
 import LineChart from "../../components/chart/LineChart";
-import { ThreeCircles } from "react-loader-spinner";
+import { getNewResults, getSixMonthAgoISoString } from "./dashHelperFunc";
+//Tippyjs
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/themes/light.css";
 import "tippy.js/themes/translucent.css";
-
 // Redux imports
 import { connect } from "react-redux";
 import { getAllData, getSixMonths } from "../../redux/actions/dataActions";
 import { logoutUser } from "../../redux/actions/userActions";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+//icons
+import { BsMoonStarsFill } from "react-icons/bs";
+import { BsLightbulb } from "react-icons/bs";
+//styles
+import {
+  Main,
+  TitleHead,
+  LogoutButton,
+  Toggle,
+  ChartContainer,
+  FilterBox,
+  MessageContainer,
+  LineChartContainer,
+} from "./ThemeStyle";
 
-const Main = styled.div`
-  background-color: ${(props) => props.theme.backgroundColor};
-  transition: all 0.5s ease;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-`;
-const TitleHead = styled.h1`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.backgroundColor};
-  transition: all 0.5s ease;
-  margin: 0.5rem;
-  font-size: 1.2rem;
-`;
-const LogoutButton = styled.button`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.backgroundColor};
-  transition: all 0.5s ease;
-  margin: 0.5rem;
-  font-size: 1rem;
-`;
-const Toggle = styled.p`
-  cursor: pointer;
-  // position: absolute;
-  // top: 5px;
-  // right: 60px;
-  padding: 5px;
-  margin-top: 0.5rem;
-  border: none;
+import "./Dashboard.css";
 
-  transition: all 0.5s ease;
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const ChartContainer = styled.div`
-  color: ${(props) => props.theme.color};
-`;
-const FilterBox = styled.div`
-  background-color: ${(props) => props.theme.backgroundColor};
-  color: ${(props) => props.theme.color};
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 25vw;
-  transition: all 0.5s ease;
-`;
-const MessageContainer = styled.div`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.backgroundColor};
-`;
-const LineChartContainer = styled.div`
-  color: ${(props) => props.theme.color};
-  background-color: ${(props) => props.theme.backgroundColor};
-`;
 const Dashboard = (props) => {
   // Data destructuring
   const { defaultResults, results, loading } = props.data;
@@ -97,22 +53,19 @@ const Dashboard = (props) => {
     );
 
   const sixMonthsAgoFunc = () => {
-    let sixMonthsAgo = new Date();
-    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-    sixMonthsAgo = sixMonthsAgo.toISOString().split("T")[0];
-    setSixMonthsAgo(sixMonthsAgo);
+    setSixMonthsAgo(getSixMonthAgoISoString());
   };
 
   const filterDate = () => {
-    let start = new Date(document.getElementById("start").value).toISOString();
-    let end = new Date(document.getElementById("end").value);
-    end.setDate(end.getDate() + 1);
-    end = end.toISOString();
-    let newResults = results.filter(
-      (date) => date.createdAt >= start && date.createdAt <= end
-    );
-    //return newResults
-    setNewResults(newResults); //setNewResults(filterDate())
+    let startMonth = new Date(
+      document.getElementById("start").value
+    ).getMonth();
+    let endMonth = new Date(document.getElementById("end").value).getMonth();
+    // console.log("Month Start: ", startMonth);
+    // console.log("Month End: ", endMonth);
+    setNewResults(getNewResults(results));
+    setMonthStart(startMonth);
+    setMonthEnd(endMonth);
   };
 
   const resetDate = () => {

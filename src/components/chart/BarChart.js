@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./BarChart.css";
 import {
   Chart as ChartJS,
@@ -12,7 +12,11 @@ import {
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
 import { months } from "../../util/months";
-
+import {
+  getDatasetAtEvent,
+  getElementAtEvent,
+  getElementsAtEvent,
+} from "react-chartjs-2";
 // Styles
 import { BarContainer, CircleContainer } from "./BarChartStyles";
 
@@ -301,6 +305,20 @@ const BarChart = (props) => {
 
   console.log("NPS Scores: ", NPSScores);
 
+  const chartRef = useRef();
+  const onClick = (event, element) => {
+    console.log("clicked bar");
+    const clickedElement = getElementAtEvent(chartRef.current, event);
+    const barIndex = clickedElement[0].index;
+    console.log("type", clickedElement[0].element);
+    const myChart = document.getElementById("myChart");
+    console.log(myChart);
+
+    const label = myChart.data.labels[barIndex];
+    console.log(label);
+    var value = myChart.data.datasets[barIndex].data[barIndex];
+  };
+
   useEffect(() => {
     setNPSScores(
       calculateNPS(rollingPromoters, rollingDetractors, rollingPassives)
@@ -311,7 +329,13 @@ const BarChart = (props) => {
     <>
       <BarContainer className="bar-container">
         <div className="chart">
-          <Bar options={options} data={data} id="myChart" />
+          <Bar
+            options={options}
+            data={data}
+            id="myChart"
+            ref={chartRef}
+            onClick={onClick}
+          />
         </div>
       </BarContainer>
       <CircleContainer className="circle-container">

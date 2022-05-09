@@ -18,15 +18,16 @@
   padding-top: 10px;
 }
 .header{
-  width: 70vw;
+  width: 90vw;
   display: flex;
   justify-content: center;
   padding: 5px;
+  font-size: 1.4rem;
 }
 .navbar-rightbox{
   display: flex;
   justify-content: center;
-  width: 20vw;
+  width: 10vw;
 }
 .logout-button{
   margin-right: 0.75rem;
@@ -50,10 +51,8 @@
   align-items: center;
 }
 .datefilter-box{
-  display: flex;
-  justify-content: flex-start;
-  width: 95vw;
-  border-radius: 10px; 
+  background-color: #8bb6c8!important;
+  width: 100%;
 }
 
 .datefilter-box input {
