@@ -40,7 +40,7 @@ const LogoutButton = styled.button`
   background-color: ${(props) => props.theme.backgroundColor};
   transition: all 0.5s ease;
   margin: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 const Toggle = styled.p`
   cursor: pointer;
@@ -64,6 +64,9 @@ const ChartContainer = styled.div`
 const FilterBox = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 25vw;
   transition: all 0.5s ease;
 `;
 const MessageContainer = styled.div`
