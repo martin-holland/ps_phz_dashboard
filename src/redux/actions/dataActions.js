@@ -104,10 +104,8 @@ function orderByMonth(results) {
 }
 
 function orderByYearAndMonth(results) {
-  console.log("from dataActons: Results coming in: ", results);
   const data = {};
   results.forEach((item) => {
-    console.log("from dataActions: ForEach loop checking");
     let created = dayjs(item.createdAt);
     let year = created.year();
     let month = months[created.month()];
@@ -119,12 +117,9 @@ function orderByYearAndMonth(results) {
     }
     data[year][month].push(item);
   });
-  console.log("dataActions for loop complete.");
-  console.log(data);
   const resultingArray = Object.entries(data).map(([year, months]) => ({
     year,
     months,
   }));
-  console.log(resultingArray);
   return resultingArray;
 }

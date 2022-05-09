@@ -29,7 +29,6 @@ const LineChart = (props) => {
 
   results.forEach((item) => {
     const month = dayjs(item.createdAt).month();
-    console.log(month);
     if (month === 0) Jan.push(item);
     if (month === 1) Feb.push(item);
     if (month === 2) Mar.push(item);
@@ -76,7 +75,6 @@ const LineChart = (props) => {
 
   const calculateSummary = (monthsSortedData) => {
     if (monthsSortedData.length === 0) {
-      console.log("results is empty");
     }
     let promoters = 0;
     let detractors = 0;
@@ -168,13 +166,10 @@ const LineChart = (props) => {
     ...months.slice(0, thisMonth),
   ];
 
-  console.log("Rolling Months: ", rollingMonths);
-
   const rollingPromoters = [
     ...promoterSummaries.slice(thisMonth),
     ...promoterSummaries.slice(0, thisMonth),
   ];
-  console.log("rollingpro", rollingPromoters);
 
   const rollingPassives = [
     ...passiveSummaries.slice(thisMonth),
@@ -198,9 +193,6 @@ const LineChart = (props) => {
     novSummary,
     decSummary,
   ];
-  const currentMonth = new Date().getMonth();
-
-  console.log("output", monthlySummary[currentMonth]);
 
   const options = {
     type: "line",
@@ -307,10 +299,6 @@ const LineChart = (props) => {
     decSummary,
   ]);
 
-  console.log("Summary:", summary);
-  console.log("April Summary: ", aprSummary);
-  console.log("May Summary: ", maySummary);
-  console.log(npsScore);
   const data = {
     labels: rollingMonths,
     datasets: [

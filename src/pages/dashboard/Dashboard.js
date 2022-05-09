@@ -83,14 +83,9 @@ const Dashboard = (props) => {
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
-  //console.log("results from dashboard: ", results);
-  // Testing datesByYearAndMonth
-  // //console.log(
-  //   "Dashboard datesByYearAndMonth: ",
-  //   datesByYearAndMonth.forEach((item) => {
-  //     console.log(item);
-  //   })
-  // );
+
+  const [monthStart, setMonthStart] = useState();
+  const [monthEnd, setMonthEnd] = useState();
 
   //theme
   const changeTheme = () => {
@@ -112,15 +107,22 @@ const Dashboard = (props) => {
 
   const filterDate = () => {
     let start = new Date(document.getElementById("start").value).toISOString();
+    let startMonth = new Date(
+      document.getElementById("start").value
+    ).getMonth();
+    console.log("Month Start: ", startMonth);
     let end = new Date(document.getElementById("end").value);
+    let endMonth = end.getMonth();
+    console.log("Month End: ", endMonth);
     end.setDate(end.getDate() + 1);
     end = end.toISOString();
-    console.log("End Date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
     );
     //return newResults
     setNewResults(newResults); //setNewResults(filterDate())
+    setMonthStart(startMonth);
+    setMonthEnd(endMonth);
   };
 
   const resetDate = () => {
@@ -131,7 +133,21 @@ const Dashboard = (props) => {
     filterDate();
   };
 
+
   //console.log("Dates by year and Month: ", datesByYearAndMonth);
+
+  const filterOnce = () => {
+    let start = new Date(document.getElementById("start").value).toISOString();
+    let end = new Date(document.getElementById("end").value);
+    end.setDate(end.getDate() + 1);
+    end = end.toISOString();
+    let newResults = results.filter(
+      (date) => date.createdAt >= start && date.createdAt <= end
+    );
+    //return newResults
+    setNewResults(newResults); //setNewResults(filterDate())
+  };
+
 
   // Data retrieval
   useEffect(() => {
@@ -185,12 +201,6 @@ const Dashboard = (props) => {
             </Tippy>
           </div>
         </div>
-        <ChartContainer className="chart-container">
-          <BarChart
-            results={newResults.length > 0 ? newResults : defaultResults}
-            theme={props.theme}
-          />
-        </ChartContainer>
         <FilterBox className="datefilter-box">
           Start:
           <Tippy
@@ -219,13 +229,19 @@ const Dashboard = (props) => {
             <button onClick={resetDate}>Reset</button>
           </Tippy>
         </FilterBox>
+        <ChartContainer className="chart-container">
+          <BarChart
+            results={newResults.length > 0 ? newResults : defaultResults}
+            theme={props.theme}
+          />
+        </ChartContainer>
         <div className="bottom-container">
           <MessageContainer className="message-container">
-            {(newResults.length > 0 ? newResults : defaultResults)
-              // .slice(0, 100)
-              .map((result) => (
+            {(newResults.length > 0 ? newResults : defaultResults).map(
+              (result) => (
                 <Message result={result} key={result.surveyId} />
-              ))}
+              )
+            )}
           </MessageContainer>
           <LineChartContainer className="line-container">
             <LineChart
