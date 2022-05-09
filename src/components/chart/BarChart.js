@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./BarChart.css";
+
+//chartjs
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +12,6 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
-import { months } from "../../util/months";
 import {
   getDatasetAtEvent,
   getElementAtEvent,
@@ -19,10 +19,13 @@ import {
 } from "react-chartjs-2";
 // Styles
 import { BarContainer, CircleContainer } from "./BarChartStyles";
+import "./BarChart.css";
 
 // Data conversion
 import dayjs from "dayjs";
+import { months } from "../../util/months";
 import { summariseData } from "./helperFunctions";
+import { calculateNPS, getEachSummary } from "./chartFunction";
 
 ChartJS.register(
   CategoryScale,
@@ -108,7 +111,6 @@ const BarChart = (props) => {
     maintainAspectRatio: false,
     scales: {
       x: {
-        stacked: false,
         ticks: {
           color: "black",
         },
@@ -123,30 +125,7 @@ const BarChart = (props) => {
   };
 
   const calculateSummary = (dataToSummarise) => {
-    if (dataToSummarise.length === 0) {
-    }
-    let promoters = 0;
-    let detractors = 0;
-    let passives = 0;
-    let errorData = 0;
-
-    dataToSummarise.forEach((result) => {
-      if (result.surveyResult === "promoter") {
-        promoters++;
-      } else if (result.surveyResult === "passive") {
-        passives++;
-      } else if (result.surveyResult === "detractor") {
-        detractors++;
-      } else {
-        errorData++;
-      }
-    });
-    setSummary({
-      promoters: promoters,
-      passives: passives,
-      detractors: detractors,
-      errorData: errorData,
-    });
+    setSummary(getEachSummary(results));
   };
 
   const promoterSummaries = [
@@ -310,13 +289,8 @@ const BarChart = (props) => {
     console.log("clicked bar");
     const clickedElement = getElementAtEvent(chartRef.current, event);
     const barIndex = clickedElement[0].index;
-    console.log("type", clickedElement[0].element);
-    const myChart = document.getElementById("myChart");
-    console.log(myChart);
-
-    const label = myChart.data.labels[barIndex];
-    console.log(label);
-    var value = myChart.data.datasets[barIndex].data[barIndex];
+    console.log(barIndex);
+    console.log("type", clickedElement[0].element.$context);
   };
 
   useEffect(() => {
