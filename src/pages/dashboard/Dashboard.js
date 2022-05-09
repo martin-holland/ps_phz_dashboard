@@ -117,8 +117,9 @@ const Dashboard = (props) => {
     console.log("End Date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
-    );
-    setNewResults(newResults);
+    ); 
+    //return newResults
+    setNewResults(newResults); //setNewResults(filterDate())
   };
 
   const resetDate = () => {
