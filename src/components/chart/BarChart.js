@@ -30,7 +30,8 @@ ChartJS.register(
 );
 
 const BarChart = (props) => {
-  const { results } = props;
+  const { results, monthStart, monthEnd } = props;
+  const [NPSScores, setNPSScores] = useState();
 
   const Jan = [];
   const Feb = [];
@@ -210,8 +211,6 @@ const BarChart = (props) => {
     ...detractorSummaries.slice(0, thisMonth),
   ];
 
-  //console.log("Rolling Promoters", rollingPromoters);
-
   useEffect(() => {
     calculateSummary(results);
     setJanSummary(summariseData(Jan));
@@ -258,29 +257,65 @@ const BarChart = (props) => {
     ],
   };
 
-  let currentNPS =
-    ((rollingPromoters[11] - rollingDetractors[11]) /
-      (rollingPromoters[11] + rollingDetractors[11] + rollingPassives[11])) *
-    100;
+  const calculateNPS = (
+    rollingPromoters,
+    rollingDetractors,
+    rollingPassives
+  ) => {
+    // remove all unneeded entries:
+    // let monthsToRemove = monthEnd - monthStart;
+    // monthsToRemove = Math.abs(monthsToRemove);
+    // console.log("Months to remove: ", monthsToRemove);
+    // rollingPromoters.splice(0, monthsToRemove);
+    // rollingDetractors.splice(0, monthsToRemove);
+    // rollingPassives.splice(0, monthsToRemove);
+    console.log("Rolling Promoters: ", rollingPromoters);
+    console.log("Rolling Detractors: ", rollingDetractors);
+    console.log("Rolling Passives: ", rollingPassives);
+    const currentNPS =
+      ((rollingPromoters[rollingPromoters.length - 1] -
+        rollingDetractors[rollingDetractors.length - 1]) /
+        (rollingPromoters[rollingPromoters.length - 1] +
+          rollingDetractors[rollingDetractors.length - 1] +
+          rollingPassives[rollingPassives.length - 1])) *
+      100;
 
-  //console.log("current nps", Math.floor(currentNPS));
+    const lastMonthNPS =
+      ((rollingPromoters[rollingPromoters.length - 2] -
+        rollingDetractors[rollingDetractors.length - 2]) /
+        (rollingPromoters[rollingPromoters.length - 2] +
+          rollingDetractors[rollingDetractors.length - 2] +
+          rollingPassives[rollingPassives.length - 2])) *
+      100;
 
-  let IntcurrentNPS = Math.round(currentNPS);
+    console.log("Current NPS: ", currentNPS);
+    console.log("lastMonthNPS: ", lastMonthNPS);
 
-  let lastMonthNPS =
-    ((rollingPromoters[10] - rollingDetractors[10]) /
-      (rollingPromoters[10] + rollingDetractors[10] + rollingPassives[10])) *
-    100;
+    let IntcurrentNPS = Math.round(currentNPS);
+    let IntLastmonthNPS = Math.round(lastMonthNPS);
 
-  //console.log("last month nps", Math.floor(lastMonthNPS));
-  let IntLastmonthNPS = Math.round(lastMonthNPS);
+    if (isNaN(IntLastmonthNPS)) {
+      IntLastmonthNPS = "No Data";
+    }
+    if (isNaN(IntcurrentNPS)) {
+      IntcurrentNPS = "No Data";
+    }
 
-  if (isNaN(IntLastmonthNPS)) {
-    IntLastmonthNPS = "No Data";
-  }
-  if (isNaN(IntcurrentNPS)) {
-    IntcurrentNPS = "No Data";
-  }
+    const NPSScores = {
+      currentNPS: IntcurrentNPS,
+      lastMonthNPS: IntLastmonthNPS,
+    };
+    return NPSScores;
+  };
+
+  console.log("NPS Scores: ", NPSScores);
+
+  useEffect(() => {
+    setNPSScores(
+      calculateNPS(rollingPromoters, rollingDetractors, rollingPassives)
+    );
+    //eslint-disable-next-line
+  }, [results]);
   return (
     <>
       <BarContainer className="bar-container">
@@ -290,9 +325,11 @@ const BarChart = (props) => {
       </BarContainer>
       <CircleContainer className="circle-container">
         <div className="parent-box">
-          <div className="lastMonthNPS">Previous Score : {IntLastmonthNPS}</div>
+          <div className="lastMonthNPS">
+            Previous Score : {NPSScores ? NPSScores.lastMonthNPS : "No Data"}
+          </div>
           <div className="currentMonthNPS">
-            Promoter Score : {IntcurrentNPS}
+            Promoter Score : {NPSScores ? NPSScores.currentNPS : "No Data"}
           </div>
         </div>
         <div className="doughnut-parent">
@@ -302,7 +339,10 @@ const BarChart = (props) => {
             <p className="detractors">Detractors: {summary.detractors}</p>
           </div>
           <div className="doughnut-container">
-            <DoughnutChart results={results} currentNPS={currentNPS} />
+            <DoughnutChart
+              results={results}
+              currentNPS={NPSScores ? NPSScores.currentNPS : "No Data"}
+            />
           </div>
         </div>
       </CircleContainer>

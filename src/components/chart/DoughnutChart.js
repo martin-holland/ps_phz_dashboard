@@ -51,7 +51,7 @@ const DoughnutChart = (props) => {
   useEffect(() => {
     calculateSummary();
     //eslint-disable-next-line
-  }, [results]);
+  }, [results, currentNPS]);
 
   const data = {
     datasets: [
