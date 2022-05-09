@@ -160,8 +160,8 @@ const LineChart = (props) => {
     novSummary.detractors,
     decSummary.detractors,
   ];
-  const thisMonth = new Date().getMonth();
-  console.log("Today's month is: ", thisMonth);
+  let thisMonth = new Date().getMonth();
+  thisMonth = thisMonth - 11;
 
   const rollingMonths = [
     ...months.slice(thisMonth),

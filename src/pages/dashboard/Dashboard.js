@@ -129,9 +129,7 @@ const Dashboard = (props) => {
     filterDate();
   };
 
-  // const logoutFunction = () => {
-  //   props.logoutUser();
-  // };
+  console.log("Dates by year and Month: ", datesByYearAndMonth);
 
   // Data retrieval
   useEffect(() => {
@@ -152,12 +150,18 @@ const Dashboard = (props) => {
                 Promoter Score Calculation
               </TitleHead>
               <div className="navbar-rightbox">
-                <LogoutButton
-                  className="logout-button"
-                  onClick={() => props.logoutUser()}
+                <Tippy
+                  theme="light"
+                  delay={250}
+                  content={<span>Log user out</span>}
                 >
-                  logout
-                </LogoutButton>
+                  <LogoutButton
+                    className="logout-button"
+                    onClick={() => props.logoutUser()}
+                  >
+                    Logout
+                  </LogoutButton>
+                </Tippy>
 
                 <Tippy
                   theme="light"
@@ -211,7 +215,7 @@ const Dashboard = (props) => {
             <div className="bottom-container">
               <MessageContainer className="message-container">
                 {(newResults.length > 0 ? newResults : defaultResults)
-                  .slice(0, 20)
+                  // .slice(0, 100)
                   .map((result) => (
                     <Message result={result} key={result.surveyId} />
                   ))}
