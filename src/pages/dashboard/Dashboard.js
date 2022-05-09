@@ -128,6 +128,7 @@ const Dashboard = (props) => {
     setLoadingData(false);
   }, 2000);
 
+
   // Data retrieval
   useEffect(() => {
     props.getAllData();
