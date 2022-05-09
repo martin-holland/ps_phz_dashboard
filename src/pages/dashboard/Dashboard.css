@@ -35,7 +35,6 @@
   border: 1px solid;
   border-radius: 10px;
   margin: 10px; 
-  background-color: red;
 }
 
 .logout-button:hover {
@@ -51,7 +50,8 @@
   align-items: center;
 }
 .datefilter-box{
-  background-color: rgba(163, 170, 171, 0.402);
+  display: flex;
+  justify-content: flex-start;
   width: 95vw;
   border-radius: 10px; 
 }

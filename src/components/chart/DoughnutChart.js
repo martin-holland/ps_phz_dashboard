@@ -65,7 +65,7 @@ const DoughnutChart = (props) => {
   };
 
   // summary, total should be in here
-  const overallScoreMarkup = calculateOverallScore(currentNPS);
+  const overallScoreMarkup = calculateOverallScore(summary, total);
   return (
     <>
       <Doughnut

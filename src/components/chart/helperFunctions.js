@@ -24,10 +24,10 @@ export const summariseData = (dataToSummarise) => {
   return summaryObj;
 };
 
-export const calculateOverallScore = (score) => {
-  //  let score =
-  //((Number(summary.promoters) - Number(summary.detractors)) / Number(total)) *
-  // 100;
+export const calculateOverallScore = (summary, total) => {
+  let score =
+    ((Number(summary.promoters) - Number(summary.detractors)) / Number(total)) *
+    100;
   score = Math.round(score);
   let scoreString = score.toString();
   if (isNaN(score)) {

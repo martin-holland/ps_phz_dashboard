@@ -83,9 +83,7 @@ const Dashboard = (props) => {
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
-
-  const [monthStart, setMonthStart] = useState();
-  const [monthEnd, setMonthEnd] = useState();
+  const [loadingData, setLoadingData] = useState(true);
 
   //theme
   const changeTheme = () => {
@@ -107,13 +105,7 @@ const Dashboard = (props) => {
 
   const filterDate = () => {
     let start = new Date(document.getElementById("start").value).toISOString();
-    let startMonth = new Date(
-      document.getElementById("start").value
-    ).getMonth();
-    console.log("Month Start: ", startMonth);
     let end = new Date(document.getElementById("end").value);
-    let endMonth = end.getMonth();
-    console.log("Month End: ", endMonth);
     end.setDate(end.getDate() + 1);
     end = end.toISOString();
     let newResults = results.filter(
@@ -121,8 +113,6 @@ const Dashboard = (props) => {
     );
     //return newResults
     setNewResults(newResults); //setNewResults(filterDate())
-    setMonthStart(startMonth);
-    setMonthEnd(endMonth);
   };
 
   const resetDate = () => {
@@ -133,22 +123,16 @@ const Dashboard = (props) => {
     filterDate();
   };
 
-  const filterOnce = () => {
-    let start = new Date(document.getElementById("start").value).toISOString();
-    let end = new Date(document.getElementById("end").value);
-    end.setDate(end.getDate() + 1);
-    end = end.toISOString();
-    let newResults = results.filter(
-      (date) => date.createdAt >= start && date.createdAt <= end
-    );
-    //return newResults
-    setNewResults(newResults); //setNewResults(filterDate())
-  };
+  setTimeout(() => {
+    filterDate();
+    setLoadingData(false);
+  }, 1750);
 
   // Data retrieval
   useEffect(() => {
     props.getAllData();
     sixMonthsAgoFunc();
+
     //eslint-disable-next-line
   }, []);
 
@@ -157,14 +141,16 @@ const Dashboard = (props) => {
   }
   if (loading || results === undefined || results.length === 0) {
     return (
-      <div className="loader">
-        <ThreeCircles
-          color="red"
-          outerCircleColor="#19aade"
-          middleCircleColor="#1de4bd"
-          innerCircleColor="#ef7e32"
-        />
-      </div>
+      <>
+        <div className="loader">
+          <ThreeCircles
+            color="red"
+            outerCircleColor="#19aade"
+            middleCircleColor="#1de4bd"
+            innerCircleColor="#ef7e32"
+          />
+        </div>
+      </>
     );
   }
   return (
@@ -229,6 +215,7 @@ const Dashboard = (props) => {
           <BarChart
             results={newResults.length > 0 ? newResults : defaultResults}
             theme={props.theme}
+            loadingData={loadingData}
           />
         </ChartContainer>
         <div className="bottom-container">
