@@ -80,14 +80,14 @@ const Dashboard = (props) => {
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
-  console.log("results from dashboard: ", results);
+  //console.log("results from dashboard: ", results);
   // Testing datesByYearAndMonth
-  console.log(
-    "Dashboard datesByYearAndMonth: ",
-    datesByYearAndMonth.forEach((item) => {
-      console.log(item);
-    })
-  );
+  // //console.log(
+  //   "Dashboard datesByYearAndMonth: ",
+  //   datesByYearAndMonth.forEach((item) => {
+  //     console.log(item);
+  //   })
+  // );
 
   //theme
   const changeTheme = () => {
