@@ -85,8 +85,8 @@ const Dashboard = (props) => {
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
-  const [runOnce, setRunOnce] = useState([]);
-  console.log("results from dashboard: ", results);
+  const [monthStart, setMonthStart] = useState();
+  const [monthEnd, setMonthEnd] = useState();
   // Testing datesByYearAndMonth
   console.log(
     "Dashboard datesByYearAndMonth: ",
@@ -115,15 +115,22 @@ const Dashboard = (props) => {
 
   const filterDate = () => {
     let start = new Date(document.getElementById("start").value).toISOString();
+    let startMonth = new Date(
+      document.getElementById("start").value
+    ).getMonth();
+    console.log("Month Start: ", startMonth);
     let end = new Date(document.getElementById("end").value);
+    let endMonth = end.getMonth();
+    console.log("Month End: ", endMonth);
     end.setDate(end.getDate() + 1);
     end = end.toISOString();
-    console.log("End Date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
     );
     //return newResults
     setNewResults(newResults); //setNewResults(filterDate())
+    setMonthStart(startMonth);
+    setMonthEnd(endMonth);
   };
 
   const resetDate = () => {
@@ -139,7 +146,6 @@ const Dashboard = (props) => {
     let end = new Date(document.getElementById("end").value);
     end.setDate(end.getDate() + 1);
     end = end.toISOString();
-    console.log("End Date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
     );
@@ -226,6 +232,8 @@ const Dashboard = (props) => {
               <BarChart
                 results={newResults.length > 0 ? newResults : defaultResults}
                 theme={props.theme}
+                monthStart={monthStart}
+                monthEnd={monthEnd}
               />
             </ChartContainer>
             <div className="bottom-container">

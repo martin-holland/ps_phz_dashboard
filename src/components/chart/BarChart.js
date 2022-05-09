@@ -30,7 +30,7 @@ ChartJS.register(
 );
 
 const BarChart = (props) => {
-  const { results } = props;
+  const { results, monthStart, monthEnd } = props;
   const [NPSScores, setNPSScores] = useState();
 
   const Jan = [];
@@ -262,6 +262,16 @@ const BarChart = (props) => {
     rollingDetractors,
     rollingPassives
   ) => {
+    // remove all unneeded entries:
+    // let monthsToRemove = monthEnd - monthStart;
+    // monthsToRemove = Math.abs(monthsToRemove);
+    // console.log("Months to remove: ", monthsToRemove);
+    // rollingPromoters.splice(0, monthsToRemove);
+    // rollingDetractors.splice(0, monthsToRemove);
+    // rollingPassives.splice(0, monthsToRemove);
+    console.log("Rolling Promoters: ", rollingPromoters);
+    console.log("Rolling Detractors: ", rollingDetractors);
+    console.log("Rolling Passives: ", rollingPassives);
     const currentNPS =
       ((rollingPromoters[rollingPromoters.length - 1] -
         rollingDetractors[rollingDetractors.length - 1]) /
@@ -277,6 +287,9 @@ const BarChart = (props) => {
           rollingDetractors[rollingDetractors.length - 2] +
           rollingPassives[rollingPassives.length - 2])) *
       100;
+
+    console.log("Current NPS: ", currentNPS);
+    console.log("lastMonthNPS: ", lastMonthNPS);
 
     let IntcurrentNPS = Math.round(currentNPS);
     let IntLastmonthNPS = Math.round(lastMonthNPS);
