@@ -133,6 +133,9 @@ const Dashboard = (props) => {
     filterDate();
   };
 
+
+  //console.log("Dates by year and Month: ", datesByYearAndMonth);
+
   const filterOnce = () => {
     let start = new Date(document.getElementById("start").value).toISOString();
     let end = new Date(document.getElementById("end").value);
@@ -144,6 +147,7 @@ const Dashboard = (props) => {
     //return newResults
     setNewResults(newResults); //setNewResults(filterDate())
   };
+
 
   // Data retrieval
   useEffect(() => {
