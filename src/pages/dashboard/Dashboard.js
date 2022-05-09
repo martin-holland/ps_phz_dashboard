@@ -85,6 +85,7 @@ const Dashboard = (props) => {
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
+  const [runOnce, setRunOnce] = useState([]);
   console.log("results from dashboard: ", results);
   // Testing datesByYearAndMonth
   console.log(
@@ -120,7 +121,7 @@ const Dashboard = (props) => {
     console.log("End Date: ", end);
     let newResults = results.filter(
       (date) => date.createdAt >= start && date.createdAt <= end
-    ); 
+    );
     //return newResults
     setNewResults(newResults); //setNewResults(filterDate())
   };
@@ -133,7 +134,18 @@ const Dashboard = (props) => {
     filterDate();
   };
 
-  console.log("Dates by year and Month: ", datesByYearAndMonth);
+  const filterOnce = () => {
+    let start = new Date(document.getElementById("start").value).toISOString();
+    let end = new Date(document.getElementById("end").value);
+    end.setDate(end.getDate() + 1);
+    end = end.toISOString();
+    console.log("End Date: ", end);
+    let newResults = results.filter(
+      (date) => date.createdAt >= start && date.createdAt <= end
+    );
+    //return newResults
+    setNewResults(newResults); //setNewResults(filterDate())
+  };
 
   // Data retrieval
   useEffect(() => {
@@ -218,11 +230,11 @@ const Dashboard = (props) => {
             </ChartContainer>
             <div className="bottom-container">
               <MessageContainer className="message-container">
-                {(newResults.length > 0 ? newResults : defaultResults)
-                  // .slice(0, 100)
-                  .map((result) => (
+                {(newResults.length > 0 ? newResults : defaultResults).map(
+                  (result) => (
                     <Message result={result} key={result.surveyId} />
-                  ))}
+                  )
+                )}
               </MessageContainer>
               <LineChartContainer className="line-container">
                 <LineChart
