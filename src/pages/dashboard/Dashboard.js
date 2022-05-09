@@ -181,37 +181,9 @@ const Dashboard = (props) => {
               <LogoutButton
                 className="logout-button"
                 onClick={() => props.logoutUser()}
-              >Logout
+              >
+                Logout
               </LogoutButton>
-                <button onClick={filterDate}>Filter</button>
-              </Tippy>
-              <Tippy theme="light" delay={250} content={<span>Reset</span>}>
-                <button onClick={resetDate}>Reset</button>
-              </Tippy>
-            </FilterBox>
-            <ChartContainer className="chart-container">
-              <BarChart
-                results={newResults.length > 0 ? newResults : defaultResults}
-                theme={props.theme}
-                monthStart={monthStart}
-                monthEnd={monthEnd}
-              />
-            </ChartContainer>
-            <div className="bottom-container">
-              <MessageContainer className="message-container">
-                {(newResults.length > 0 ? newResults : defaultResults).map(
-                  (result) => (
-                    <Message result={result} key={result.surveyId} />
-                  )
-                )}
-              </MessageContainer>
-              <LineChartContainer className="line-container">
-                <LineChart
-                  results={newResults.length > 0 ? newResults : defaultResults}
-                  theme={props.theme}
-                />
-              </LineChartContainer>
-            </div>
             </Tippy>
 
             <Tippy
@@ -225,12 +197,6 @@ const Dashboard = (props) => {
             </Tippy>
           </div>
         </div>
-        <ChartContainer className="chart-container">
-          <BarChart
-            results={newResults.length > 0 ? newResults : defaultResults}
-            theme={props.theme}
-          />
-        </ChartContainer>
         <FilterBox className="datefilter-box">
           Start:
           <Tippy
@@ -259,13 +225,19 @@ const Dashboard = (props) => {
             <button onClick={resetDate}>Reset</button>
           </Tippy>
         </FilterBox>
+        <ChartContainer className="chart-container">
+          <BarChart
+            results={newResults.length > 0 ? newResults : defaultResults}
+            theme={props.theme}
+          />
+        </ChartContainer>
         <div className="bottom-container">
           <MessageContainer className="message-container">
-            {(newResults.length > 0 ? newResults : defaultResults)
-              // .slice(0, 100)
-              .map((result) => (
+            {(newResults.length > 0 ? newResults : defaultResults).map(
+              (result) => (
                 <Message result={result} key={result.surveyId} />
-              ))}
+              )
+            )}
           </MessageContainer>
           <LineChartContainer className="line-container">
             <LineChart
