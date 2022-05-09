@@ -210,7 +210,7 @@ const BarChart = (props) => {
     ...detractorSummaries.slice(0, thisMonth),
   ];
 
-  console.log("Rolling Promoters", rollingPromoters);
+  //console.log("Rolling Promoters", rollingPromoters);
 
   useEffect(() => {
     calculateSummary(results);
