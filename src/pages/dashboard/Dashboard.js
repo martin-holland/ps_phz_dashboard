@@ -126,7 +126,7 @@ const Dashboard = (props) => {
   setTimeout(() => {
     filterDate();
     setLoadingData(false);
-  }, 1750);
+  }, 2000);
 
   // Data retrieval
   useEffect(() => {
