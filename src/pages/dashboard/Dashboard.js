@@ -66,6 +66,9 @@ const ChartContainer = styled.div`
 const FilterBox = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.color};
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 25vw;
   transition: all 0.5s ease;
 `;
 const MessageContainer = styled.div`
@@ -174,12 +177,6 @@ const Dashboard = (props) => {
                 </Tippy>
               </div>
             </div>
-            <ChartContainer className="chart-container">
-              <BarChart
-                results={newResults.length > 0 ? newResults : defaultResults}
-                theme={props.theme}
-              />
-            </ChartContainer>
             <FilterBox className="datefilter-box">
               Start:
               <Tippy
@@ -212,6 +209,12 @@ const Dashboard = (props) => {
                 <button onClick={resetDate}>Reset</button>
               </Tippy>
             </FilterBox>
+            <ChartContainer className="chart-container">
+              <BarChart
+                results={newResults.length > 0 ? newResults : defaultResults}
+                theme={props.theme}
+              />
+            </ChartContainer>
             <div className="bottom-container">
               <MessageContainer className="message-container">
                 {(newResults.length > 0 ? newResults : defaultResults)
