@@ -42,7 +42,7 @@ const LogoutButton = styled.button`
   background-color: ${(props) => props.theme.backgroundColor};
   transition: all 0.5s ease;
   margin: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 const Toggle = styled.p`
   cursor: pointer;
@@ -154,7 +154,7 @@ const Dashboard = (props) => {
                 <Tippy
                   theme="light"
                   delay={250}
-                  content={<span>Log user out</span>}
+                  content={<span>Log out</span>}
                 >
                   <LogoutButton
                     className="logout-button"

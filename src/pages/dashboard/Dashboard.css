@@ -15,6 +15,7 @@
   display: flex;
   width: 100vw;
   justify-content: center;
+  padding-top: 10px;
 }
 .header{
   width: 70vw;
@@ -31,11 +32,17 @@
   margin-right: 0.75rem;
   padding:10px;
   box-shadow: rgba(144, 147, 149, 0.5) 0px 8px 24px;
-  border: 1px solid transparent;
+  border: 1px solid;
   border-radius: 10px;
-  margin: 10px;
-  
+  margin: 10px; 
+  background-color: red;
 }
+
+.logout-button:hover {
+  color: white;
+  background-color: gray;
+}
+
 .chart-container {
   width: 100vw;
   display: flex;
@@ -46,19 +53,15 @@
 .datefilter-box{
   background-color: rgba(163, 170, 171, 0.402);
   width: 95vw;
-  border-radius: 10px;
-  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  width: 96vw;
-  border-radius: 10px;
-  padding: 0.5rem; */
+  border-radius: 10px;  
 }
 
 .datefilter-box input {
-  font-size: large;
+  font-size: 1rem;
 }
 
 .datefilter-box button {
-  font-size: large;
+  font-size: 1rem;
   padding: 8px;
   padding-left: 10px;
   padding-right: 10px;
@@ -70,13 +73,6 @@
   background-color: gray;
 }
 
-/* .message-container {
-  margin-top: 30px;
-  display: grid; 
-  grid-auto-rows: 1fr; 
-  grid-template-columns: 1fr 1fr; 
-  gap: 1em 1em; 
-} */
 .message-container, .line-container{
   width: 50vw;
   height: 400px;
