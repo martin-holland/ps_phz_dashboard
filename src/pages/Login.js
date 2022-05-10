@@ -2,7 +2,7 @@ import "./Login.css";
 import React, { Component } from "react";
 import Dashboard from "./dashboard/Dashboard";
 import axios from "axios";
-import googleLogo from "../assets/GLogo.svg"
+import googleLogo from "../assets/GLogo.svg";
 
 // Authentication
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -12,8 +12,6 @@ import { authentication } from "../firebase/config";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../redux/actions/userActions";
-// Routes
-import { Link } from "react-router-dom";
 
 // New Login
 const provider = new GoogleAuthProvider();
@@ -33,7 +31,6 @@ export class Login extends Component {
   }
 
   handleSubmit = () => {
-    const errorMessage = "";
     let token;
     signInWithPopup(authentication, provider)
       .then((result) => {
@@ -43,7 +40,7 @@ export class Login extends Component {
         this.props.loginUser();
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error, token);
       });
   };
 
@@ -61,6 +58,7 @@ export class Login extends Component {
 
   render() {
     const {
+      //eslint-disable-next-line
       UI: { loading },
     } = this.props;
     const { errors } = this.state;
@@ -72,11 +70,11 @@ export class Login extends Component {
     } else {
       return (
         <div id="login-page">
-        <h3>Welcome to Promoter Score Dashboard!</h3>
+          <h3>Welcome to Promoter Score Dashboard!</h3>
           <div id="login">
-          <img src={googleLogo}/>
-              <button id="google-signin" onClick={(event) => this.handleSubmit()}>
-                <strong>Sign in with Google</strong>
+            <img alt="logo" src={googleLogo} />
+            <button id="google-signin" onClick={(event) => this.handleSubmit()}>
+              <strong>Sign in with Google</strong>
             </button>
             <p>{errors.general}</p>
             <p>{errors.email}</p>

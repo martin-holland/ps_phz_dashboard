@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./BarChart.css";
+import React, { useEffect, useState, useRef } from "react";
+
+//chartjs
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -15,12 +16,24 @@ import { months } from "../../util/months";
 import { calculateNPS } from "./helperFunctions";
 import { getChartData } from "./helperFunctions";
 import { getOptions } from "./helperFunctions";
+import {
+  getDatasetAtEvent,
+  getElementAtEvent,
+  getElementsAtEvent,
+} from "react-chartjs-2";
 // Styles
 import { BarContainer, CircleContainer } from "./BarChartStyles";
+import "./BarChart.css";
 
 // Data conversion
 import dayjs from "dayjs";
+import { months } from "../../util/months";
 import { summariseData } from "./helperFunctions";
+import {
+  calculateNPS,
+  getEachSummary,
+  getEachMessageSummary,
+} from "./chartFunction";
 
 ChartJS.register(
   CategoryScale,
@@ -32,7 +45,7 @@ ChartJS.register(
 );
 
 const BarChart = (props) => {
-  const { results } = props;
+  const { results, loadingData } = props;
   const [NPSScores, setNPSScores] = useState();
 
   const Jan = [];
@@ -66,6 +79,7 @@ const BarChart = (props) => {
 
   // Summarising Data:
   const [summary, setSummary] = useState({});
+  const [messageSummary, setMessageSummary] = useState({});
   const [janSummary, setJanSummary] = useState({});
   const [febSummary, setFebSummary] = useState({});
   const [marSummary, setMarSummary] = useState({});
@@ -82,30 +96,10 @@ const BarChart = (props) => {
   const options = getOptions(results);
 
   const calculateSummary = (dataToSummarise) => {
-    if (dataToSummarise.length === 0) {
-    }
-    let promoters = 0;
-    let detractors = 0;
-    let passives = 0;
-    let errorData = 0;
-
-    dataToSummarise.forEach((result) => {
-      if (result.surveyResult === "promoter") {
-        promoters++;
-      } else if (result.surveyResult === "passive") {
-        passives++;
-      } else if (result.surveyResult === "detractor") {
-        detractors++;
-      } else {
-        errorData++;
-      }
-    });
-    setSummary({
-      promoters: promoters,
-      passives: passives,
-      detractors: detractors,
-      errorData: errorData,
-    });
+    setSummary(getEachSummary(results));
+  };
+  const calculateMessageSummary = (dataToSummarise) => {
+    setMessageSummary(getEachMessageSummary(results));
   };
 
   const promoterSummaries = [
@@ -176,6 +170,7 @@ const BarChart = (props) => {
 
   useEffect(() => {
     calculateSummary(results);
+    calculateMessageSummary(results);
     setJanSummary(summariseData(Jan));
     setFebSummary(summariseData(Feb));
     setMarSummary(summariseData(Mar));
@@ -188,17 +183,33 @@ const BarChart = (props) => {
     setOctSummary(summariseData(Oct));
     setNovSummary(summariseData(Nov));
     setDecSummary(summariseData(Dec));
-    // setNoDataSummary(summariseData(noDate));
-
     //eslint-disable-next-line
   }, [props]);
 
+
   console.log("NPS Scores: ", NPSScores);
 
+  const chartRef = useRef();
+
+  const onClick = (event, element) => {
+    console.log("clicked bar");
+    const clickedElement = getElementAtEvent(chartRef.current, event);
+    console.log(clickedElement);
+    const barIndex = clickedElement[0].index;
+    console.log(barIndex);
+    console.log(
+      "type",
+      clickedElement[0].element.$context.dataset.data[barIndex]
+    );
+    let clickedRating = clickedElement[0].element.$context.dataset.label;
+    console.log(clickedRating);
+    console.log(clickedElement[0].element.$context.parsed.x);
+  };
   useEffect(() => {
     setNPSScores(
       calculateNPS(rollingPromoters, rollingDetractors, rollingPassives)
     );
+
     //eslint-disable-next-line
   }, [results]);
   return (
@@ -214,16 +225,30 @@ const BarChart = (props) => {
               rollingMonths
             )}
             id="myChart"
+            data={data}
+            id="myChart"
+            ref={chartRef}
+            onClick={onClick}
           />
         </div>
       </BarContainer>
       <CircleContainer className="circle-container">
         <div className="parent-box">
           <div className="lastMonthNPS">
-            Previous Score : {NPSScores ? NPSScores.lastMonthNPS : "No Data"}
+            Last month:{" "}
+            {!loadingData
+              ? NPSScores
+                ? NPSScores.lastMonthNPS
+                : "No Data"
+              : "Loading"}
           </div>
           <div className="currentMonthNPS">
-            Promoter Score : {NPSScores ? NPSScores.currentNPS : "No Data"}
+            This month:{" "}
+            {!loadingData
+              ? NPSScores
+                ? NPSScores.currentNPS
+                : "No Data"
+              : "Loading"}
           </div>
         </div>
         <div className="doughnut-parent">
@@ -233,10 +258,7 @@ const BarChart = (props) => {
             <p className="detractors">Detractors: {summary.detractors}</p>
           </div>
           <div className="doughnut-container">
-            <DoughnutChart
-              results={results}
-              currentNPS={NPSScores ? NPSScores.currentNPS : "No Data"}
-            />
+            <DoughnutChart results={results} />
           </div>
         </div>
       </CircleContainer>

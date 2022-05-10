@@ -1,6 +1,4 @@
 import "./App.css";
-// Demo only
-import Testdemo from "./components/TestDemo/Testdemo";
 // import Test from "./components/Test";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";

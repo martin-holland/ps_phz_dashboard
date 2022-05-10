@@ -47,6 +47,7 @@ export class Signup extends Component {
 
   render() {
     const {
+      //eslint-disable-next-line
       UI: { loading },
     } = this.props;
     const { errors } = this.state;
