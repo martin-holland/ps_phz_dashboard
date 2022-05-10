@@ -18,11 +18,12 @@
   padding-top: 10px;
 }
 .header{
-  width: 90vw;
+  width: 100vw;
   display: flex;
   justify-content: center;
   padding: 5px;
   font-size: 1.4rem;
+  padding-left: 10rem;
 }
 .navbar-rightbox{
   display: flex;

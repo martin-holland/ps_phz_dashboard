@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
+//chart
 import { Line } from "react-chartjs-2";
-//eslint-disable-next-line
 import Chart from "chart.js/auto";
+
+//helper functions
+import { summariseData } from "./helperFunctions";
+import { getEachSummary } from "./chartFunction";
+//styles
 import styled from "styled-components";
 import "./LineChart.css";
+
 import dayjs from "dayjs";
-import { summariseData } from "./helperFunctions";
 
 const LineContainer = styled.div`
   color: ${(props) => props.theme.color};
@@ -75,31 +80,8 @@ const LineChart = (props) => {
   // const [novNps, setNovNps] = useState();
   // const [decNps, setDecNps] = useState();
 
-  const calculateSummary = (monthsSortedData) => {
-    if (monthsSortedData.length === 0) {
-    }
-    let promoters = 0;
-    let detractors = 0;
-    let passives = 0;
-    let errorData = 0;
-
-    monthsSortedData.forEach((result) => {
-      if (result.surveyResult === "promoter") {
-        promoters++;
-      } else if (result.surveyResult === "passive") {
-        passives++;
-      } else if (result.surveyResult === "detractor") {
-        detractors++;
-      } else {
-        errorData++;
-      }
-    });
-    setSummary({
-      promoters: promoters,
-      passives: passives,
-      detractors: detractors,
-      errorData: errorData,
-    });
+  const calculateSummary = (dataToSummarise) => {
+    setSummary(getEachSummary(results));
   };
   const months = [
     "Jan",
@@ -271,19 +253,6 @@ const LineChart = (props) => {
 
   useEffect(() => {
     calculateNpsScore(monthlySummary);
-    // setJanNps(calculateNpsScore(janSummary));
-    // setFebNps(calculateNpsScore(febSummary));
-    // setMarNps(calculateNpsScore(marSummary));
-    // setAprNps(calculateNpsScore(aprSummary));
-    // setMayNps(calculateNpsScore(maySummary));
-    // setJunNps(calculateNpsScore(junSummary));
-    // setJulNps(calculateNpsScore(julSummary));
-    // setAugNps(calculateNpsScore(augSummary));
-    // setSepNps(calculateNpsScore(sepSummary));
-    // setOctNps(calculateNpsScore(octSummary));
-    // setNovNps(calculateNpsScore(novSummary));
-    // setDecNps(calculateNpsScore(decSummary));
-
     //eslint-disable-next-line
   }, [
     props,
