@@ -30,7 +30,7 @@ ChartJS.register(
 );
 
 const BarChart = (props) => {
-  const { results, monthStart, monthEnd } = props;
+  const { results, monthStart, monthEnd, loadingData } = props;
   const [NPSScores, setNPSScores] = useState();
 
   const Jan = [];
@@ -225,8 +225,6 @@ const BarChart = (props) => {
     setOctSummary(summariseData(Oct));
     setNovSummary(summariseData(Nov));
     setDecSummary(summariseData(Dec));
-    // setNoDataSummary(summariseData(noDate));
-
     //eslint-disable-next-line
   }, [props]);
 
@@ -262,13 +260,6 @@ const BarChart = (props) => {
     rollingDetractors,
     rollingPassives
   ) => {
-    // remove all unneeded entries:
-    // let monthsToRemove = monthEnd - monthStart;
-    // monthsToRemove = Math.abs(monthsToRemove);
-    // console.log("Months to remove: ", monthsToRemove);
-    // rollingPromoters.splice(0, monthsToRemove);
-    // rollingDetractors.splice(0, monthsToRemove);
-    // rollingPassives.splice(0, monthsToRemove);
     console.log("Rolling Promoters: ", rollingPromoters);
     console.log("Rolling Detractors: ", rollingDetractors);
     console.log("Rolling Passives: ", rollingPassives);
@@ -295,10 +286,10 @@ const BarChart = (props) => {
     let IntLastmonthNPS = Math.round(lastMonthNPS);
 
     if (isNaN(IntLastmonthNPS)) {
-      IntLastmonthNPS = "No Data";
+      IntLastmonthNPS = 0;
     }
     if (isNaN(IntcurrentNPS)) {
-      IntcurrentNPS = "No Data";
+      IntcurrentNPS = 0;
     }
 
     const NPSScores = {
@@ -326,10 +317,20 @@ const BarChart = (props) => {
       <CircleContainer className="circle-container">
         <div className="parent-box">
           <div className="lastMonthNPS">
-            Previous Score : {NPSScores ? NPSScores.lastMonthNPS : "No Data"}
+            Last month:{" "}
+            {!loadingData
+              ? NPSScores
+                ? NPSScores.lastMonthNPS
+                : "No Data"
+              : "Loading"}
           </div>
           <div className="currentMonthNPS">
-            Promoter Score : {NPSScores ? NPSScores.currentNPS : "No Data"}
+            This month:{" "}
+            {!loadingData
+              ? NPSScores
+                ? NPSScores.currentNPS
+                : "No Data"
+              : "Loading"}
           </div>
         </div>
         <div className="doughnut-parent">
@@ -339,10 +340,7 @@ const BarChart = (props) => {
             <p className="detractors">Detractors: {summary.detractors}</p>
           </div>
           <div className="doughnut-container">
-            <DoughnutChart
-              results={results}
-              currentNPS={NPSScores ? NPSScores.currentNPS : "No Data"}
-            />
+            <DoughnutChart results={results} />
           </div>
         </div>
       </CircleContainer>
