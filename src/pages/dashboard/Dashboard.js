@@ -79,7 +79,7 @@ const LineChartContainer = styled.div`
 `;
 const Dashboard = (props) => {
   // Data destructuring
-  const { datesByYearAndMonth, defaultResults, results, loading } = props.data;
+  const { defaultResults, results, loading } = props.data;
   const { authenticated } = props.user;
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
@@ -127,10 +127,6 @@ const Dashboard = (props) => {
     filterDate();
     setLoadingData(false);
   }, 2000);
-<<<<<<< HEAD
-=======
-
->>>>>>> c1d9f2344849d846f95d2f2032c7fd1e10403fb1
 
   // Data retrieval
   useEffect(() => {
