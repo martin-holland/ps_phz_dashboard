@@ -57,15 +57,7 @@ const Dashboard = (props) => {
   };
 
   const filterDate = () => {
-    let startMonth = new Date(
-      document.getElementById("start").value
-    ).getMonth();
-    let endMonth = new Date(document.getElementById("end").value).getMonth();
-    // console.log("Month Start: ", startMonth);
-    // console.log("Month End: ", endMonth);
     setNewResults(getNewResults(results));
-    setMonthStart(startMonth);
-    setMonthEnd(endMonth);
   };
 
   const resetDate = () => {
