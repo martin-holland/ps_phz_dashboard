@@ -253,19 +253,6 @@ const LineChart = (props) => {
 
   useEffect(() => {
     calculateNpsScore(monthlySummary);
-    // setJanNps(calculateNpsScore(janSummary));
-    // setFebNps(calculateNpsScore(febSummary));
-    // setMarNps(calculateNpsScore(marSummary));
-    // setAprNps(calculateNpsScore(aprSummary));
-    // setMayNps(calculateNpsScore(maySummary));
-    // setJunNps(calculateNpsScore(junSummary));
-    // setJulNps(calculateNpsScore(julSummary));
-    // setAugNps(calculateNpsScore(augSummary));
-    // setSepNps(calculateNpsScore(sepSummary));
-    // setOctNps(calculateNpsScore(octSummary));
-    // setNovNps(calculateNpsScore(novSummary));
-    // setDecNps(calculateNpsScore(decSummary));
-
     //eslint-disable-next-line
   }, [
     props,
