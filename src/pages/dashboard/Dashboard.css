@@ -51,7 +51,8 @@
   align-items: center;
 }
 .datefilter-box{
-  background-color: #8bb6c8!important;
+  /* background-color: #a5a9aa!important; */
+  box-shadow: rgba(144, 147, 149, 0.5) 0px 8px 24px;
   width: 100%;
 }
 

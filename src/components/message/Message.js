@@ -16,7 +16,7 @@ const Message = ({ result }) => {
   return (
     <div className="messages-list-container">
       <li className="list">
-        <div className="message-box">
+        <div className="message-box" id="messageBox">
           <div className={`indicator ${colorChange(result.choice)}`}></div>
           <p className="ratings">{result.choice}</p>
           <p className="message">

@@ -75,3 +75,23 @@ export const getEachSummary = (dataToSummarise) => {
     errorData: errorData,
   };
 };
+export const getEachMessageSummary = (dataToSummarise) => {
+  let promotersMessage = [];
+  let detractorsMessage = [];
+  let passivesMessage = [];
+
+  dataToSummarise.forEach((result) => {
+    if (result.surveyResult === "promoter") {
+      promotersMessage.push(result.message);
+    } else if (result.surveyResult === "passive") {
+      detractorsMessage.push(result.message);
+    } else if (result.surveyResult === "detractor") {
+      passivesMessage.push(result.message);
+    }
+  });
+  return {
+    promotersMessage: promotersMessage,
+    passivesMessage: passivesMessage,
+    detractorsMessage: detractorsMessage,
+  };
+};
