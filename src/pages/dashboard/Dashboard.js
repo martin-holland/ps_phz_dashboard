@@ -127,6 +127,10 @@ const Dashboard = (props) => {
     filterDate();
     setLoadingData(false);
   }, 2000);
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1d9f2344849d846f95d2f2032c7fd1e10403fb1
 
   // Data retrieval
   useEffect(() => {
