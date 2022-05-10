@@ -13,7 +13,7 @@ import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
 import { months } from "../../util/months";
 import { calculateNPS } from "./helperFunctions";
-
+import { getChartData } from "./helperFunctions";
 // Styles
 import { BarContainer, CircleContainer } from "./BarChartStyles";
 
@@ -231,32 +231,32 @@ const BarChart = (props) => {
     //eslint-disable-next-line
   }, [props]);
 
-  const data = {
-    labels: rollingMonths,
-    datasets: [
-      {
-        barThickness: 14,
-        maxBarThickness: 20,
-        label: "Promoters",
-        data: rollingPromoters,
-        backgroundColor: "#19aade",
-      },
-      {
-        barThickness: 14,
-        maxBarThickness: 20,
-        label: "Passive",
-        data: rollingPassives,
-        backgroundColor: "#1de4bd",
-      },
-      {
-        barThickness: 14,
-        maxBarThickness: 20,
-        label: "Detractors",
-        data: rollingDetractors,
-        backgroundColor: "#ef7e32",
-      },
-    ],
-  };
+  // const data = {
+  //   labels: rollingMonths,
+  //   datasets: [
+  //     {
+  //       barThickness: 14,
+  //       maxBarThickness: 20,
+  //       label: "Promoters",
+  //       data: rollingPromoters,
+  //       backgroundColor: "#19aade",
+  //     },
+  //     {
+  //       barThickness: 14,
+  //       maxBarThickness: 20,
+  //       label: "Passive",
+  //       data: rollingPassives,
+  //       backgroundColor: "#1de4bd",
+  //     },
+  //     {
+  //       barThickness: 14,
+  //       maxBarThickness: 20,
+  //       label: "Detractors",
+  //       data: rollingDetractors,
+  //       backgroundColor: "#ef7e32",
+  //     },
+  //   ],
+  // };
 
   // const calculateNPS = (
   //   rollingPromoters,
@@ -321,7 +321,16 @@ const BarChart = (props) => {
     <>
       <BarContainer className="bar-container">
         <div className="chart">
-          <Bar options={options} data={data} id="myChart" />
+          <Bar
+            options={options}
+            data={getChartData(
+              rollingPromoters,
+              rollingPassives,
+              rollingDetractors,
+              rollingMonths
+            )}
+            id="myChart"
+          />
         </div>
       </BarContainer>
       <CircleContainer className="circle-container">

@@ -101,3 +101,38 @@ export const calculateNPS = (
   };
   return NPSScores;
 };
+
+export const getChartData = (
+  rollingPromoters,
+  rollingPassives,
+  rollingDetractors,
+  rollingMonths
+) => {
+  const data = {
+    labels: rollingMonths,
+    datasets: [
+      {
+        barThickness: 14,
+        maxBarThickness: 20,
+        label: "Promoters",
+        data: rollingPromoters,
+        backgroundColor: "#19aade",
+      },
+      {
+        barThickness: 14,
+        maxBarThickness: 20,
+        label: "Passive",
+        data: rollingPassives,
+        backgroundColor: "#1de4bd",
+      },
+      {
+        barThickness: 14,
+        maxBarThickness: 20,
+        label: "Detractors",
+        data: rollingDetractors,
+        backgroundColor: "#ef7e32",
+      },
+    ],
+  };
+  return data;
+};
