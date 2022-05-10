@@ -4,6 +4,7 @@ import { Chart, ArcElement } from "chart.js";
 import "./DoughnutChart.css";
 
 // Data Manipulation
+import { getEachSummary } from "./chartFunction";
 import { calculateOverallScore } from "./helperFunctions";
 
 Chart.register(ArcElement);
@@ -21,31 +22,8 @@ const DoughnutChart = (props) => {
   // Summarising Data:
   const [summary, setSummary] = useState({});
   let total = results.length;
-  const calculateSummary = () => {
-    if (results.length === 0) {
-    }
-    let promoters = 0;
-    let detractors = 0;
-    let passives = 0;
-    let errorData = 0;
-
-    results.forEach((result) => {
-      if (result.surveyResult === "promoter") {
-        promoters++;
-      } else if (result.surveyResult === "passive") {
-        passives++;
-      } else if (result.surveyResult === "detractor") {
-        detractors++;
-      } else {
-        errorData++;
-      }
-    });
-    setSummary({
-      promoters: promoters,
-      passives: passives,
-      detractors: detractors,
-      errorData: errorData,
-    });
+  const calculateSummary = (dataToSummarise) => {
+    setSummary(getEachSummary(results));
   };
 
   useEffect(() => {
