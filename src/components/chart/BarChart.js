@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./BarChart.css";
+import React, { useEffect, useState, useRef } from "react";
+
+//chartjs
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,14 +12,24 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
-import { months } from "../../util/months";
-
+import {
+  getDatasetAtEvent,
+  getElementAtEvent,
+  getElementsAtEvent,
+} from "react-chartjs-2";
 // Styles
 import { BarContainer, CircleContainer } from "./BarChartStyles";
+import "./BarChart.css";
 
 // Data conversion
 import dayjs from "dayjs";
+import { months } from "../../util/months";
 import { summariseData } from "./helperFunctions";
+import {
+  calculateNPS,
+  getEachSummary,
+  getEachMessageSummary,
+} from "./chartFunction";
 
 ChartJS.register(
   CategoryScale,
@@ -64,6 +75,7 @@ const BarChart = (props) => {
 
   // Summarising Data:
   const [summary, setSummary] = useState({});
+  const [messageSummary, setMessageSummary] = useState({});
   const [janSummary, setJanSummary] = useState({});
   const [febSummary, setFebSummary] = useState({});
   const [marSummary, setMarSummary] = useState({});
@@ -104,7 +116,6 @@ const BarChart = (props) => {
     maintainAspectRatio: false,
     scales: {
       x: {
-        stacked: false,
         ticks: {
           color: "black",
         },
@@ -119,30 +130,10 @@ const BarChart = (props) => {
   };
 
   const calculateSummary = (dataToSummarise) => {
-    if (dataToSummarise.length === 0) {
-    }
-    let promoters = 0;
-    let detractors = 0;
-    let passives = 0;
-    let errorData = 0;
-
-    dataToSummarise.forEach((result) => {
-      if (result.surveyResult === "promoter") {
-        promoters++;
-      } else if (result.surveyResult === "passive") {
-        passives++;
-      } else if (result.surveyResult === "detractor") {
-        detractors++;
-      } else {
-        errorData++;
-      }
-    });
-    setSummary({
-      promoters: promoters,
-      passives: passives,
-      detractors: detractors,
-      errorData: errorData,
-    });
+    setSummary(getEachSummary(results));
+  };
+  const calculateMessageSummary = (dataToSummarise) => {
+    setMessageSummary(getEachMessageSummary(results));
   };
 
   const promoterSummaries = [
@@ -213,6 +204,7 @@ const BarChart = (props) => {
 
   useEffect(() => {
     calculateSummary(results);
+    calculateMessageSummary(results);
     setJanSummary(summariseData(Jan));
     setFebSummary(summariseData(Feb));
     setMarSummary(summariseData(Mar));
@@ -227,7 +219,9 @@ const BarChart = (props) => {
     setDecSummary(summariseData(Dec));
     //eslint-disable-next-line
   }, [props]);
-
+  console.log(Mar);
+  console.log("janSummary", janSummary);
+  console.log("mesgsumary", messageSummary);
   const data = {
     labels: rollingMonths,
     datasets: [
@@ -301,17 +295,40 @@ const BarChart = (props) => {
 
   console.log("NPS Scores: ", NPSScores);
 
+  const chartRef = useRef();
+
+  const onClick = (event, element) => {
+    console.log("clicked bar");
+    const clickedElement = getElementAtEvent(chartRef.current, event);
+    console.log(clickedElement);
+    const barIndex = clickedElement[0].index;
+    console.log(barIndex);
+    console.log(
+      "type",
+      clickedElement[0].element.$context.dataset.data[barIndex]
+    );
+    let clickedRating = clickedElement[0].element.$context.dataset.label;
+    console.log(clickedRating);
+    console.log(clickedElement[0].element.$context.parsed.x);
+  };
   useEffect(() => {
     setNPSScores(
       calculateNPS(rollingPromoters, rollingDetractors, rollingPassives)
     );
+
     //eslint-disable-next-line
   }, [results]);
   return (
     <>
       <BarContainer className="bar-container">
         <div className="chart">
-          <Bar options={options} data={data} id="myChart" />
+          <Bar
+            options={options}
+            data={data}
+            id="myChart"
+            ref={chartRef}
+            onClick={onClick}
+          />
         </div>
       </BarContainer>
       <CircleContainer className="circle-container">

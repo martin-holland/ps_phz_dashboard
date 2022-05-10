@@ -310,6 +310,7 @@ const LineChart = (props) => {
         tension: 0.5,
         type: "line",
         borderWidth: 2,
+        borderColor: "#BAB8B7",
         backgroundColor: "#0E5881",
       },
     ],
