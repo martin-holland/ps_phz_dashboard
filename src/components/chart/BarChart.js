@@ -12,6 +12,10 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
+import { months } from "../../util/months";
+import { calculateNPS } from "./helperFunctions";
+import { getChartData } from "./helperFunctions";
+import { getOptions } from "./helperFunctions";
 import {
   getDatasetAtEvent,
   getElementAtEvent,
@@ -89,45 +93,7 @@ const BarChart = (props) => {
   const [novSummary, setNovSummary] = useState({});
   const [decSummary, setDecSummary] = useState({});
 
-  let total = results.length;
-
-  const options = {
-    plugins: {
-      legend: {
-        labels: {
-          color: "black",
-          font: {
-            size: 16,
-          },
-        },
-      },
-
-      autocolors: false,
-      title: {
-        display: true,
-        text: `Total respondents ${total}`,
-        color: "black",
-        font: {
-          size: 14,
-        },
-      },
-    },
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        ticks: {
-          color: "black",
-        },
-      },
-      y: {
-        stacked: false,
-        ticks: {
-          color: "black",
-        },
-      },
-    },
-  };
+  const options = getOptions(results);
 
   const calculateSummary = (dataToSummarise) => {
     setSummary(getEachSummary(results));
@@ -219,79 +185,7 @@ const BarChart = (props) => {
     setDecSummary(summariseData(Dec));
     //eslint-disable-next-line
   }, [props]);
-  console.log(Mar);
-  console.log("janSummary", janSummary);
-  console.log("mesgsumary", messageSummary);
-  const data = {
-    labels: rollingMonths,
-    datasets: [
-      {
-        barThickness: 14,
-        maxBarThickness: 20,
-        label: "Promoters",
-        data: rollingPromoters,
-        backgroundColor: "#19aade",
-      },
-      {
-        barThickness: 14,
-        maxBarThickness: 20,
-        label: "Passive",
-        data: rollingPassives,
-        backgroundColor: "#1de4bd",
-      },
-      {
-        barThickness: 14,
-        maxBarThickness: 20,
-        label: "Detractors",
-        data: rollingDetractors,
-        backgroundColor: "#ef7e32",
-      },
-    ],
-  };
 
-  const calculateNPS = (
-    rollingPromoters,
-    rollingDetractors,
-    rollingPassives
-  ) => {
-    console.log("Rolling Promoters: ", rollingPromoters);
-    console.log("Rolling Detractors: ", rollingDetractors);
-    console.log("Rolling Passives: ", rollingPassives);
-    const currentNPS =
-      ((rollingPromoters[rollingPromoters.length - 1] -
-        rollingDetractors[rollingDetractors.length - 1]) /
-        (rollingPromoters[rollingPromoters.length - 1] +
-          rollingDetractors[rollingDetractors.length - 1] +
-          rollingPassives[rollingPassives.length - 1])) *
-      100;
-
-    const lastMonthNPS =
-      ((rollingPromoters[rollingPromoters.length - 2] -
-        rollingDetractors[rollingDetractors.length - 2]) /
-        (rollingPromoters[rollingPromoters.length - 2] +
-          rollingDetractors[rollingDetractors.length - 2] +
-          rollingPassives[rollingPassives.length - 2])) *
-      100;
-
-    console.log("Current NPS: ", currentNPS);
-    console.log("lastMonthNPS: ", lastMonthNPS);
-
-    let IntcurrentNPS = Math.round(currentNPS);
-    let IntLastmonthNPS = Math.round(lastMonthNPS);
-
-    if (isNaN(IntLastmonthNPS)) {
-      IntLastmonthNPS = 0;
-    }
-    if (isNaN(IntcurrentNPS)) {
-      IntcurrentNPS = 0;
-    }
-
-    const NPSScores = {
-      currentNPS: IntcurrentNPS,
-      lastMonthNPS: IntLastmonthNPS,
-    };
-    return NPSScores;
-  };
 
   console.log("NPS Scores: ", NPSScores);
 
@@ -324,6 +218,13 @@ const BarChart = (props) => {
         <div className="chart">
           <Bar
             options={options}
+            data={getChartData(
+              rollingPromoters,
+              rollingPassives,
+              rollingDetractors,
+              rollingMonths
+            )}
+            id="myChart"
             data={data}
             id="myChart"
             ref={chartRef}
