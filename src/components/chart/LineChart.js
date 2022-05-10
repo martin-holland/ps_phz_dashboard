@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+//eslint-disable-next-line
 import Chart from "chart.js/auto";
 import styled from "styled-components";
 import "./LineChart.css";
@@ -42,8 +43,9 @@ const LineChart = (props) => {
     if (month === 10) Nov.push(item);
     if (month === 11) Dec.push(item);
   });
-  let total = results.length;
+  // let total = results.length;
 
+  //eslint-disable-next-line
   const [summary, setSummary] = useState({});
 
   const [janSummary, setJanSummary] = useState({});
