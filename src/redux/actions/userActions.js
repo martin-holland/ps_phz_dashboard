@@ -2,6 +2,7 @@ import axios from "axios";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+//eslint-disable-next-line
 import { app } from "../../firebase/config";
 
 import {
@@ -13,9 +14,10 @@ import {
 } from "../types";
 
 // New Login
+//eslint-disable-next-line
 const AuthProvider = new firebase.auth.GoogleAuthProvider();
 
-// Old login with username and password
+// Old login with username and password DO NOT DELETE
 
 // export const loginUser = (userData) => (dispatch) => {
 //   dispatch({ type: LOADING_UI });
