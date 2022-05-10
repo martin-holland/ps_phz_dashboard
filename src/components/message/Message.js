@@ -1,4 +1,4 @@
-import React, { Table, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Message.css";
 const Message = ({ result }) => {
   const colorChange = (rating) => {

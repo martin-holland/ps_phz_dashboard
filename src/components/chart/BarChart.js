@@ -30,7 +30,7 @@ ChartJS.register(
 );
 
 const BarChart = (props) => {
-  const { results, monthStart, monthEnd, loadingData } = props;
+  const { results, loadingData } = props;
   const [NPSScores, setNPSScores] = useState();
 
   const Jan = [];
