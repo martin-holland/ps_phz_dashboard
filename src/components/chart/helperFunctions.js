@@ -136,3 +136,46 @@ export const getChartData = (
   };
   return data;
 };
+
+export const getOptions = (results) => {
+  let total = results.length;
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: "black",
+          font: {
+            size: 16,
+          },
+        },
+      },
+
+      autocolors: false,
+      title: {
+        display: true,
+        text: `Total respondents ${total}`,
+        color: "black",
+        font: {
+          size: 14,
+        },
+      },
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        stacked: false,
+        ticks: {
+          color: "black",
+        },
+      },
+      y: {
+        stacked: false,
+        ticks: {
+          color: "black",
+        },
+      },
+    },
+  };
+  return options;
+};
