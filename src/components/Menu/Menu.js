@@ -4,14 +4,21 @@ import { bool } from "prop-types";
 import psLogo from "../../assets/favicon-ps.svg";
 
 const Menu = ({ open }) => {
+  const closeMenu = () => {
+    // const navBar = document.querySelectorAll("nav");
+    // navBar.addEventListener("mouseleave", (e) => {
+    //   e.target.style.transform = "translateX(-100%)";
+    //   console.log("mouse leave event triggered");
+    // });
+  };
   return (
-    <StyledMenu open={open}>
+    <StyledMenu open={open} onMouseLeave={closeMenu}>
       <a
         href="https://en.wikipedia.org/wiki/Net_promoter_score"
         target="_blank"
         rel="noreferrer"
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", width: "20vw" }}>
           <span role="img" aria-label="about us">
             <img
               alt="logo"
@@ -19,7 +26,7 @@ const Menu = ({ open }) => {
               style={{ height: "25px", width: "25px", marginRight: "1rem" }}
             />
           </span>
-          What is PS?
+          What is Promoter Score?
         </div>
       </a>
     </StyledMenu>
