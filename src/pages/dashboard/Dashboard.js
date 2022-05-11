@@ -77,6 +77,14 @@ const Dashboard = (props) => {
     setLoadingData(false);
   };
 
+  // const runOnce = () => {
+  //   console.log("Ran once");
+  //   setTimeout(() => {
+  //   filterDate();
+  //   }, 2000);
+  //   setLoadingData(false);
+  // };
+
   // Data retrieval
   useEffect(() => {
     props.getAllData();
