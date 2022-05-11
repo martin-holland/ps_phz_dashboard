@@ -13,7 +13,6 @@ import {
 import { Bar } from "react-chartjs-2";
 import DoughnutChart from "./DoughnutChart";
 import { months } from "../../util/months";
-import { calculateNPS } from "./helperFunctions";
 import { getChartData } from "./helperFunctions";
 import { getOptions } from "./helperFunctions";
 import {
@@ -27,7 +26,6 @@ import "./BarChart.css";
 
 // Data conversion
 import dayjs from "dayjs";
-import { months } from "../../util/months";
 import { summariseData } from "./helperFunctions";
 import {
   calculateNPS,
@@ -186,7 +184,6 @@ const BarChart = (props) => {
     //eslint-disable-next-line
   }, [props]);
 
-
   console.log("NPS Scores: ", NPSScores);
 
   const chartRef = useRef();
@@ -224,8 +221,6 @@ const BarChart = (props) => {
               rollingDetractors,
               rollingMonths
             )}
-            id="myChart"
-            data={data}
             id="myChart"
             ref={chartRef}
             onClick={onClick}
