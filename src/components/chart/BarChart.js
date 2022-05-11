@@ -15,11 +15,7 @@ import DoughnutChart from "./DoughnutChart";
 import { months } from "../../util/months";
 import { getChartData } from "./helperFunctions";
 import { getOptions } from "./helperFunctions";
-import {
-  getDatasetAtEvent,
-  getElementAtEvent,
-  getElementsAtEvent,
-} from "react-chartjs-2";
+import { getElementAtEvent } from "react-chartjs-2";
 // Styles
 import { BarContainer, CircleContainer } from "./BarChartStyles";
 import "./BarChart.css";
@@ -77,6 +73,7 @@ const BarChart = (props) => {
 
   // Summarising Data:
   const [summary, setSummary] = useState({});
+  //eslint-disable-next-line
   const [messageSummary, setMessageSummary] = useState({});
   const [janSummary, setJanSummary] = useState({});
   const [febSummary, setFebSummary] = useState({});
