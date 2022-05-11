@@ -58,6 +58,7 @@ const Dashboard = (props) => {
 
   const filterDate = () => {
     setNewResults(getNewResults(results));
+    setLoadingData(false);
   };
 
   const resetDate = () => {
@@ -68,18 +69,21 @@ const Dashboard = (props) => {
     filterDate();
   };
 
-  setTimeout(() => {
-    filterDate();
+  const runOnce = () => {
+    console.log("Ran once");
+    setTimeout(() => {
+      filterDate();
+    }, 2000);
     setLoadingData(false);
-  }, 2000);
+  };
 
   // Data retrieval
   useEffect(() => {
     props.getAllData();
     sixMonthsAgoFunc();
-
+    runOnce();
     //eslint-disable-next-line
-  }, []);
+  }, [loadingData]);
 
   if (!authenticated) {
     return <Login />;
