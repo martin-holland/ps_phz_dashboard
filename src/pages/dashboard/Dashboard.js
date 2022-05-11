@@ -5,6 +5,8 @@ import BarChart from "../../components/chart/BarChart";
 import Message from "../../components/message/Message";
 import Login from "../Login";
 import LineChart from "../../components/chart/LineChart";
+import Burger from "../../components/Burger/BurgerMenu";
+import Menu from "../../components/Menu/Menu";
 import { getNewResults, getSixMonthAgoISoString } from "./dashHelperFunc";
 //Tippyjs
 import Tippy from "@tippyjs/react";
@@ -40,6 +42,7 @@ const Dashboard = (props) => {
   const [newResults, setNewResults] = useState([]);
   const [sixMonthsAgo, setSixMonthsAgo] = useState();
   const [loadingData, setLoadingData] = useState(true);
+  const [open, setOpen] = useState(false);
 
   //theme
   const changeTheme = () => {
@@ -114,6 +117,8 @@ const Dashboard = (props) => {
     <Main className="main">
       <div className="container">
         <div className="header-container">
+          <Burger theme={props.theme} open={open} setOpen={setOpen}></Burger>
+          <Menu theme={props.theme} open={open} setOpen={setOpen}></Menu>
           <TitleHead className="header">Promoter Score Calculation</TitleHead>
           <div className="navbar-rightbox">
             <Tippy
