@@ -302,6 +302,7 @@ const BarChart = (props) => {
             <DoughnutChart results={results} />
           </div>
         </div>
+        <div className="overall-data">Overall Scores</div>
       </CircleContainer>
     </>
   );
