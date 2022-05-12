@@ -84,6 +84,20 @@ const BarChart = (props) => {
   const [novSummary, setNovSummary] = useState({});
   const [decSummary, setDecSummary] = useState({});
 
+  //monthly message state
+  const [janMessage, setJanMessage] = useState({});
+  const [febMessage, setFebMessage] = useState({});
+  const [marMessage, setMarMessage] = useState({});
+  const [aprMessage, setAprMessage] = useState({});
+  const [mayMessage, setMayMessage] = useState({});
+  const [junMessage, setJunMessage] = useState({});
+  const [julMessage, setJulMessage] = useState({});
+  const [augMessage, setAugMessage] = useState({});
+  const [sepMessage, setSepMessage] = useState({});
+  const [octMessage, setOctMessage] = useState({});
+  const [novMessage, setNovMessage] = useState({});
+  const [decMessage, setDecMessage] = useState({});
+
   const options = getOptions(results);
 
   const calculateSummary = (dataToSummarise) => {
@@ -159,9 +173,31 @@ const BarChart = (props) => {
     ...detractorSummaries.slice(0, thisMonth),
   ];
 
+  let monthsArray = [
+    janMessage,
+    febMessage,
+    marMessage,
+    aprMessage,
+    mayMessage,
+    junMessage,
+    julMessage,
+    augMessage,
+    sepMessage,
+    octMessage,
+    novMessage,
+    decMessage,
+  ];
+
+  const rollingMsgMonths = [
+    ...monthsArray.slice(thisMonth),
+    ...monthsArray.slice(0, thisMonth),
+  ];
+
+  console.log("rollingmonthMsg", rollingMsgMonths[11]);
   useEffect(() => {
     calculateSummary(results);
     calculateMessageSummary(results);
+    //setting monthly data summary
     setJanSummary(summariseData(Jan));
     setFebSummary(summariseData(Feb));
     setMarSummary(summariseData(Mar));
@@ -174,32 +210,49 @@ const BarChart = (props) => {
     setOctSummary(summariseData(Oct));
     setNovSummary(summariseData(Nov));
     setDecSummary(summariseData(Dec));
+    //Setting monthly message summary
+    setJanMessage(getEachMessageSummary(Jan));
+    setFebMessage(getEachMessageSummary(Feb));
+    setMarMessage(getEachMessageSummary(Mar));
+    setAprMessage(getEachMessageSummary(Apr));
+    setMayMessage(getEachMessageSummary(May));
+    setJunMessage(getEachMessageSummary(Jun));
+    setJulMessage(getEachMessageSummary(Jul));
+    setAugMessage(getEachMessageSummary(Aug));
+    setSepMessage(getEachMessageSummary(Sep));
+    setOctMessage(getEachMessageSummary(Oct));
+    setNovMessage(getEachMessageSummary(Nov));
+    setDecMessage(getEachMessageSummary(Dec));
     //eslint-disable-next-line
   }, [props]);
 
-  console.log("NPS Scores: ", NPSScores);
+  // console.log("NPS Scores: ", NPSScores);
+  // console.log("MaySummary: ", maySummary);
 
+  //function for clickable chart event
   const chartRef = useRef();
-
   const onClick = (event, element) => {
-    console.log("clicked bar");
     const clickedElement = getElementAtEvent(chartRef.current, event);
-    console.log(clickedElement);
     const barIndex = clickedElement[0].index;
     console.log(barIndex);
-    console.log(
-      "type",
-      clickedElement[0].element.$context.dataset.data[barIndex]
-    );
     let clickedRating = clickedElement[0].element.$context.dataset.label;
     console.log(clickedRating);
-    console.log(clickedElement[0].element.$context.parsed.x);
+    let clickedMessage;
+
+    if (clickedRating === "Promoters") {
+      clickedMessage = rollingMsgMonths[barIndex].promotersMessage;
+    } else if (clickedRating === "Passive") {
+      clickedMessage = rollingMsgMonths[barIndex].passivesMessages;
+    } else if (clickedRating === "Detractors") {
+      clickedMessage = rollingMsgMonths[barIndex].detractorsMessage;
+    }
+
+    console.log("clickedMessage", clickedMessage);
   };
   useEffect(() => {
     setNPSScores(
       calculateNPS(rollingPromoters, rollingDetractors, rollingPassives)
     );
-
     //eslint-disable-next-line
   }, [results]);
   return (
