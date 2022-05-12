@@ -23,7 +23,7 @@ const Menu = ({ open }) => {
             <img
               alt="logo"
               src={psLogo}
-              style={{ height: "25px", width: "25px", marginRight: "1rem" }}
+              style={{ height: "30px", width: "30px", marginRight: "1rem" }}
             />
           </span>
           What is Promoter Score?

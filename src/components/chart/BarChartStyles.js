@@ -7,4 +7,7 @@ export const BarContainer = styled.div`
 export const CircleContainer = styled.div`
   color: ${(props) => props.theme.color};
   background-color: ${(props) => props.theme.chartbackground};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

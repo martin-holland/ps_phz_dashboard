@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+
+
 .container {
   display: flex;
   flex-direction: column;
@@ -94,7 +96,7 @@ input {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
 }
 .loader {
   display: flex;
