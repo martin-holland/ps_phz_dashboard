@@ -3,13 +3,6 @@ export const calculateNPS = (
   rollingDetractors,
   rollingPassives
 ) => {
-  // remove all unneeded entries:
-  // let monthsToRemove = monthEnd - monthStart;
-  // monthsToRemove = Math.abs(monthsToRemove);
-  // console.log("Months to remove: ", monthsToRemove);
-  // rollingPromoters.splice(0, monthsToRemove);
-  // rollingDetractors.splice(0, monthsToRemove);
-  // rollingPassives.splice(0, monthsToRemove);
   console.log("Rolling Promoters: ", rollingPromoters);
   console.log("Rolling Detractors: ", rollingDetractors);
   console.log("Rolling Passives: ", rollingPassives);
@@ -49,32 +42,6 @@ export const calculateNPS = (
   return NPSScores;
 };
 
-export const getEachSummary = (dataToSummarise) => {
-  if (dataToSummarise.length === 0) {
-  }
-  let promoters = 0;
-  let detractors = 0;
-  let passives = 0;
-  let errorData = 0;
-
-  dataToSummarise.forEach((result) => {
-    if (result.surveyResult === "promoter") {
-      promoters++;
-    } else if (result.surveyResult === "passive") {
-      passives++;
-    } else if (result.surveyResult === "detractor") {
-      detractors++;
-    } else {
-      errorData++;
-    }
-  });
-  return {
-    promoters: promoters,
-    passives: passives,
-    detractors: detractors,
-    errorData: errorData,
-  };
-};
 export const getEachMessageSummary = (dataToSummarise) => {
   let promotersMessage = [];
   let detractorsMessage = [];
