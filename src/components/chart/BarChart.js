@@ -23,11 +23,7 @@ import "./BarChart.css";
 // Data conversion
 import dayjs from "dayjs";
 import { summariseData } from "./helperFunctions";
-import {
-  calculateNPS,
-  getEachSummary,
-  getEachMessageSummary,
-} from "./chartFunction";
+import { calculateNPS, getEachMessageSummary } from "./chartFunction";
 
 ChartJS.register(
   CategoryScale,
@@ -91,7 +87,7 @@ const BarChart = (props) => {
   const options = getOptions(results);
 
   const calculateSummary = (dataToSummarise) => {
-    setSummary(getEachSummary(results));
+    setSummary(summariseData(results));
   };
   const calculateMessageSummary = (dataToSummarise) => {
     setMessageSummary(getEachMessageSummary(results));

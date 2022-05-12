@@ -6,7 +6,7 @@ import Chart from "chart.js/auto";
 
 //helper functions
 import { summariseData } from "./helperFunctions";
-import { getEachSummary } from "./chartFunction";
+
 //styles
 import styled from "styled-components";
 import "./LineChart.css";
@@ -82,7 +82,7 @@ const LineChart = (props) => {
   // const [decNps, setDecNps] = useState();
 
   const calculateSummary = (dataToSummarise) => {
-    setSummary(getEachSummary(results));
+    setSummary(summariseData(results));
   };
   const months = [
     "Jan",

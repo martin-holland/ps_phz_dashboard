@@ -4,7 +4,7 @@ import { Chart, ArcElement } from "chart.js";
 import "./DoughnutChart.css";
 
 // Data Manipulation
-import { getEachSummary } from "./chartFunction";
+import { summariseData } from "./helperFunctions";
 import { calculateOverallScore } from "./helperFunctions";
 
 Chart.register(ArcElement);
@@ -23,7 +23,7 @@ const DoughnutChart = (props) => {
   const [summary, setSummary] = useState({});
   let total = results.length;
   const calculateSummary = (dataToSummarise) => {
-    setSummary(getEachSummary(results));
+    setSummary(summariseData(results));
   };
 
   useEffect(() => {
