@@ -2,6 +2,7 @@ import "./App.css";
 // import Test from "./components/Test";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Statistics from "./pages/statistics/Statistics";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Redux Imports
 import { Provider } from "react-redux";
@@ -41,6 +42,10 @@ function App() {
               <Route
                 path="/dashboard"
                 element={<Dashboard theme={theme} setTheme={setTheme} />}
+              />
+              <Route
+                path="/statistics"
+                element={<Statistics theme={theme} setTheme={setTheme} />}
               />
             </Routes>
           </Router>
