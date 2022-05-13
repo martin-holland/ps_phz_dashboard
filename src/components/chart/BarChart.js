@@ -277,6 +277,9 @@ const BarChart = (props) => {
       for (const msg of clickedMessage) {
         messagePara = document.createElement("p");
         messagePara.setAttribute("class", "msgPara");
+        if (msg === "") {
+          messagePara.innerHTML = "Feedback message is empty";
+        }
         messagePara.innerHTML = msg;
         messageContainer.appendChild(messagePara);
       }
