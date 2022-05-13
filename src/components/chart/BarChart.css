@@ -129,6 +129,19 @@
 .detractors {
   background-color: #ef7e32;
 }
+.promotersmsg{
+
+  background-color: #19aade;
+  padding:5px;
+}
+.passivesmsg {
+  background-color: #1de4bd;
+  padding:5px;
+}
+.detractorsmsg {
+  background-color: #ef7e32;
+  padding:5px;
+}
 .doughnut-container {
   height: 250px;
   width: 250px;
@@ -145,6 +158,18 @@
   padding: 10px;
 }
 
+.msgPara{
+  padding: 5px;
+  margin: 0.5rem 0;
+  text-align: left;
+  border: 1px solid transparent;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: flex-start;
+  align-items: center; 
+  width:100%;
+}
 
 @media (max-width: 1200px) {
 

@@ -14,7 +14,7 @@ const Message = ({ result }) => {
   useEffect(() => {}, [result]);
 
   return (
-    <div className="messages-list-container">
+    <div className="messages-list-container" id="message-container">
       <li className="list">
         <div className="message-box" id="messageBox">
           <div className={`indicator ${colorChange(result.choice)}`}></div>

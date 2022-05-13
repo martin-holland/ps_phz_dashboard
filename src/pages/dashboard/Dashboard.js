@@ -70,6 +70,18 @@ const Dashboard = (props) => {
     let end = document.getElementById("end");
     end.value = new Date().toISOString().split("T")[0];
     filterDate();
+    let messageParas = document.querySelectorAll("p.msgPara");
+
+    for (const elem of messageParas) {
+      elem.remove();
+    }
+    let promptersmsg = document.querySelector("p.promotersmsg");
+    let passivemsg = document.querySelector(".passivesmsg");
+    let detractorsmsg = document.querySelector(".detractorsmsg");
+
+    if (promptersmsg) promptersmsg.remove();
+    if (passivemsg) passivemsg.remove();
+    if (detractorsmsg) detractorsmsg.remove();
   };
 
   const runOnce = () => {
@@ -181,10 +193,7 @@ const Dashboard = (props) => {
           />
         </ChartContainer>
         <div className="bottom-container">
-          <MessageContainer
-            id="message-container"
-            className="message-container"
-          >
+          <MessageContainer className="message-container" id="msg-container">
             {(newResults.length > 0 ? newResults : defaultResults).map(
               (result) => (
                 <Message result={result} key={result.surveyId} />
