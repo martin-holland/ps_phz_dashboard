@@ -51,9 +51,9 @@ export const getEachMessageSummary = (dataToSummarise) => {
     if (result.surveyResult === "promoter") {
       promotersMessage.push(result.message);
     } else if (result.surveyResult === "passive") {
-      detractorsMessage.push(result.message);
-    } else if (result.surveyResult === "detractor") {
       passivesMessage.push(result.message);
+    } else if (result.surveyResult === "detractor") {
+      detractorsMessage.push(result.message);
     }
   });
   return {
