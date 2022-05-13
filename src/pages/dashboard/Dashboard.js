@@ -193,10 +193,7 @@ const Dashboard = (props) => {
           />
         </ChartContainer>
         <div className="bottom-container">
-          <MessageContainer
-            id="message-container"
-            className="message-container"
-          >
+          <MessageContainer className="message-container">
             {(newResults.length > 0 ? newResults : defaultResults).map(
               (result) => (
                 <Message result={result} key={result.surveyId} />
