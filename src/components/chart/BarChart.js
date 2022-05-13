@@ -229,6 +229,7 @@ const BarChart = (props) => {
   //function for clickable chart event
   const chartRef = useRef();
   const onClick = (event, element) => {
+    console.log("clicked bar");
     const clickedElement = getElementAtEvent(chartRef.current, event);
     console.log(clickedElement);
     const barIndex = clickedElement[0].index;
@@ -281,6 +282,7 @@ const BarChart = (props) => {
       }
     }
   };
+
   useEffect(() => {
     setNPSScores(
       calculateNPS(rollingPromoters, rollingDetractors, rollingPassives)

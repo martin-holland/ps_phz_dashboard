@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Functions
 import { checkAuthenticated } from "./statisticsFunctions";
-import { SET_NEW_RESULTS } from "../../redux/types";
+// import { SET_NEW_RESULTS } from "../../redux/types";
 
 const Statistics = (props) => {
   const [authentication, setAuthentication] = useState({});

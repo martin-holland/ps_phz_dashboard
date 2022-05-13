@@ -71,6 +71,7 @@ const Dashboard = (props) => {
     end.value = new Date().toISOString().split("T")[0];
     filterDate();
     let messageParas = document.querySelectorAll("p.msgPara");
+
     for (const elem of messageParas) {
       elem.remove();
     }
