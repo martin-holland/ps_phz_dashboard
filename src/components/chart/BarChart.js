@@ -226,28 +226,60 @@ const BarChart = (props) => {
     //eslint-disable-next-line
   }, [props]);
 
-  // console.log("NPS Scores: ", NPSScores);
-  // console.log("MaySummary: ", maySummary);
-
   //function for clickable chart event
   const chartRef = useRef();
   const onClick = (event, element) => {
     const clickedElement = getElementAtEvent(chartRef.current, event);
+    console.log(clickedElement);
     const barIndex = clickedElement[0].index;
     console.log(barIndex);
+
+    console.log(
+      "type",
+      clickedElement[0].element.$context.dataset.data[barIndex]
+    );
     let clickedRating = clickedElement[0].element.$context.dataset.label;
     console.log(clickedRating);
-    let clickedMessage;
 
+    let clickedMonth = rollingMonths[barIndex];
+    console.log(clickedMonth);
+
+    let clickedMessage;
+    const messageContainer = document.getElementById("message-container");
+    messageContainer.innerText = "";
+    // let msgContainer = document.getElementById("msg-container");
+    //  msgContainer.innerHTML = "";
+    let messageParaTitle;
+    messageParaTitle = document.createElement("p");
+    messageParaTitle.setAttribute("class", "msgParaTitle");
     if (clickedRating === "Promoters") {
       clickedMessage = rollingMsgMonths[barIndex].promotersMessage;
+
+      messageParaTitle.innerText = `${clickedMonth}: Promoters Feedback`;
+      messageParaTitle.setAttribute("class", "promotersmsg");
     } else if (clickedRating === "Passive") {
-      clickedMessage = rollingMsgMonths[barIndex].passivesMessages;
+      clickedMessage = rollingMsgMonths[barIndex].passivesMessage;
+
+      messageParaTitle.innerText = `${clickedMonth}: Passives Feedback`;
+      messageParaTitle.setAttribute("class", "passivesmsg");
     } else if (clickedRating === "Detractors") {
       clickedMessage = rollingMsgMonths[barIndex].detractorsMessage;
-    }
 
+      messageParaTitle.innerText = `${clickedMonth}: Detractors Feedback`;
+      messageParaTitle.setAttribute("class", "detractorsmsg");
+    }
+    messageContainer.appendChild(messageParaTitle);
     console.log("clickedMessage", clickedMessage);
+    let messagePara;
+
+    if (clickedMessage) {
+      for (const msg of clickedMessage) {
+        messagePara = document.createElement("p");
+        messagePara.setAttribute("class", "msgPara");
+        messagePara.innerHTML = msg;
+        messageContainer.appendChild(messagePara);
+      }
+    }
   };
   useEffect(() => {
     setNPSScores(
