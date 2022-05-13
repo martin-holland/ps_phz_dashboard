@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-// Functions
-import { checkAuthenticated } from "./statisticsFunctions";
-// import { SET_NEW_RESULTS } from "../../redux/types";
+// Redux imports
+import { connect } from "react-redux";
+import { getAllData } from "../../redux/actions/dataActions";
+import PropTypes from "prop-types";
 
 const Statistics = (props) => {
-  const [authentication, setAuthentication] = useState({});
+  //   const { defaultResults, results, loading } = props.data;
   const [token, setToken] = useState();
-  const [authenticated, setAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState();
+
+  const checkAuthenticated = () => {
+    let localStorageToken = localStorage.getItem("FBIdToken");
+    if (localStorageToken && localStorageToken.startsWith("Bearer ")) {
+      localStorageToken = localStorageToken.split("Bearer ")[1];
+      console.log("Token from checkAuthenticated: ", localStorageToken);
+    }
+    return localStorageToken;
+  };
 
   const getStatisticsData = (token) => {
     const results = [];
@@ -26,7 +34,6 @@ const Statistics = (props) => {
         "https://us-central1-promoterscore-14480.cloudfunctions.net/api/glogin"
       )
       .then((res) => {
-        console.log("Results loaded: ", res.data);
         results.push(res.data);
         setResults(results);
       })
@@ -34,44 +41,45 @@ const Statistics = (props) => {
   };
 
   useEffect(() => {
-    setAuthentication(checkAuthenticated());
-    if (authentication.token) {
-      setToken(authentication.token);
-      setAuthenticated(true);
-    }
-    if (authentication.authenticated) {
-      getStatisticsData(token);
-      setLoading(false);
-    }
-    console.log("results from Statistics: ", results);
-    //eslint-disable-next-line
-  }, [authenticated]);
+    setToken(checkAuthenticated());
+  }, []);
 
-  if (!authenticated && !loading) {
-    return <div>Not Authorized, please return to home page</div>;
-  } else if (authenticated && !loading) {
+  useEffect(() => {
+    getStatisticsData(token);
+  }, [token]);
+
+  useEffect(() => {
+    console.log(results);
+  }, [results]);
+
+  if (results.length > 0) {
     return (
       <>
-        <div>Statistics</div>
         <div>
-          Results:{" "}
-          {results.length > 0
-            ? results.map((item) => {
-                return (
-                  <div>
-                    <p>Created At: {item.createdAt}</p>
-                    <p>Result: {item.surveyResult}</p>
-                    <p>Message: {item.message}</p>
-                  </div>
-                );
-              })
-            : "No Results"}
+          {results[0].map((result) => (
+            <>
+              <p>Created At: {result.createdAt}</p>
+              <p>surveyId: {result.surveyId}</p>
+            </>
+          ))}
         </div>
       </>
     );
-  } else if (loading) {
-    return <div>Loading...</div>;
   }
+  return <div>Statistics (No Data)</div>;
 };
 
-export default Statistics;
+Statistics.propTypes = {
+  getAllData: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  data: state.data,
+  user: state.user,
+});
+
+export default connect(mapStateToProps, {
+  getAllData,
+})(Statistics);

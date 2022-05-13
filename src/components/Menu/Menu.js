@@ -38,7 +38,7 @@ const Menu = ({ open }, props) => {
               style={{ height: "30px", width: "30px", marginRight: "1rem" }}
             />
           </span>
-          What is Promoter Score?
+          Statistics
         </div>
       </a>
     </StyledMenu>
