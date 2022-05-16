@@ -24,7 +24,11 @@ const Message = ({ result }) => {
           </p>
         </div>
         <div className="date-box">
-          <p>{new Date(result.createdAt).toLocaleString().slice(0, 10)}</p>
+          <p>
+            {result.createdAt
+              ? new Date(result.createdAt).toLocaleString().slice(0, 10)
+              : ""}
+          </p>
         </div>
       </li>
     </div>

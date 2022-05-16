@@ -6,6 +6,16 @@ export const getNewResults = (results) => {
   let newResults = results.filter(
     (date) => date.createdAt >= start && date.createdAt <= end
   );
+  if (newResults.length === 0) {
+    newResults.push({
+      createdAt: "",
+      surveyId: "",
+      surveyResult: "",
+      choice: "",
+      message: "No Data For this selection",
+    });
+  }
+  console.log("Filter newResults: ", newResults);
   return newResults;
 };
 export const getSixMonthAgoISoString = () => {
