@@ -86,12 +86,12 @@ const Dashboard = (props) => {
 
   const runOnce = () => {
     console.log("Ran once");
-    setTimeout(() => {
-      if (results.length !== 0) {
-        filterDate();
-      }
-      setLoadingData(false);
-    }, 500);
+    // setTimeout(() => {
+    if (results.length !== 0) {
+      filterDate();
+    }
+    setLoadingData(false);
+    // }, 500);
   };
 
   // Data retrieval
