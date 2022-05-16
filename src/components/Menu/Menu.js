@@ -2,6 +2,7 @@ import React from "react";
 import { StyledMenu } from "./Menu.styled";
 import { bool } from "prop-types";
 import psLogo from "../../assets/favicon-ps.svg";
+import { Link } from "react-router-dom";
 
 const Menu = ({ open }, props) => {
   const closeMenu = () => {
@@ -41,6 +42,20 @@ const Menu = ({ open }, props) => {
           Statistics
         </div>
       </a>
+      {/* <a href="/" target="_blank" rel="noreferrer"> */}
+      <Link to="/dashboard">
+        <div style={{ display: "flex", alignItems: "center", width: "20vw" }}>
+          <span role="img" aria-label="about us">
+            <img
+              alt="logo"
+              src={psLogo}
+              style={{ height: "30px", width: "30px", marginRight: "1rem" }}
+            />
+          </span>
+          Dashboard
+        </div>
+      </Link>
+      {/* </a> */}
     </StyledMenu>
   );
 };
