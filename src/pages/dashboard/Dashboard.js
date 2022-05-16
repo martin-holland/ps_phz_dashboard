@@ -87,18 +87,12 @@ const Dashboard = (props) => {
   const runOnce = () => {
     console.log("Ran once");
     setTimeout(() => {
-      filterDate();
-    }, 2000);
-    setLoadingData(false);
+      if (results.length !== 0) {
+        filterDate();
+      }
+      setLoadingData(false);
+    }, 500);
   };
-
-  // const runOnce = () => {
-  //   console.log("Ran once");
-  //   setTimeout(() => {
-  //   filterDate();
-  //   }, 2000);
-  //   setLoadingData(false);
-  // };
 
   // Data retrieval
   useEffect(() => {
