@@ -58,12 +58,12 @@
   color: black;
   padding: 10px;
   margin: 10px;
-  height: 3rem;
+  height: 2.5rem;
   width: fit-content;
   border: 1px solid transparent;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  
+  font-size: 0.8rem;
 }
 .score-container {
   margin: 0.5rem ;
@@ -74,7 +74,7 @@
 .passive,
 .detractors {
   padding: 10px;
-  min-width:fit-content;
+  width:fit-content;
   height: 30px;
   border-radius: 5px;
   margin: 10px 0;
@@ -95,16 +95,16 @@
 .promotersmsg{
   border-radius: 5px;
   background-color: #19aade;
-  padding:5px;
+  padding:5px 10px;
 }
 .passivesmsg {
   background-color: #1de4bd;
-  padding:5px;
+  padding:5px 10px;
   border-radius: 5px;
 }
 .detractorsmsg {
   background-color: #ef7e32;
-  padding:5px;
+  padding:5px 10px;
   border-radius: 5px;
 }
 .doughnut-container {

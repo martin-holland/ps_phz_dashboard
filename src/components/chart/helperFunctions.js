@@ -157,13 +157,11 @@ export const getOptions = (results) => {
     maintainAspectRatio: false,
     scales: {
       x: {
-        stacked: false,
         ticks: {
           color: "black",
         },
       },
       y: {
-        stacked: false,
         ticks: {
           color: "black",
         },
