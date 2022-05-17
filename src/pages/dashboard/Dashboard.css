@@ -5,19 +5,20 @@
 }
 
 
-
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: fit-content;
+  font-size: 1rem;
 }
 .header-container{
   display: flex;
   width: 100vw;
   justify-content: center;
   padding-top: 10px;
+  
 }
 .header{
   width: 100vw;
@@ -52,6 +53,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
 }
 .datefilter-box{
   /* background-color: #a5a9aa!important; */
@@ -78,14 +80,21 @@
   background-color: gray;
 }
 
-.message-container, .line-container{
+.bottom-container{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  margin: 0.5rem 0;
   width: 50vw;
-  height: 400px;
+  height: 450px;
   min-height: 300px;
+  overflow-y: hidden;
   
 }
 .message-container{
+  height: 450px;
   overflow-y: scroll;
+
 }
 
 input {
@@ -93,13 +102,7 @@ input {
   text-indent: 3px;
 }
 
-.bottom-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  padding-bottom: 10px;
-}
+
 .loader {
   display: flex;
   align-items: center;
@@ -125,11 +128,6 @@ input {
   .header{
     width: 60vw;
   }
-  /* .message-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-  } */
  
   .message-container, .line-container{
     width: 90%;

@@ -23,13 +23,11 @@ export const LogoutButton = styled.button`
 `;
 export const Toggle = styled.p`
   cursor: pointer;
-  // position: absolute;
-  // top: 5px;
-  // right: 60px;
   padding: 5px;
+  padding-right: 35px;
   margin-top: 0.5rem;
-  border: none;
 
+  border: none;
   transition: all 0.5s ease;
 
   &:focus {

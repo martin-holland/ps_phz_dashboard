@@ -3,9 +3,8 @@
   margin: auto;
   padding-right: 10px;
   padding-left: 10px;
-  height: 400px;
 }
-.myChart {
+#myChart {
   padding: 10px;
   height: 350px;
 }

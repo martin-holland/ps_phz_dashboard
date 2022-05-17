@@ -68,18 +68,6 @@ const LineChart = (props) => {
   const [decSummary, setDecSummary] = useState({});
 
   const [npsScore, setNpsScore] = useState([]);
-  // const [janNps, setJanNps] = useState();
-  // const [febNps, setFebNps] = useState();
-  // const [marNps, setMarNps] = useState();
-  // const [aprNps, setAprNps] = useState();
-  // const [mayNps, setMayNps] = useState();
-  // const [junNps, setJunNps] = useState();
-  // const [julNps, setJulNps] = useState();
-  // const [augNps, setAugNps] = useState();
-  // const [sepNps, setSepNps] = useState();
-  // const [octNps, setOctNps] = useState();
-  // const [novNps, setNovNps] = useState();
-  // const [decNps, setDecNps] = useState();
 
   const calculateSummary = (dataToSummarise) => {
     setSummary(summariseData(results));
@@ -189,6 +177,7 @@ const LineChart = (props) => {
           font: {
             size: 18,
           },
+          padding: 20,
         },
       },
 
@@ -276,6 +265,7 @@ const LineChart = (props) => {
     datasets: [
       {
         label: "Promoter Score",
+        padding: 18,
         data: npsScore,
         tension: 0.5,
         type: "line",
