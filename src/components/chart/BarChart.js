@@ -107,51 +107,27 @@ const BarChart = (props) => {
     setMessageSummary(getEachMessageSummary(results));
   };
 
-  const promoterSummaries = [
-    janSummary.promoters,
-    febSummary.promoters,
-    marSummary.promoters,
-    aprSummary.promoters,
-    maySummary.promoters,
-    junSummary.promoters,
-    julSummary.promoters,
-    augSummary.promoters,
-    sepSummary.promoters,
-    octSummary.promoters,
-    novSummary.promoters,
-    decSummary.promoters,
+  let monthsSummaryArray = [
+    janSummary,
+    febSummary,
+    marSummary,
+    aprSummary,
+    maySummary,
+    junSummary,
+    julSummary,
+    augSummary,
+    sepSummary,
+    octSummary,
+    novSummary,
+    decSummary,
   ];
+  const promoterSummaries = monthsSummaryArray.map((month) => month.promoters);
+  const passiveSummaries = monthsSummaryArray.map((month) => month.passives);
+  const detractorSummaries = monthsSummaryArray.map(
+    (month) => month.detractors
+  );
 
-  const passiveSummaries = [
-    janSummary.passives,
-    febSummary.passives,
-    marSummary.passives,
-    aprSummary.passives,
-    maySummary.passives,
-    junSummary.passives,
-    julSummary.passives,
-    augSummary.passives,
-    sepSummary.passives,
-    octSummary.passives,
-    novSummary.passives,
-    decSummary.passives,
-  ];
-
-  const detractorSummaries = [
-    janSummary.detractors,
-    febSummary.detractors,
-    marSummary.detractors,
-    aprSummary.detractors,
-    maySummary.detractors,
-    junSummary.detractors,
-    julSummary.detractors,
-    augSummary.detractors,
-    sepSummary.detractors,
-    octSummary.detractors,
-    novSummary.detractors,
-    decSummary.detractors,
-  ];
-
+  console.log("paSummary", passiveSummaries);
   let thisMonth = new Date().getMonth();
   thisMonth = thisMonth - 11;
 
@@ -248,8 +224,7 @@ const BarChart = (props) => {
     let clickedMessage;
     const messageContainer = document.getElementById("message-container");
     messageContainer.innerText = "";
-    // let msgContainer = document.getElementById("msg-container");
-    //  msgContainer.innerHTML = "";
+
     let messageParaTitle;
     messageParaTitle = document.createElement("p");
     messageParaTitle.setAttribute("class", "msgParaTitle");

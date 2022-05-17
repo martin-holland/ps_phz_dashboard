@@ -6,6 +6,7 @@ import Chart from "chart.js/auto";
 
 //helper functions
 import { summariseData } from "./helperFunctions";
+import { getLineOptions } from "./chartFunction";
 
 //styles
 import styled from "styled-components";
@@ -87,50 +88,26 @@ const LineChart = (props) => {
     "Dec",
   ];
 
-  const promoterSummaries = [
-    janSummary.promoters,
-    febSummary.promoters,
-    marSummary.promoters,
-    aprSummary.promoters,
-    maySummary.promoters,
-    junSummary.promoters,
-    julSummary.promoters,
-    augSummary.promoters,
-    sepSummary.promoters,
-    octSummary.promoters,
-    novSummary.promoters,
-    decSummary.promoters,
+  let monthsSummaryArray = [
+    janSummary,
+    febSummary,
+    marSummary,
+    aprSummary,
+    maySummary,
+    junSummary,
+    julSummary,
+    augSummary,
+    sepSummary,
+    octSummary,
+    novSummary,
+    decSummary,
   ];
+  const promoterSummaries = monthsSummaryArray.map((month) => month.promoters);
+  const passiveSummaries = monthsSummaryArray.map((month) => month.passives);
+  const detractorSummaries = monthsSummaryArray.map(
+    (month) => month.detractors
+  );
 
-  const passiveSummaries = [
-    janSummary.passives,
-    febSummary.passives,
-    marSummary.passives,
-    aprSummary.passives,
-    maySummary.passives,
-    junSummary.passives,
-    julSummary.passives,
-    augSummary.passives,
-    sepSummary.passives,
-    octSummary.passives,
-    novSummary.passives,
-    decSummary.passives,
-  ];
-
-  const detractorSummaries = [
-    janSummary.detractors,
-    febSummary.detractors,
-    marSummary.detractors,
-    aprSummary.detractors,
-    maySummary.detractors,
-    junSummary.detractors,
-    julSummary.detractors,
-    augSummary.detractors,
-    sepSummary.detractors,
-    octSummary.detractors,
-    novSummary.detractors,
-    decSummary.detractors,
-  ];
   let thisMonth = new Date().getMonth();
   thisMonth = thisMonth - 11;
 
@@ -152,6 +129,7 @@ const LineChart = (props) => {
     ...detractorSummaries.slice(thisMonth),
     ...detractorSummaries.slice(0, thisMonth),
   ];
+
   const monthlySummary = [
     janSummary,
     febSummary,
@@ -167,42 +145,7 @@ const LineChart = (props) => {
     decSummary,
   ];
 
-  const options = {
-    type: "line",
-    indexAxis: "x",
-    plugins: {
-      legend: {
-        labels: {
-          color: `${props.theme.color}`,
-          font: {
-            size: 18,
-          },
-          padding: 20,
-        },
-      },
-
-      autocolors: false,
-    },
-    responsive: true,
-    hoverRadius: 12,
-    hoverBackgroundColor: "yellow",
-    maintainAspectRatio: false,
-    scales: {
-      x: {
-        display: true,
-        ticks: {
-          color: "black",
-        },
-      },
-      y: {
-        display: true,
-        beginAtZero: true,
-        ticks: {
-          color: "black",
-        },
-      },
-    },
-  };
+  const options = getLineOptions(props);
 
   useEffect(() => {
     calculateSummary(results);
@@ -270,8 +213,9 @@ const LineChart = (props) => {
         tension: 0.5,
         type: "line",
         borderWidth: 2,
-        borderColor: "#BAB8B7",
-        backgroundColor: "#0E5881",
+        borderColor: "#919597",
+        backgroundColor: "#19aade",
+        fill: false,
       },
     ],
   };

@@ -62,3 +62,42 @@ export const getEachMessageSummary = (dataToSummarise) => {
     detractorsMessage: detractorsMessage,
   };
 };
+
+export const getLineOptions = (props) => {
+  const options = {
+    type: "line",
+    indexAxis: "x",
+    plugins: {
+      legend: {
+        labels: {
+          color: `${props.theme.color}`,
+          font: {
+            size: 18,
+          },
+        },
+      },
+      layout: { padding: { bottom: 0.5 } },
+
+      autocolors: false,
+    },
+    responsive: true,
+    hoverRadius: 12,
+    hoverBackgroundColor: "#ef7e32",
+    scales: {
+      x: {
+        display: true,
+        ticks: {
+          color: "black",
+        },
+      },
+      y: {
+        display: true,
+        beginAtZero: true,
+        ticks: {
+          color: "black",
+        },
+      },
+    },
+  };
+  return options;
+};
