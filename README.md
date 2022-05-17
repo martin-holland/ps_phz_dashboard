@@ -50,6 +50,7 @@ Dev
 - React
 - CSS
 - Firebase
+- React ChartJs
 - Vagrant/Virtualbox
 - Docker-compose/Docker
 
