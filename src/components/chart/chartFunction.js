@@ -77,7 +77,7 @@ export const getLineOptions = (props) => {
         },
       },
       layout: { padding: { bottom: 0.5 } },
-
+      maintainAspectRatio: false,
       autocolors: false,
     },
     responsive: true,
