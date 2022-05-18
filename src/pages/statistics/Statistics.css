@@ -80,10 +80,60 @@
     margin-right: 0.5rem;
 }
 
+.statistics-headings {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
 h4 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-size: 1.15rem;
 }
+
+.heading-icons {
+    position: absolute;
+    top: -50%;
+    right: 0%;
+    height: 50px;
+}
+
+.organiser {
+    display: flex;
+}
+
+.info-button {
+    margin-top: 1rem;
+    border: none;
+    background-color: none;
+}
+
+.popup-content {
+    margin: auto;
+    background: rgb(1, 0, 71);
+    color: white;
+    width: 50%;
+    padding: 5px;
+    border-radius: 5px;
+    padding: 1rem;
+    border: solid white 1px;
+  }
+
+  .popup-arrow {
+    color: rgb(1, 0, 71);
+  }
+  [role='tooltip'].popup-content {
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+  }
+  
+  .popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  [data-popup='tooltip'].popup-overlay {
+    background: transparent;
+  }
 
 .top-right {
     display: flex;
@@ -118,7 +168,7 @@ h4 {
     overflow-y: scroll;
 }
 
-.total-responses, .response-rate {
+.total-responses, .response-rate, .expected {
     font-weight: bold;
     padding: 0.5rem;
     text-align: center;
@@ -141,4 +191,27 @@ h4 {
 }
 .expected-responses {
     font-size: small;
+}
+
+.wordcloud-heading {
+    margin-bottom: 1rem;
+}
+
+.simple-cloud {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 95%;
+    width: 95%;
+    background-color:rgb(1, 0, 71);
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.heading-icons-smaller {
+    position: absolute;
+    top: -30%;
+    right: 0%;
+    height: 45px;
 }

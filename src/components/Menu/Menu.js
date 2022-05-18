@@ -30,7 +30,7 @@ const Menu = ({ open }, props) => {
           What is Promoter Score?
         </div>
       </a>
-      <a href="/statistics" target="_blank" rel="noreferrer">
+      <Link to="/statistics">
         <div style={{ display: "flex", alignItems: "center", width: "20vw" }}>
           <span role="img" aria-label="about us">
             <img
@@ -41,7 +41,7 @@ const Menu = ({ open }, props) => {
           </span>
           Statistics
         </div>
-      </a>
+      </Link>
       {/* <a href="/" target="_blank" rel="noreferrer"> */}
       <Link to="/dashboard">
         <div style={{ display: "flex", alignItems: "center", width: "20vw" }}>
