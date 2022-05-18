@@ -119,7 +119,7 @@ npm start
 
 ### 3.4. Run Tests
 
-cypress - npm run e2e-test
+robot -testcasename.robot
 
 ### 3.5. IDE Setup and Debugging
 
@@ -138,11 +138,20 @@ Firebase
 
 ## 4. Staging/Production Environment
 
-### 4.1. Access
+### 4.1. Prerequisites
 
-### 4.2. Deployment
+1. Python3 & pip
+2. pip install robotframework(5.0)
+3. check robot version - robot --version
+4. Install relevant browser drive and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
+
+### 4.2. Customizing Tests
+
+The UI tests run with Chrome by default. To run in a different browser ensure the driver is in path and run the tests with variable override. For example to run with firefox use --variable BROWSER:firefox
 
 ### 4.3. Smoke Tests
+
+1. User
 
 #### 4.3.1. Automated Test Cases
 
