@@ -128,6 +128,7 @@ cypress - npm run e2e-test
 Survey Form https://github.com/a-matta/phz_ps
 Backend https://github.com/martin-holland/phz_ps_backend
 Dashboard https://github.com/martin-holland/ps_phz_dashboard
+e2e-tests https://github.com/a-matta/e2ephz
 
 ### 3.7. Databases and Migrations
 
@@ -135,7 +136,7 @@ Firebase
 
 ### 3.8. Continuous Integration
 
-## 4. Staging Environment
+## 4. Staging/Production Environment
 
 ### 4.1. Access
 
@@ -152,6 +153,9 @@ Firebase
 #### 4.3.2. Manual Test Cases
 
 ### 4.4. Rollback
+
+User can reset database from firebase => Go to Firebase Promoter project and Firestore database and in survey_results => delete collection.
+WARNING! if survey results are deleted, all test data will be deleted permenently.
 
 ### 4.5. Logs
 
