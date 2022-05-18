@@ -162,12 +162,25 @@ The UI tests run with Chrome by default. To run in a different browser ensure th
 
 #### 4.3.2. Manual Test Cases
 
+Browser : Edge, Chrome, Safari & Firefox.
+
+1. Launch Dashboard at https://promoterscore-tg.netlify.app
+2. Add valid username/password, Login works sucessfully
+3. Add invalid username/password, Login should not work, user cannot view dashboard
+4. Check if messages appear is descending order, messages are seen in descending order
+5. Check if logout button is working, logout button works
+6. Check if theme works, theme works
+7. Check if filter works with future dates & past dates
+   There are known issues for responsiveness.
+
 ### 4.4. Rollback
 
 User can reset database from firebase => Go to Firebase Promoter project and Firestore database and in survey_results => delete collection.
 WARNING! if survey results are deleted, all test data will be deleted permenently.
 
 ### 4.5. Logs
+
+![Screenshot of the application](./Screenshot.png)
 
 ### 4.6. Monitoring
 
