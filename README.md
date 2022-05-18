@@ -119,7 +119,8 @@ npm start
 
 ### 3.4. Run Tests
 
-robot -testcasename.robot
+robot -testcasename.robot OR
+robot example.robot
 
 ### 3.5. IDE Setup and Debugging
 
@@ -151,13 +152,13 @@ The UI tests run with Chrome by default. To run in a different browser ensure th
 
 ### 4.3. Smoke Tests
 
-1. User
+1. User can login and view dashboard.
+2. Filter and view dates.
 
 #### 4.3.1. Automated Test Cases
 
-1. Form can be submitted with message
-2. Form can be sumbitted without a message
-3. Form can be closed without giving a feedback
+1. User can login and view dashboard.
+2. Filter and view dates.
 
 #### 4.3.2. Manual Test Cases
 
