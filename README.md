@@ -183,6 +183,7 @@ WARNING! if survey results are deleted, all test data will be deleted permenentl
 ### 4.5. Logs
 
 ![Screenshot of the application](./Screenshot.png)
+![Screenshot of the application](./Screenshot1.png)
 
 ### 4.6. Monitoring
 
