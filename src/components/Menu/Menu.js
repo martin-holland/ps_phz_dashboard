@@ -43,7 +43,7 @@ const Menu = ({ open }, props) => {
         </div>
       </Link>
       {/* <a href="/" target="_blank" rel="noreferrer"> */}
-      <Link to="/dashboard">
+      <Link to="/">
         <div style={{ display: "flex", alignItems: "center", width: "20vw" }}>
           <span role="img" aria-label="about us">
             <img
