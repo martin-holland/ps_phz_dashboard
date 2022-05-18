@@ -152,8 +152,10 @@ The UI tests run with Chrome by default. To run in a different browser ensure th
 
 ### 4.3. Smoke Tests
 
-1. User can login and view dashboard.
-2. Filter and view dates.
+1. Login to dashboard.
+2. Check if filtering of dates works.
+3. Check if reset of dates works.
+4. Check if data is seen in descending order.
 
 #### 4.3.1. Automated Test Cases
 
