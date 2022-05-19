@@ -42,8 +42,7 @@ const Menu = ({ open }, props) => {
           Statistics
         </div>
       </Link>
-      {/* <a href="/" target="_blank" rel="noreferrer"> */}
-      <Link to="/dashboard">
+      <a href="/" target="_blank" rel="noreferrer">
         <div style={{ display: "flex", alignItems: "center", width: "20vw" }}>
           <span role="img" aria-label="about us">
             <img
@@ -54,8 +53,7 @@ const Menu = ({ open }, props) => {
           </span>
           Dashboard
         </div>
-      </Link>
-      {/* </a> */}
+      </a>
     </StyledMenu>
   );
 };

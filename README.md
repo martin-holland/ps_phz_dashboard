@@ -1,9 +1,9 @@
-# PHZ Dashboard
+# Dashboard
 
-# Promoter's Call System
-
-Usage:
-git archive --format=tar HEAD | tar x -C ~/workspace/docker/project-name
+[Live Link](https://embedtest-mh.netlify.app/) - Survey Form
+[Link to backend repo](https://github.com/martin-holland/phz_ps_backend) - Firebase Functions
+[Link to Dashboard repo](https://github.com/martin-holland/ps_phz_dashboard) - Dashboard
+[Testing Repo](https://github.com/a-matta/e2ephz) - End to End Testing Repo, designed to work with Survey Form, backend and Dashboard.
 
 ## 1. Project Description
 
@@ -43,64 +43,17 @@ To calculate your Net Promoter Score, subtract the percentage of Detractors from
 
 ### 2.1. Technologies
 
-All PHZ Full Stack -projects should encapsulate all environments by virtualization. Choose one of the following for your project:
-
 Dev
 
 - React
 - CSS
 - Firebase
 - React ChartJs
-- Vagrant/Virtualbox
-- Docker-compose/Docker
 
 CI
 
-- use dev -env on ci.in.phz.fi + Jenkins executors running Docker or Vagrant/Virtualbox.
-- Jenkins
-- (do not use Gitlab CI, or AWS Code Deploy or other CI unless you have a permission from management, can rationalize the exception to management and you know what you are doing)
-- Nothing should be run outside virtualization and everything should be wrapped inside the container/virtual machine
-- do not pin the projects down on any individual executor, but set up the builds so that they can be run on any executor machine
+- Designed to use Netlify CI
 
-Staging
-
-- Xen / PHZ Virtual Machines
-- PHZ Docker Swarm
-- PHZ Kubernetes
-
-Production
-
-- Xen / PHZ Virtual Machines + Baremetal Database db.in.phz.fi
-- PHZ Docker Swarm (internal projects only)
-- PHZ Kubernetes (internal projects only)
-- AWS (customer projects, but customer needs to pay for it and there needs to be a contract in place with the customer before you start to set up the AWS env)
-
-### 2.2. Naming, Terms and Key Concepts
-
-Environments and the configs should be named as
-
-- dev: docker-compose.yml (i.e. use the default names for dev env), but .env.dev
-- (ci): use the dev -env on CI
-- stg: docker-compose.stg.yml, .env.stg
-- prod: docker-compose.prod.yml, .env.prod
-
-### 2.3. Coding Convention
-
-Directory structure
-
-- doc/ for UML documents
-- etc/ for nginx, ssh etc configs. Can be cp -pr etc/ /etc to the virtual machine during provisioning and matches the os directory structure
-- results/ test results
-- reports/ for e.g. code coverage reports
-- src/ for source code
-  \*\* Note! Source code should be placed under a single folder (src) that can be mounted over Docker -volume or Vagrant -shared folder inside the virtual machine so that node_modules or vendor directory are not on the shared folder. See https://wiki.phz.fi/Docker and https://wiki.phz.fi/Vagrant for further details how to circumvent the problems.
-- tests/ for tests
-
-### 2.4. Development Guide
-
-Add here examples and hints of good ways how to code the project. Convert the silent knowledge as tacit knowledge here.
-
-- See https://en.wikipedia.org/wiki/Knowledge_management
 
 ## 3. Development Environment
 
@@ -116,6 +69,10 @@ npm install
 npm start
 
 ### 3.3. Access the Application
+
+If running locally it is usually available on:
+
+[localhost:3000]http://localhost:3000
 
 ### 3.4. Run Tests
 
@@ -147,7 +104,81 @@ e2e-tests https://github.com/a-matta/e2ephz
 
 Firebase
 
+Note: This project requires a Google account
+
+Visit: https://console.firebase.google.com/
+
+Steps:
+
+1. Create a project and name it
+2. Skip Analytics if you do not intend to use them.
+3. Once Project is created you can click the 'Web' Option depicted as a "< / >" symbol.
+4. You will need to register the app, so give it a name. Hosting is not used for this method of deployment.
+5. Once created a SDK config should be displayed, the below config is what you need.
+
+```js
+const firebaseConfig = {
+  apiKey: "AIzaSyBaVvjB1z1_YKHKbzxfR3JnFVHmo3C_cEL0",
+  authDomain: "yourappname.firebaseapp.com",
+  projectId: "yourappname",
+  storageBucket: "yourappname.appspot.com",
+  messagingSenderId: "322163214306",
+  appId: "1:3331655514406:web:76c38d38970f3d17961ae7",
+  measurementId: "G-DRJHTVD6ZW",
+};
+```
+
+6. Update the Firebase config found inside src/backend/firebase-config.js
+7. Go back to console from the Firebase webpage and from the left hand menu select Firestore Database
+8. Create Firestore Database, you can start directly in production mode if you are combining the other 2 repositories mentioned at the top of this readme as it is a production ready application.
+
+The rules can be left as:
+
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+```
+
+9. NB: **_The location cannot be changed once decided_**
+   Pick the location you would like your database hosting in your region. If you are unsure where, this is normally geographically locally to the client base you will be interacting with. You can find a list of locations here:
+
+   https://cloud.google.com/about/locations
+
+   Make a note of this location for step 11.
+
+   Be aware that pricing is different in different regions.
+
+10. Once you see a table with 'Start collection' Firebase Firestore has been correctly set up.
+11. Change the end point in src/backend/firebase-functions.js from
+
+https://us-central1-promoterscore-14480.cloudfunctions.net/api/data
+
+To: https://yourapp-location-yourapp-id.cloudfunctions.net/api/data
+
+The app id can be found in firebase config.
+
+12. Download the Promoterscore backend as linked from the top of this readme.
+13. Inside the backend index.js change the config.js details to match those in the firebase-config you changed for this project.
+
+14. You will need to run
+
+```shell
+firebase deploy
+```
+
+from the backend repository
+
+15. Once these steps are completed you should be able to start hosting the site with npm start and testing it for receiving data!
+
 ### 3.8. Continuous Integration
+
+- Currently set up for Netlify with a Netlify TOML file for redirection. This can be found inside the application source folder.
 
 ## 4. Staging/Production Environment
 
@@ -197,39 +228,106 @@ WARNING! if survey results are deleted, all test data will be deleted permenentl
 ![Screenshot of the application](./Screenshot.png)
 ![Screenshot of the application](./Screenshot1.png)
 
-### 4.6. Monitoring
+## 5. Operating Manual
 
-## 5. Production Environment
+### 5.1 Manual Processes
 
-### 5.1. Access
+**_Optional_**
 
-### 5.2. Deployment
+To add manual data into firebase database for testing visit:
 
-### 5.3. Smoke Tests
+http://console.firebase.google.com
 
-#### 5.3.1. Automated Test Cases
+Steps:
 
-#### 5.3.2. Manual Test Cases
+1. Go to Firestore Database where you created the database from section 3.7
+2. Click start collection, call collection id: survey_results
+3. Click auto id for document id
+4. Set up fields like this:
 
-### 5.4. Rollback
+```js
+survey_results = {
+  createdAt: "2022-05-18T09:58:43.743Z",
+  choice: 10,
+  message: "",
+  surveyResult: "promoter",
+};
+```
 
-### 5.5. Logs
+- createdAt is type string. Format is an ISOString [Read more](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
+- choice is a number
+- message can be empty, but its type is string.
+- surveyResult is a string and should be either: "promoter" "detractor" or "passive"
 
-### 5.6. Monitoring
+5. This will allow you to add data to the database manually for testing.
 
-## 6. Operating Manual
 
-### 6.1 Scheduled Jobs
+### 5.2.Chartjs
+- install reactchartjs
+```sh
+npm install --save chart.js react-chartjs-2
+```
+- import chart to your chart component for example importing Doughnut chart.
 
-### 6.2 Manual Processes
+```sh
+import { Doughnut } from 'react-chartjs-2';
 
-## 7. Problems
+const promoters=[23,24,45,67,87,99]
+const detractors=[12,14,15,17,18,19]
+const passives=[3,4,6,8,9,5]
 
-### 7.1. Environments
+ const data = {
+    labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+    datasets: [
+      {
+        label: "Promoters",
+        data: promoters,
+      },
+      {
+        label: "Passive",
+        data: passives,
+      },
+      {
+        label: "Detractors",
+        data: detractors,
+      },
+    ],
+  };
+<Doughnut data={data}  />
 
-### 7.2. Coding
+```
+#### 5.3 Filter and reset Button
+  - 12 months rolling data is shown as default data whereas data can be filtered using start and end date from calender.Acoording to filter date data gets dispaly in chart and also in the message box accordingly.
 
-### 7.3. Dependencies
+  - reset button undo the filtering and gives back original 12 months rolling data.
 
-Add here TODO and blockers that you have found related to upgrading to newer versions.
-List the library/framework/service, version, and then the error message.
+## 6. Problems
+
+### 6.1. Environments
+
+### 6.2. Coding
+
+### 6.3 Notable Dependancies:
+
+    axios 0.26.1
+    chart.js 3.7.1
+    dayjs: 1.11.1,
+    firebase: 9.6.11,
+    license-checker: 25.0.1,
+    license-to-fail: 4.0.0,
+    react: 18.0.0,
+    react-chartjs-2: 4.1.0,
+    react-dom: 18.0.0,
+    react-icons: 4.3.1,
+    react-loader-spinner: 6.0.0-0,
+    react-redux: 7.2.8,
+    react-router-dom: 6.3.0,
+    react-scripts: 5.0.1,
+    react-tagcloud: 2.2.0,
+    reactjs-popup: 2.0.5,
+    redux: 4.1.2,
+    redux-devtools-extension: 2.13.9,
+    redux-thunk: 2.4.1,
+    styled-components: 5.3.5,
+    thunk: 0.0.1,
+    tippy.js: 6.3.7,
