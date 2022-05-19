@@ -192,7 +192,7 @@ Browser : Edge
 | Check if after login, theme is same as previously set          | User changes theme and logs off, and logins again my previous theme should be set |                                       works as per functionality. |
 | Check if filter works for previous month                       |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
 | Check filter works for different dates                         |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
-| Check if burger navigation bar works                           |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
+| Check if burger menu works                                     |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
 | Check if reset button works                                    |         when rest button is clicked all values are seen in default state          |                                    all default messages are seen. |
 
 Browser : Safari
@@ -207,7 +207,7 @@ Browser : Safari
 | Check if after login, theme is same as previously set          | User changes theme and logs off, and logins again my previous theme should be set |                                       works as per functionality. |
 | Check if filter works for previous month                       |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
 | Check filter works for different dates                         |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
-| Check if burger navigation bar works                           |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
+| Check if burger menu works                                     |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
 | Check if reset button works                                    |         when rest button is clicked all values are seen in default state          |                                    all default messages are seen. |
 
 Browser : Firefox
@@ -222,7 +222,7 @@ Browser : Firefox
 | Check if after login, theme is same as previously set          | User changes theme and logs off, and logins again my previous theme should be set |                                       works as per functionality. |
 | Check if filter works for previous month                       |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
 | Check filter works for different dates                         |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
-| Check if burger navigation bar works                           |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
+| Check if burger menu works                                     |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
 | Check if reset button works                                    |         when rest button is clicked all values are seen in default state          |                                    all default messages are seen. |
 
 ### 4.4. Rollback
