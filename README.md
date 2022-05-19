@@ -1,9 +1,9 @@
-# PHZ Dashboard
+# Dashboard
 
-# Promoter's Call System
-
-Usage:
-git archive --format=tar HEAD | tar x -C ~/workspace/docker/project-name
+[Live Link](https://embedtest-mh.netlify.app/) - Survey Form
+[Link to backend repo](https://github.com/martin-holland/phz_ps_backend) - Firebase Functions
+[Link to Dashboard repo](https://github.com/martin-holland/ps_phz_dashboard) - Dashboard
+[Testing Repo](https://github.com/a-matta/e2ephz) - End to End Testing Repo, designed to work with Survey Form, backend and Dashboard.
 
 ## 1. Project Description
 
@@ -43,64 +43,16 @@ To calculate your Net Promoter Score, subtract the percentage of Detractors from
 
 ### 2.1. Technologies
 
-All PHZ Full Stack -projects should encapsulate all environments by virtualization. Choose one of the following for your project:
-
 Dev
 
 - React
 - CSS
 - Firebase
 - React ChartJs
-- Vagrant/Virtualbox
-- Docker-compose/Docker
 
 CI
 
-- use dev -env on ci.in.phz.fi + Jenkins executors running Docker or Vagrant/Virtualbox.
-- Jenkins
-- (do not use Gitlab CI, or AWS Code Deploy or other CI unless you have a permission from management, can rationalize the exception to management and you know what you are doing)
-- Nothing should be run outside virtualization and everything should be wrapped inside the container/virtual machine
-- do not pin the projects down on any individual executor, but set up the builds so that they can be run on any executor machine
-
-Staging
-
-- Xen / PHZ Virtual Machines
-- PHZ Docker Swarm
-- PHZ Kubernetes
-
-Production
-
-- Xen / PHZ Virtual Machines + Baremetal Database db.in.phz.fi
-- PHZ Docker Swarm (internal projects only)
-- PHZ Kubernetes (internal projects only)
-- AWS (customer projects, but customer needs to pay for it and there needs to be a contract in place with the customer before you start to set up the AWS env)
-
-### 2.2. Naming, Terms and Key Concepts
-
-Environments and the configs should be named as
-
-- dev: docker-compose.yml (i.e. use the default names for dev env), but .env.dev
-- (ci): use the dev -env on CI
-- stg: docker-compose.stg.yml, .env.stg
-- prod: docker-compose.prod.yml, .env.prod
-
-### 2.3. Coding Convention
-
-Directory structure
-
-- doc/ for UML documents
-- etc/ for nginx, ssh etc configs. Can be cp -pr etc/ /etc to the virtual machine during provisioning and matches the os directory structure
-- results/ test results
-- reports/ for e.g. code coverage reports
-- src/ for source code
-  \*\* Note! Source code should be placed under a single folder (src) that can be mounted over Docker -volume or Vagrant -shared folder inside the virtual machine so that node_modules or vendor directory are not on the shared folder. See https://wiki.phz.fi/Docker and https://wiki.phz.fi/Vagrant for further details how to circumvent the problems.
-- tests/ for tests
-
-### 2.4. Development Guide
-
-Add here examples and hints of good ways how to code the project. Convert the silent knowledge as tacit knowledge here.
-
-- See https://en.wikipedia.org/wiki/Knowledge_management
+- Designed to use Netlify CI
 
 ## 3. Development Environment
 
@@ -124,6 +76,8 @@ robot example.robot
 
 ### 3.5. IDE Setup and Debugging
 
+Visual Studio Code
+
 ### 3.6. Version Control
 
 Survey Form https://github.com/a-matta/phz_ps
@@ -136,6 +90,8 @@ e2e-tests https://github.com/a-matta/e2ephz
 Firebase
 
 ### 3.8. Continuous Integration
+
+- Currently set up for Netlify with a Netlify TOML file for redirection. This can be found inside the application source folder.
 
 ## 4. Staging/Production Environment
 
@@ -185,39 +141,15 @@ WARNING! if survey results are deleted, all test data will be deleted permenentl
 ![Screenshot of the application](./Screenshot.png)
 ![Screenshot of the application](./Screenshot1.png)
 
-### 4.6. Monitoring
+## 5. Operating Manual
 
-## 5. Production Environment
+## 6. Problems
 
-### 5.1. Access
+### 6.1. Environments
 
-### 5.2. Deployment
+### 6.2. Coding
 
-### 5.3. Smoke Tests
-
-#### 5.3.1. Automated Test Cases
-
-#### 5.3.2. Manual Test Cases
-
-### 5.4. Rollback
-
-### 5.5. Logs
-
-### 5.6. Monitoring
-
-## 6. Operating Manual
-
-### 6.1 Scheduled Jobs
-
-### 6.2 Manual Processes
-
-## 7. Problems
-
-### 7.1. Environments
-
-### 7.2. Coding
-
-### 7.3. Dependencies
+### 6.3. Dependencies
 
 Add here TODO and blockers that you have found related to upgrading to newer versions.
 List the library/framework/service, version, and then the error message.
