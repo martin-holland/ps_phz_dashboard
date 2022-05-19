@@ -182,42 +182,48 @@ The UI tests run with Chrome by default. To run in a different browser ensure th
 
 Browser : Edge
 
-| Test Scenario                                                                   |                               Expected Results                                |                                                            Actual Results |
-| ------------------------------------------------------------------------------- | :---------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
-| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads successfully working                     |                                                Survey form is functioning |
-| Cross button should work as per functionality                                   |         when clicked on the Cross button the survey form should close         |                                           survey form closes successfully |
-| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen              |                         heart icon when clicked feedback form can be seen |
-| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working               |                        clicking random heart icon works and hover as well |
-| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works               |                        clicking on any heart can submit form successfully |
-| User can add feedback and add heart and submit form successfully                | When a heart is clicked, feedback is added and form is submitted successfully | clicking on heart and add feedback and form can be submitted successfully |
-| Web page should be responsive when maximized/minimised or dragged to small view |                      Page is responsive and works nicely                      |                                                        Page is responsive |
-| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled           |                       Entered €,# are added, send button is seen disabled |
+| Test Scenario                                                  |                                 Expected Results                                  |                                                    Actual Results |
+| -------------------------------------------------------------- | :-------------------------------------------------------------------------------: | ----------------------------------------------------------------: |
+| Launch Dashboard form at https://promoterscore-tg.netlify.app/ |                     dashboard form loads successfully working                     |                                     dashboard form is functioning |
+| Check response when valid email-id/password is entered         |                           Enter valid Email & Password                            |                                        Login should be successful |
+| Check response with invalid email-id/password                  |               when heart icon is clicked feedback form can be seen                |     should not work, user cannot login to dashboard without login |
+| Check if logout button works                                   |                        User should be taken back to login                         |                           works, user is taken back to login page |
+| Check if theme work                                            |                      colour theme should be changed to dark                       |                        works, on click turns to darker background |
+| Check if after login, theme is same as previously set          | User changes theme and logs off, and logins again my previous theme should be set |                                       works as per functionality. |
+| Check if filter works for previous month                       |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
+| Check filter works for different dates                         |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
+| Check if burger navigation bar works                           |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
+| Check if reset button works                                    |         when rest button is clicked all values are seen in default state          |                                    all default messages are seen. |
 
 Browser : Safari
 
-| Test Scenario                                                                   |                               Expected Results                               |                                                            Actual Results |
-| ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
-| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads successfully working                    |                                                Survey form is functioning |
-| Cross button should work as per functionality                                   |        when clicked on the Cross button the survey form should close         |                                           survey form closes successfully |
-| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen             |                         heart icon when clicked feedback form can be seen |
-| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working              |                        clicking random heart icon works and hover as well |
-| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works              |                        clicking on any heart can submit form successfully |
-| User can add feedback and add heart and submit form successfully                | When a heart is clicked, feedback is added and form is submitted sucessfully | clicking on heart and add feedback and form can be submitted successfully |
-| Web page should be responsive when maximized/minimised or dragged to small view |                     Page is responsive and works nicely                      |                                                        Page is responsive |
-| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled          |                       Entered €,# are added, send button is seen disabled |
+| Test Scenario                                                  |                                 Expected Results                                  |                                                    Actual Results |
+| -------------------------------------------------------------- | :-------------------------------------------------------------------------------: | ----------------------------------------------------------------: |
+| Launch Dashboard form at https://promoterscore-tg.netlify.app/ |                     dashboard form loads successfully working                     |                                     dashboard form is functioning |
+| Check response when valid email-id/password is entered         |                           Enter valid Email & Password                            |                                        Login should be successful |
+| Check response with invalid email-id/password                  |               when heart icon is clicked feedback form can be seen                |     should not work, user cannot login to dashboard without login |
+| Check if logout button works                                   |                        User should be taken back to login                         |                           works, user is taken back to login page |
+| Check if theme work                                            |                      colour theme should be changed to dark                       |                        works, on click turns to darker background |
+| Check if after login, theme is same as previously set          | User changes theme and logs off, and logins again my previous theme should be set |                                       works as per functionality. |
+| Check if filter works for previous month                       |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
+| Check filter works for different dates                         |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
+| Check if burger navigation bar works                           |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
+| Check if reset button works                                    |         when rest button is clicked all values are seen in default state          |                                    all default messages are seen. |
 
 Browser : Firefox
 
-| Test Scenario                                                                   |                               Expected Results                                |                                                            Actual Results |
-| ------------------------------------------------------------------------------- | :---------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
-| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads successfully working                     |                                                Survey form is functioning |
-| Cross button should work as per functionality                                   |         when clicked on the Cross button the survey form should close         |                                            survey form closes sucessfully |
-| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen              |                         heart icon when clicked feedback form can be seen |
-| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working               |                        clicking random heart icon works and hover as well |
-| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works               |                        clicking on any heart can submit form successfully |
-| User can add feedback and add heart and submit form successfully                | When a heart is clicked, feedback is added and form is submitted successfully | clicking on heart and add feedback and form can be submitted successfully |
-| Web page should be responsive when maximized/minimised or dragged to small view |                      Page is responsive and works nicely                      |                                                        Page is responsive |
-| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled           |                       Entered €,# are added, send button is seen disabled |
+| Test Scenario                                                  |                                 Expected Results                                  |                                                    Actual Results |
+| -------------------------------------------------------------- | :-------------------------------------------------------------------------------: | ----------------------------------------------------------------: |
+| Launch Dashboard form at https://promoterscore-tg.netlify.app/ |                     dashboard form loads successfully working                     |                                     dashboard form is functioning |
+| Check response when valid email-id/password is entered         |                           Enter valid Email & Password                            |                                        Login should be successful |
+| Check response with invalid email-id/password                  |               when heart icon is clicked feedback form can be seen                |     should not work, user cannot login to dashboard without login |
+| Check if logout button works                                   |                        User should be taken back to login                         |                           works, user is taken back to login page |
+| Check if theme work                                            |                      colour theme should be changed to dark                       |                        works, on click turns to darker background |
+| Check if after login, theme is same as previously set          | User changes theme and logs off, and logins again my previous theme should be set |                                       works as per functionality. |
+| Check if filter works for previous month                       |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
+| Check filter works for different dates                         |         entered values 01.01.2019 - 01.01.2020 and clicked filter button          | works as expected,shows no data incase filter values don't match. |
+| Check if burger navigation bar works                           |                 When 3 bar icon is clicked it should open LHS bar                 |                                           Navigation works nicely |
+| Check if reset button works                                    |         when rest button is clicked all values are seen in default state          |                                    all default messages are seen. |
 
 ### 4.4. Rollback
 
