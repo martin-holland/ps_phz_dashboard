@@ -54,6 +54,7 @@ CI
 
 - Designed to use Netlify CI
 
+
 ## 3. Development Environment
 
 ### 3.1. Prerequisites
@@ -249,6 +250,46 @@ survey_results = {
 - surveyResult is a string and should be either: "promoter" "detractor" or "passive"
 
 5. This will allow you to add data to the database manually for testing.
+
+
+### 5.2.Chartjs
+- install reactchartjs
+```sh
+npm install --save chart.js react-chartjs-2
+```
+- import chart to your chart component for example importing Doughnut chart.
+
+```sh
+import { Doughnut } from 'react-chartjs-2';
+
+const promoters=[23,24,45,67,87,99]
+const detractors=[12,14,15,17,18,19]
+const passives=[3,4,6,8,9,5]
+
+ const data = {
+    labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+    datasets: [
+      {
+        label: "Promoters",
+        data: promoters,
+      },
+      {
+        label: "Passive",
+        data: passives,
+      },
+      {
+        label: "Detractors",
+        data: detractors,
+      },
+    ],
+  };
+<Doughnut data={data}  />
+
+```
+#### 5.3 Filter and reset Button
+  - 12 months rolling data is shown as default data whereas data can be filtered using start and end date from calender.Acoording to filter date data gets dispaly in chart and also in the message box accordingly.
+
+  - reset button undo the filtering and gives back original 12 months rolling data.
 
 ## 6. Problems
 
