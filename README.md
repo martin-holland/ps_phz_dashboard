@@ -328,6 +328,8 @@ const passives=[3,4,6,8,9,5]
 
 ### 6.1. Environments
 
+During testing we had issue related to cookie while using mobile phone.
+
 ### 6.2. Coding
 
 ### 6.3 Notable Dependancies:
