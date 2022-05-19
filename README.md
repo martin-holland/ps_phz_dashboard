@@ -31,6 +31,9 @@ Customer's feedback is expressed their views in their own words.
 If 100 people answered the question so 40% - Promoters, 50% Passive and 10% Detractors
 NPS = 40%-10%= 30%/100= 30
 
+- Helpful for company to track their success. With the help of these data, company can improve service quality.
+- Can play effective role in establishing good relation between customer and company.
+  
 ### 1.5. Non-Functional Requirements
 
 https://wiki.phz.fi/NonFunctionalRequirements
@@ -317,12 +320,20 @@ const passives=[3,4,6,8,9,5]
 <Doughnut data={data}  />
 
 ```
-
+- Barchart have 12 months rolling data of promoters, detractorts and passives.
+- Doughnut component have 2 boxes at top with present month and last month Nps along with doughnut chart at bottom.
+- Doughnut chart display overall 12 months sum of detractor, passives and promoters as well as with total nps score at center.
+- Line chart gives overall trend of Nps between 12 months time period.
+  
 #### 5.3 Filter and reset Button
 
 - 12 months rolling data is shown as default data whereas data can be filtered using start and end date from calender.Acoording to filter date data gets dispaly in chart and also in the message box accordingly.
 
 - reset button undo the filtering and gives back original 12 months rolling data.
+
+#### 5.4 Dark and Light theme
+
+Dark and light theme can be achieved by toggling on the moon/light icon on the top right corner of dashboard.
 
 ## 6. Problems
 
