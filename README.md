@@ -50,6 +50,7 @@ Dev
 - React
 - CSS
 - Firebase
+- React ChartJs
 - Vagrant/Virtualbox
 - Docker-compose/Docker
 
@@ -118,7 +119,8 @@ npm start
 
 ### 3.4. Run Tests
 
-cypress - npm run e2e-test
+robot -testcasename.robot OR
+robot example.robot
 
 ### 3.5. IDE Setup and Debugging
 
@@ -127,6 +129,7 @@ cypress - npm run e2e-test
 Survey Form https://github.com/a-matta/phz_ps
 Backend https://github.com/martin-holland/phz_ps_backend
 Dashboard https://github.com/martin-holland/ps_phz_dashboard
+e2e-tests https://github.com/a-matta/e2ephz
 
 ### 3.7. Databases and Migrations
 
@@ -134,25 +137,53 @@ Firebase
 
 ### 3.8. Continuous Integration
 
-## 4. Staging Environment
+## 4. Staging/Production Environment
 
-### 4.1. Access
+### 4.1. Prerequisites
 
-### 4.2. Deployment
+1. Python3 & pip
+2. pip install robotframework(5.0)
+3. check robot version - robot --version
+4. Install relevant browser drive and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
+
+### 4.2. Customizing Tests
+
+The UI tests run with Chrome by default. To run in a different browser ensure the driver is in path and run the tests with variable override. For example to run with firefox use --variable BROWSER:firefox
 
 ### 4.3. Smoke Tests
 
+1. Login to dashboard.
+2. Check if filtering of dates works.
+3. Check if reset of dates works.
+4. Check if data is seen in descending order.
+
 #### 4.3.1. Automated Test Cases
 
-1. Form can be submitted with message
-2. Form can be sumbitted without a message
-3. Form can be closed without giving a feedback
+1. User can login and view dashboard.
+2. Filter and view dates.
 
 #### 4.3.2. Manual Test Cases
 
+Browser : Edge, Chrome, Safari & Firefox.
+
+1. Launch Dashboard at https://promoterscore-tg.netlify.app
+2. Add valid username/password, Login works sucessfully
+3. Add invalid username/password, Login should not work, user cannot view dashboard
+4. Check if messages appear is descending order, messages are seen in descending order
+5. Check if logout button is working, logout button works
+6. Check if theme works, theme works
+7. Check if filter works with future dates & past dates
+   There are known issues for responsiveness.
+
 ### 4.4. Rollback
 
+User can reset database from firebase => Go to Firebase Promoter project and Firestore database and in survey_results => delete collection.
+WARNING! if survey results are deleted, all test data will be deleted permenently.
+
 ### 4.5. Logs
+
+![Screenshot of the application](./Screenshot.png)
+![Screenshot of the application](./Screenshot1.png)
 
 ### 4.6. Monitoring
 

@@ -5,6 +5,8 @@
   justify-content: space-between;
   width: 100%;
   padding:0 1rem;
+  font-size: 0.8rem;
+  
 }
 
 .list {
@@ -22,11 +24,12 @@
   justify-content: flex-start;
   align-items: center; 
   width:100%;
+  
  
 }
 .indicator {
   min-width: 0.4rem;
-  height: 3rem;
+  height: 2.5rem;
 }
 .coral {
   background-color: #ef7e32;
@@ -38,7 +41,7 @@
   background-color: #19aade;
 }
 .ratings {
-  font-size: 2rem;
+  font-size: 1.2rem;
   padding:0 10px;
 }
 .date-box {

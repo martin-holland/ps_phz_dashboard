@@ -56,13 +56,6 @@ export const calculateNPS = (
   rollingDetractors,
   rollingPassives
 ) => {
-  // remove all unneeded entries:
-  // let monthsToRemove = monthEnd - monthStart;
-  // monthsToRemove = Math.abs(monthsToRemove);
-  // console.log("Months to remove: ", monthsToRemove);
-  // rollingPromoters.splice(0, monthsToRemove);
-  // rollingDetractors.splice(0, monthsToRemove);
-  // rollingPassives.splice(0, monthsToRemove);
   console.log("Rolling Promoters: ", rollingPromoters);
   console.log("Rolling Detractors: ", rollingDetractors);
   console.log("Rolling Passives: ", rollingPassives);
@@ -164,13 +157,11 @@ export const getOptions = (results) => {
     maintainAspectRatio: false,
     scales: {
       x: {
-        stacked: false,
         ticks: {
           color: "black",
         },
       },
       y: {
-        stacked: false,
         ticks: {
           color: "black",
         },

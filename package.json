@@ -123,7 +123,6 @@
   },
   "proxy": "https://us-central1-promoterscore-14480.cloudfunctions.net/api",
   "devDependencies": {
-    "cypress": "^9.6.0",
     "cypress-firebase": "^2.2.1",
     "eslint-plugin-cypress": "^2.12.1",
     "firebase-admin": "^10.2.0"
