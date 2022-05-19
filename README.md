@@ -1,9 +1,9 @@
-# Dashboard
+# PHZ Dashboard
 
-[Live Link](https://embedtest-mh.netlify.app/) - Survey Form
-[Link to backend repo](https://github.com/martin-holland/phz_ps_backend) - Firebase Functions
-[Link to Dashboard repo](https://github.com/martin-holland/ps_phz_dashboard) - Dashboard
-[Testing Repo](https://github.com/a-matta/e2ephz) - End to End Testing Repo, designed to work with Survey Form, backend and Dashboard.
+# Promoter's Call System
+
+Usage:
+git archive --format=tar HEAD | tar x -C ~/workspace/docker/project-name
 
 ## 1. Project Description
 
@@ -43,17 +43,64 @@ To calculate your Net Promoter Score, subtract the percentage of Detractors from
 
 ### 2.1. Technologies
 
+All PHZ Full Stack -projects should encapsulate all environments by virtualization. Choose one of the following for your project:
+
 Dev
 
 - React
 - CSS
 - Firebase
 - React ChartJs
+- Vagrant/Virtualbox
+- Docker-compose/Docker
 
 CI
 
-- Designed to use Netlify CI
+- use dev -env on ci.in.phz.fi + Jenkins executors running Docker or Vagrant/Virtualbox.
+- Jenkins
+- (do not use Gitlab CI, or AWS Code Deploy or other CI unless you have a permission from management, can rationalize the exception to management and you know what you are doing)
+- Nothing should be run outside virtualization and everything should be wrapped inside the container/virtual machine
+- do not pin the projects down on any individual executor, but set up the builds so that they can be run on any executor machine
 
+Staging
+
+- Xen / PHZ Virtual Machines
+- PHZ Docker Swarm
+- PHZ Kubernetes
+
+Production
+
+- Xen / PHZ Virtual Machines + Baremetal Database db.in.phz.fi
+- PHZ Docker Swarm (internal projects only)
+- PHZ Kubernetes (internal projects only)
+- AWS (customer projects, but customer needs to pay for it and there needs to be a contract in place with the customer before you start to set up the AWS env)
+
+### 2.2. Naming, Terms and Key Concepts
+
+Environments and the configs should be named as
+
+- dev: docker-compose.yml (i.e. use the default names for dev env), but .env.dev
+- (ci): use the dev -env on CI
+- stg: docker-compose.stg.yml, .env.stg
+- prod: docker-compose.prod.yml, .env.prod
+
+### 2.3. Coding Convention
+
+Directory structure
+
+- doc/ for UML documents
+- etc/ for nginx, ssh etc configs. Can be cp -pr etc/ /etc to the virtual machine during provisioning and matches the os directory structure
+- results/ test results
+- reports/ for e.g. code coverage reports
+- src/ for source code
+  \*\* Note! Source code should be placed under a single folder (src) that can be mounted over Docker -volume or Vagrant -shared folder inside the virtual machine so that node_modules or vendor directory are not on the shared folder. See https://wiki.phz.fi/Docker and https://wiki.phz.fi/Vagrant for further details how to circumvent the problems.
+- tests/ for tests
+
+### 2.4. Development Guide
+
+Add here examples and hints of good ways how to code the project. Convert the silent knowledge as tacit knowledge here.
+
+- See https://en.wikipedia.org/wiki/Knowledge_management
 
 ## 3. Development Environment
 
@@ -69,10 +116,6 @@ npm install
 npm start
 
 ### 3.3. Access the Application
-
-If running locally it is usually available on:
-
-[localhost:3000]http://localhost:3000
 
 ### 3.4. Run Tests
 
@@ -106,87 +149,15 @@ e2e-tests https://github.com/a-matta/e2ephz
 
 Firebase
 
-Note: This project requires a Google account
-
-Visit: https://console.firebase.google.com/
-
-Steps:
-
-1. Create a project and name it
-2. Skip Analytics if you do not intend to use them.
-3. Once Project is created you can click the 'Web' Option depicted as a "< / >" symbol.
-4. You will need to register the app, so give it a name. Hosting is not used for this method of deployment.
-5. Once created a SDK config should be displayed, the below config is what you need.
-
-```js
-const firebaseConfig = {
-  apiKey: "AIzaSyBaVvjB1z1_YKHKbzxfR3JnFVHmo3C_cEL0",
-  authDomain: "yourappname.firebaseapp.com",
-  projectId: "yourappname",
-  storageBucket: "yourappname.appspot.com",
-  messagingSenderId: "322163214306",
-  appId: "1:3331655514406:web:76c38d38970f3d17961ae7",
-  measurementId: "G-DRJHTVD6ZW",
-};
-```
-
-6. Update the Firebase config found inside src/backend/firebase-config.js
-7. Go back to console from the Firebase webpage and from the left hand menu select Firestore Database
-8. Create Firestore Database, you can start directly in production mode if you are combining the other 2 repositories mentioned at the top of this readme as it is a production ready application.
-
-The rules can be left as:
-
-```js
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if false;
-    }
-  }
-}
-```
-
-9. NB: **_The location cannot be changed once decided_**
-   Pick the location you would like your database hosting in your region. If you are unsure where, this is normally geographically locally to the client base you will be interacting with. You can find a list of locations here:
-
-   https://cloud.google.com/about/locations
-
-   Make a note of this location for step 11.
-
-   Be aware that pricing is different in different regions.
-
-10. Once you see a table with 'Start collection' Firebase Firestore has been correctly set up.
-11. Change the end point in src/backend/firebase-functions.js from
-
-https://us-central1-promoterscore-14480.cloudfunctions.net/api/data
-
-To: https://yourapp-location-yourapp-id.cloudfunctions.net/api/data
-
-The app id can be found in firebase config.
-
-12. Download the Promoterscore backend as linked from the top of this readme.
-13. Inside the backend index.js change the config.js details to match those in the firebase-config you changed for this project.
-
-14. You will need to run
-
-```shell
-firebase deploy
-```
-
-from the backend repository
-
-15. Once these steps are completed you should be able to start hosting the site with npm start and testing it for receiving data!
-
 ### 3.8. Continuous Integration
-
-- Currently set up for Netlify with a Netlify TOML file for redirection. This can be found inside the application source folder.
 
 ## 4. Staging/Production Environment
 
 ### 4.1. Prerequisites
 
-1. Python3 & pip
+From repository https://github.com/a-matta/e2e-tests-phz, clone and
+
+1. install Python3 & pip
 2. pip install robotframework(5.0)
 3. check robot version - robot --version
 4. Install relevant browser drive and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
@@ -209,16 +180,44 @@ The UI tests run with Chrome by default. To run in a different browser ensure th
 
 #### 4.3.2. Manual Test Cases
 
-Browser : Edge, Chrome, Safari & Firefox.
+Browser : Edge
 
-1. Launch Dashboard at https://promoterscore-tg.netlify.app
-2. Add valid username/password, Login works sucessfully
-3. Add invalid username/password, Login should not work, user cannot view dashboard
-4. Check if messages appear is descending order, messages are seen in descending order
-5. Check if logout button is working, logout button works
-6. Check if theme works, theme works
-7. Check if filter works with future dates & past dates
-   There are known issues for responsiveness.
+| Test Scenario                                                                   |                               Expected Results                               |                                                            Actual Results |
+| ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
+| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads sucessfully working                     |                                                Survey form is functioning |
+| Cross button should work as per functionality                                   |        when clicked on the Cross button the survey form should close         |                                            survey form closes sucessfully |
+| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen             |                         heart icon when clicked feedback form can be seen |
+| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working              |                        clicking random heart icon works and hover as well |
+| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works              |                         clicking on any heart can submit form sucessfully |
+| User can add feedback and add heart and submit form sucessfully                 | When a heart is clicked, feedback is added and form is submitted sucessfully | clicking on heart and add feedback and form can be submitted successfully |
+| Web page should be responsive when maximized/minimised or dragged to small view |                     Page is responsive and works nicely                      |                                                        Page is responsive |
+| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled          |                       Entered €,# are added, send button is seen disabled |
+
+Browser : Safari
+
+| Test Scenario                                                                   |                               Expected Results                               |                                                            Actual Results |
+| ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
+| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads sucessfully working                     |                                                Survey form is functioning |
+| Cross button should work as per functionality                                   |        when clicked on the Cross button the survey form should close         |                                            survey form closes sucessfully |
+| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen             |                         heart icon when clicked feedback form can be seen |
+| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working              |                        clicking random heart icon works and hover as well |
+| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works              |                         clicking on any heart can submit form sucessfully |
+| User can add feedback and add heart and submit form sucessfully                 | When a heart is clicked, feedback is added and form is submitted sucessfully | clicking on heart and add feedback and form can be submitted successfully |
+| Web page should be responsive when maximized/minimised or dragged to small view |                     Page is responsive and works nicely                      |                                                        Page is responsive |
+| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled          |                       Entered €,# are added, send button is seen disabled |
+
+Browser : Firefox
+
+| Test Scenario                                                                   |                               Expected Results                               |                                                            Actual Results |
+| ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
+| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads sucessfully working                     |                                                Survey form is functioning |
+| Cross button should work as per functionality                                   |        when clicked on the Cross button the survey form should close         |                                            survey form closes sucessfully |
+| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen             |                         heart icon when clicked feedback form can be seen |
+| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working              |                        clicking random heart icon works and hover as well |
+| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works              |                         clicking on any heart can submit form sucessfully |
+| User can add feedback and add heart and submit form sucessfully                 | When a heart is clicked, feedback is added and form is submitted sucessfully | clicking on heart and add feedback and form can be submitted successfully |
+| Web page should be responsive when maximized/minimised or dragged to small view |                     Page is responsive and works nicely                      |                                                        Page is responsive |
+| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled          |                       Entered €,# are added, send button is seen disabled |
 
 ### 4.4. Rollback
 
@@ -275,12 +274,14 @@ survey_results = {
 
 5. This will allow you to add data to the database manually for testing.
 
-
 ### 5.2.Chartjs
+
 - install reactchartjs
+
 ```sh
 npm install --save chart.js react-chartjs-2
 ```
+
 - import chart to your chart component for example importing Doughnut chart.
 
 ```sh
@@ -310,10 +311,12 @@ const passives=[3,4,6,8,9,5]
 <Doughnut data={data}  />
 
 ```
-#### 5.3 Filter and reset Button
-  - 12 months rolling data is shown as default data whereas data can be filtered using start and end date from calender.Acoording to filter date data gets dispaly in chart and also in the message box accordingly.
 
-  - reset button undo the filtering and gives back original 12 months rolling data.
+#### 5.3 Filter and reset Button
+
+- 12 months rolling data is shown as default data whereas data can be filtered using start and end date from calender.Acoording to filter date data gets dispaly in chart and also in the message box accordingly.
+
+- reset button undo the filtering and gives back original 12 months rolling data.
 
 ## 6. Problems
 
