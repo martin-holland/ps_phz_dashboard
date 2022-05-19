@@ -47,8 +47,8 @@ export default function Confidence(props) {
     mean = mean?.toString();
     std = Number(std?.substring(0, 6));
     mean = Number(mean?.substring(0, 6));
-    // let X = allResults?.length;
-    let X = 500;
+    let X = allResults?.length;
+    // let X = 500;
     let u = mean;
     let o = std;
 
