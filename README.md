@@ -69,6 +69,10 @@ npm start
 
 ### 3.3. Access the Application
 
+If running locally it is usually available on:
+
+[localhost:3000]http://localhost:3000
+
 ### 3.4. Run Tests
 
 robot -testcasename.robot OR
@@ -88,6 +92,78 @@ e2e-tests https://github.com/a-matta/e2ephz
 ### 3.7. Databases and Migrations
 
 Firebase
+
+Note: This project requires a Google account
+
+Visit: https://console.firebase.google.com/
+
+Steps:
+
+1. Create a project and name it
+2. Skip Analytics if you do not intend to use them.
+3. Once Project is created you can click the 'Web' Option depicted as a "< / >" symbol.
+4. You will need to register the app, so give it a name. Hosting is not used for this method of deployment.
+5. Once created a SDK config should be displayed, the below config is what you need.
+
+```js
+const firebaseConfig = {
+  apiKey: "AIzaSyBaVvjB1z1_YKHKbzxfR3JnFVHmo3C_cEL0",
+  authDomain: "yourappname.firebaseapp.com",
+  projectId: "yourappname",
+  storageBucket: "yourappname.appspot.com",
+  messagingSenderId: "322163214306",
+  appId: "1:3331655514406:web:76c38d38970f3d17961ae7",
+  measurementId: "G-DRJHTVD6ZW",
+};
+```
+
+6. Update the Firebase config found inside src/backend/firebase-config.js
+7. Go back to console from the Firebase webpage and from the left hand menu select Firestore Database
+8. Create Firestore Database, you can start directly in production mode if you are combining the other 2 repositories mentioned at the top of this readme as it is a production ready application.
+
+The rules can be left as:
+
+```js
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+```
+
+9. NB: **_The location cannot be changed once decided_**
+   Pick the location you would like your database hosting in your region. If you are unsure where, this is normally geographically locally to the client base you will be interacting with. You can find a list of locations here:
+
+   https://cloud.google.com/about/locations
+
+   Make a note of this location for step 11.
+
+   Be aware that pricing is different in different regions.
+
+10. Once you see a table with 'Start collection' Firebase Firestore has been correctly set up.
+11. Change the end point in src/backend/firebase-functions.js from
+
+https://us-central1-promoterscore-14480.cloudfunctions.net/api/data
+
+To: https://yourapp-location-yourapp-id.cloudfunctions.net/api/data
+
+The app id can be found in firebase config.
+
+12. Download the Promoterscore backend as linked from the top of this readme.
+13. Inside the backend index.js change the config.js details to match those in the firebase-config you changed for this project.
+
+14. You will need to run
+
+```shell
+firebase deploy
+```
+
+from the backend repository
+
+15. Once these steps are completed you should be able to start hosting the site with npm start and testing it for receiving data!
 
 ### 3.8. Continuous Integration
 
@@ -143,13 +219,64 @@ WARNING! if survey results are deleted, all test data will be deleted permenentl
 
 ## 5. Operating Manual
 
+### 5.1 Manual Processes
+
+**_Optional_**
+
+To add manual data into firebase database for testing visit:
+
+http://console.firebase.google.com
+
+Steps:
+
+1. Go to Firestore Database where you created the database from section 3.7
+2. Click start collection, call collection id: survey_results
+3. Click auto id for document id
+4. Set up fields like this:
+
+```js
+survey_results = {
+  createdAt: "2022-05-18T09:58:43.743Z",
+  choice: 10,
+  message: "",
+  surveyResult: "promoter",
+};
+```
+
+- createdAt is type string. Format is an ISOString [Read more](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
+- choice is a number
+- message can be empty, but its type is string.
+- surveyResult is a string and should be either: "promoter" "detractor" or "passive"
+
+5. This will allow you to add data to the database manually for testing.
+
 ## 6. Problems
 
 ### 6.1. Environments
 
 ### 6.2. Coding
 
-### 6.3. Dependencies
+### 6.3 Notable Dependancies:
 
-Add here TODO and blockers that you have found related to upgrading to newer versions.
-List the library/framework/service, version, and then the error message.
+    axios 0.26.1
+    chart.js 3.7.1
+    dayjs: 1.11.1,
+    firebase: 9.6.11,
+    license-checker: 25.0.1,
+    license-to-fail: 4.0.0,
+    react: 18.0.0,
+    react-chartjs-2: 4.1.0,
+    react-dom: 18.0.0,
+    react-icons: 4.3.1,
+    react-loader-spinner: 6.0.0-0,
+    react-redux: 7.2.8,
+    react-router-dom: 6.3.0,
+    react-scripts: 5.0.1,
+    react-tagcloud: 2.2.0,
+    reactjs-popup: 2.0.5,
+    redux: 4.1.2,
+    redux-devtools-extension: 2.13.9,
+    redux-thunk: 2.4.1,
+    styled-components: 5.3.5,
+    thunk: 0.0.1,
+    tippy.js: 6.3.7,
