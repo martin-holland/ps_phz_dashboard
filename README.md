@@ -119,6 +119,8 @@ npm start
 
 ### 3.4. Run Tests
 
+Goto repository https://github.com/a-matta/e2ephz & clone
+
 robot -testcasename.robot OR
 robot example.robot
 
