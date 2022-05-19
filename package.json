@@ -30,6 +30,12 @@
         "extraFieldsForDocumentation": "Test",
         "date": "1st April 2022",
         "reason": "React Package"
+      },
+      {
+        "name": "randomcolor@0.6.2",
+        "extraFieldsForDocumentation": "Test",
+        "date": "19th May 2022",
+        "reason": "CCO Dependancy package for tagcloud"
       }
     ],
     "allowedLicenses": [
@@ -55,7 +61,8 @@
       "Unlicense",
       "OFL-1.1 AND MIT",
       "CC0-1.0",
-      "0BSD"
+      "0BSD",
+      "CCO"
     ]
   },
   "dependencies": {
@@ -76,7 +83,7 @@
     "react-loader-spinner": "^6.0.0-0",
     "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.0",
+    "react-scripts": "^5.0.1",
     "react-tagcloud": "^2.2.0",
     "reactjs-popup": "^2.0.5",
     "redux": "^4.1.2",
@@ -118,6 +125,6 @@
   "devDependencies": {
     "cypress-firebase": "^2.2.1",
     "eslint-plugin-cypress": "^2.12.1",
-    "firebase-admin": "^9.12.0"
+    "firebase-admin": "^10.2.0"
   }
 }
