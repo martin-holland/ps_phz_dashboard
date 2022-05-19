@@ -6,6 +6,7 @@ import Burger from "../../components/Burger/BurgerMenu";
 import Menu from "../../components/Menu/Menu";
 import Popup from "reactjs-popup";
 import { TagCloud } from "react-tagcloud";
+import Confidence from "./Confidence";
 
 //Styling
 import { Main, TitleHead, InputBox } from "./ThemeStyle";
@@ -259,13 +260,38 @@ const Statistics = (props) => {
               </div>
               <div className="top-right">
                 <div className="statistics-headings">
-                  <h4>Confidence of Data</h4>
+                  <h4>Confidence of Data (Last 12 months)</h4>
                   <img
                     alt="confidence icon"
                     className="heading-icons"
                     src={confidenceIcon}
                   />
                 </div>
+                <Confidence results={newResults ? newResults : 0} />
+                <Popup
+                  trigger={(open) => (
+                    <button className="info-button">
+                      <GrCircleInformation size="1rem" />
+                    </button>
+                  )}
+                  position="right center"
+                  closeOnDocumentClick
+                >
+                  <span>Information based on 12 Months Data</span>
+                  <br></br>
+                  <br></br>
+                  <span>
+                    To gain a higher confidence rate a sample size number of
+                    400+ responses is recommended.
+                  </span>
+                  <br></br>
+                  <br></br>
+                  <span>
+                    {" "}
+                    The confidence rate is an indicator only of how accurate the
+                    information is based on sample size
+                  </span>
+                </Popup>
               </div>
             </div>
             <div className="bottom-container">

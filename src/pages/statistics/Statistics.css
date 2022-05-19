@@ -215,3 +215,33 @@ h4 {
     right: 0%;
     height: 45px;
 }
+
+.confidence-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sample-size, .confidence, .mean, .std, .confidence-score {
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.confidence-score {
+    font-size:x-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+#confidence-negative {
+    color:#ef7e32
+}
+#confidence-passive {
+    color:#1de4bd
+}
+#confidence-positive {
+    color:#19aade
+}
