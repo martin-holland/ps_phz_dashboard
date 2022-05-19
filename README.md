@@ -232,6 +232,18 @@ WARNING! if survey results are deleted, all test data will be deleted permenentl
 
 ## 5. Operating Manual
 
+The application is using google authentication for users to sign in to access the dashboard.
+On the main view the default data always shows results from the past six months. There are several functionalities on the page:
+
+    1. By changing dates, it is possible to filter the data shown on the charts as well as the messaged displayed below. By pressing reset the dashboard data will go into default mode and show the data from the past 6 months.
+    2. The bars on the bar chart are clickable. If the user only wants to see the messages displayed of for example promoters of the selected time period, this is possible by clicking on the promoters bar.
+    3. The doughnut chart displays the score of the selected time period
+    4. The line chart shows the progress of feedback of the selected time period
+
+By clicking on the burger menu on the top left corner, the user is able to see statistics of the received data. The statistics include total responses, confidence of data as well as most used words from the selected time period. In order to receive this data, the user is required to put in the number of employees (team size) of their team.
+
+In order to make this dashboard suitable for their own use, the user must create their own firebase account. Once this is done, they must use the config file of their own firebase and replace the config file within this project as well as the survey form in order to connect the firebase.
+
 ### 5.1 Manual Processes
 
 **_Optional_**
