@@ -182,11 +182,42 @@ The UI tests run with Chrome by default. To run in a different browser ensure th
 
 Browser : Edge
 
-| Test Scenario                                          |                       Expected Results                        |                 Actual Results |
-| ------------------------------------------------------ | :-----------------------------------------------------------: | -----------------------------: |
-| Launch Survey form at https://embedtest-mh.netlify.app |             survey form loads sucessfully working             |     Survey form is functioning |
-| Cross button should work as per functionality          | when clicked on the Cross button the survey form should close | survey form closes sucessfully |
-| Clicking on any heart should open feedback form        |     when heart icon is clicked feedback form can be seen      |                                |
+| Test Scenario                                                                   |                               Expected Results                               |                                                            Actual Results |
+| ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
+| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads sucessfully working                     |                                                Survey form is functioning |
+| Cross button should work as per functionality                                   |        when clicked on the Cross button the survey form should close         |                                            survey form closes sucessfully |
+| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen             |                         heart icon when clicked feedback form can be seen |
+| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working              |                        clicking random heart icon works and hover as well |
+| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works              |                         clicking on any heart can submit form sucessfully |
+| User can add feedback and add heart and submit form sucessfully                 | When a heart is clicked, feedback is added and form is submitted sucessfully | clicking on heart and add feedback and form can be submitted successfully |
+| Web page should be responsive when maximized/minimised or dragged to small view |                     Page is responsive and works nicely                      |                                                        Page is responsive |
+| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled          |                       Entered €,# are added, send button is seen disabled |
+
+Browser : Safari
+
+| Test Scenario                                                                   |                               Expected Results                               |                                                            Actual Results |
+| ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
+| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads sucessfully working                     |                                                Survey form is functioning |
+| Cross button should work as per functionality                                   |        when clicked on the Cross button the survey form should close         |                                            survey form closes sucessfully |
+| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen             |                         heart icon when clicked feedback form can be seen |
+| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working              |                        clicking random heart icon works and hover as well |
+| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works              |                         clicking on any heart can submit form sucessfully |
+| User can add feedback and add heart and submit form sucessfully                 | When a heart is clicked, feedback is added and form is submitted sucessfully | clicking on heart and add feedback and form can be submitted successfully |
+| Web page should be responsive when maximized/minimised or dragged to small view |                     Page is responsive and works nicely                      |                                                        Page is responsive |
+| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled          |                       Entered €,# are added, send button is seen disabled |
+
+Browser : Firefox
+
+| Test Scenario                                                                   |                               Expected Results                               |                                                            Actual Results |
+| ------------------------------------------------------------------------------- | :--------------------------------------------------------------------------: | ------------------------------------------------------------------------: |
+| Launch Survey form at https://embedtest-mh.netlify.app                          |                    survey form loads sucessfully working                     |                                                Survey form is functioning |
+| Cross button should work as per functionality                                   |        when clicked on the Cross button the survey form should close         |                                            survey form closes sucessfully |
+| Clicking on any heart should open feedback form                                 |             when heart icon is clicked feedback form can be seen             |                         heart icon when clicked feedback form can be seen |
+| Click on any heart ex. 10th or 1st heart, hover should work                     |              when any on heart icon is clicked hover is working              |                        clicking random heart icon works and hover as well |
+| User can directly click on any heart without writing a feedback                 |              When clicked on any heart, click send button works              |                         clicking on any heart can submit form sucessfully |
+| User can add feedback and add heart and submit form sucessfully                 | When a heart is clicked, feedback is added and form is submitted sucessfully | clicking on heart and add feedback and form can be submitted successfully |
+| Web page should be responsive when maximized/minimised or dragged to small view |                     Page is responsive and works nicely                      |                                                        Page is responsive |
+| User cannot add special chars in feedback area only ., are allowed              |          When €,# is added in feedback area send button is disabled          |                       Entered €,# are added, send button is seen disabled |
 
 ### 4.4. Rollback
 
