@@ -182,10 +182,11 @@ from the backend repository
 
 From repository https://github.com/a-matta/e2e-tests-phz, clone and
 
-1. install Python3 & pip
-2. pip install robotframework(5.0)
-3. check robot version - robot --version
-4. Install relevant browser drive and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
+1. install [Python3] (https://programwithus.com/learn/python/install-python3-mac) & pip (sudo easy_install pip)
+2. check python version - python --version
+3. pip install robotframework(5.0)
+4. check robot version - robot --version
+5. Install relevant browser drive and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
 
 ### 4.2. Customizing Tests
 
@@ -359,6 +360,8 @@ const passives=[3,4,6,8,9,5]
 Dark and light theme can be achieved by toggling on the moon/light icon on the top right corner of dashboard.
 
 ## 6. Problems
+
+During testing we had problems in different browsers font ,it looked different in windows machine.
 
 ### 6.1. Environments
 
