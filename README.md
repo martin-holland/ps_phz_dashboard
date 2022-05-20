@@ -165,6 +165,8 @@ From repository https://github.com/a-matta/e2e-tests-phz, clone and
 6. make sure python and robot in path -  
    export PATH=$PATH:/Users/bc-macair019/Library/Python/3.8/bin
 7. Install relevant browser driver and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
+   incase you don't have it : add to path
+   export PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.10/bin:/usr/local/bin
 
 ### 4.2. Customizing Tests
 
