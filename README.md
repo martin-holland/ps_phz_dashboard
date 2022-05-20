@@ -157,7 +157,7 @@ Firebase
 
 From repository https://github.com/a-matta/e2e-tests-phz, clone and
 
-1. install Python3 & pip
+1. [install Python3] (https://programwithus.com/learn/python/install-python3-mac) & pip (sudo easy_install pip)
 2. pip install robotframework(5.0)
 3. check robot version - robot --version
 4. Install relevant browser drive and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
@@ -325,6 +325,8 @@ const passives=[3,4,6,8,9,5]
 - reset button undo the filtering and gives back original 12 months rolling data.
 
 ## 6. Problems
+
+During testing we had problems in different browsers font ,it looked different in windows machine.
 
 ### 6.1. Environments
 
