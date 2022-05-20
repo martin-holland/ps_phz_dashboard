@@ -182,11 +182,14 @@ from the backend repository
 
 From repository https://github.com/a-matta/e2e-tests-phz, clone and
 
-1. install [Python3] (https://programwithus.com/learn/python/install-python3-mac) & pip (sudo easy_install pip)
-2. check python version - python --version
-3. pip install robotframework(5.0)
-4. check robot version - robot --version
-5. Install relevant browser drive and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
+1. install [Python3] (brew install python3)
+2. pip3 (sudo easy_install pip3)
+3. check python version - python --version
+4. pip install robotframework(5.0)
+5. check robot version - robot --version
+6. make sure python and robot in path -  
+   export PATH=$PATH:/Users/bc-macair019/Library/Python/3.8/bin
+7. Install relevant browser driver and add to PATH. For example webdrivermanager firefox chrome --linkpath /usr/local/bin
 
 ### 4.2. Customizing Tests
 
